@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Componente extends Model
 {
-    private $table = 'componente';
+    protected $table = 'componentes';
     
-    private $fillable = ['nome', 'porta', 'sinal'];
+    protected $fillable = ['nome', 'pino', 'sinal'];
 
 
 }
