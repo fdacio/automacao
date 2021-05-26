@@ -9,8 +9,8 @@
                         <i class="fa fa-power-off btn-power-red"></i>
                     </button>
                 </div>
-                <h2>Cômodo 1</h2>
-                <p><a class="btn btn-secondary" href="#">Informar Cômodo</a></p>
+                <h2>Componente 1</h2>
+                <p><a class="btn btn-secondary" href="#">Informar Componente</a></p>
             </div>
 
             <div class="col-lg-4 text-center">
@@ -19,8 +19,8 @@
                         <i class="fa fa-power-off btn-power-yellow"></i>
                     </button>
                 </div>
-                <h2>Cômodo 2</h2>
-                <p><a class="btn btn-secondary" href="#">Informar Cômodo</a></p>
+                <h2>Componente 2</h2>
+                <p><a class="btn btn-secondary" href="#">Informar Componente</a></p>
             </div>
 
             <div class="col-lg-4 text-center">
@@ -30,8 +30,8 @@
                         <i class="fa fa-power-off btn-power-green"></i>
                     </button>
                 </div>
-                <h2>Cômodo 3</h2>
-                <p><a class="btn btn-secondary" href="#">Informar Cômodo</a></p>
+                <h2>Componente 3</h2>
+                <p><a class="btn btn-secondary" href="#">Informar Componente</a></p>
             </div>
         </div>
         <hr class="featurette-divider">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComponentesTable extends Migration
+class AlterComponentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateComponentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('componentes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome', 60);
-            $table->string('pino', 2);
-            $table->boolean('sinal')->nullable();
-            $table->timestamps();
+        Schema::table('componentes', function (Blueprint $table) {
+            $table->string('token', 60)->after('sinal')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateComponentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('componentes');
+        Schema::table('componentes', function (Blueprint $table) {
+            $table->dropColumn('token');
+        });
     }
 }
