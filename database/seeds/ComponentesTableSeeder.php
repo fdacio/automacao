@@ -2,7 +2,7 @@
 
 use Automacao\Models\Componente;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 
 class ComponentesTableSeeder extends Seeder
 {
