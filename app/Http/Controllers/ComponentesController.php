@@ -14,7 +14,14 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        return Componente::all();
+        $componentes = Componente::orderBy('id');
+        $nome = request()->get('nome');
+         if (!empty($nome)) {
+            $componentes =  $componentes->where('nome', 'LIKE', '%' . $nome . '%');
+        }
+        $componentes =  $componentes->paginate(10);
+
+        return view('componentes.index', compact('componentes'));
     }
 
     /**

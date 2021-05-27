@@ -16,4 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home'); 
 Route::resource('componentes', 'ComponentesController');
-Route::get('/componentes', 'ComponentesController@index')->name('componentes.index');
