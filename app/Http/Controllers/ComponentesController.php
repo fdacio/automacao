@@ -2,9 +2,10 @@
 
 namespace Automacao\Http\Controllers;
 
+use Automacao\Models\Componente;
 use Illuminate\Http\Request;
 
-class ComponenteController extends Controller
+class ComponentesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class ComponenteController extends Controller
      */
     public function index()
     {
-        //
+        return Componente::all();
     }
 
     /**
