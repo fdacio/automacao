@@ -3,42 +3,35 @@
 
     <div class="marketing">
         <div class="row">
-            <div class="col-lg-4 text-center">
+            <div class="btn-power-red  btn-power col-lg-4 text-center" data-token="btn-power-red">
                 <div class="btn-rect">
-                    <button class="btn btn-power">
-                        <i class="fa fa-power-off btn-power-red"></i>
+                    <button class="btn">
+                        <i class="fa fa-power-off"></i>
                     </button>
                 </div>
                 <h2>Componente 1</h2>
-                <p><a class="btn btn-secondary" id="btn-power-red" href="#" data-toggle="modal" data-target="#componentesModal"
-                        data-btn="btn-power-red">Informar Componente</a></p>
+                <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Informar Componente</a>
             </div>
-
-            <div class="col-lg-4 text-center">
+            <div class="btn-power-yellow btn-power col-lg-4 text-center" data-token="btn-power-yellow">
                 <div class="btn-rect">
-                    <button class="btn btn-power">
-                        <i class="fa fa-power-off btn-power-yellow"></i>
+                    <button class="btn">
+                        <i class="fa fa-power-off"></i>
                     </button>
                 </div>
                 <h2>Componente 2</h2>
-                <p><a class="btn btn-secondary" id="btn-power-yellow" href="#" data-toggle="modal" data-target="#componentesModal"
-                        data-btn="btn-power-yellow">Informar Componente</a></p>
+                <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Informar Componente</a>
             </div>
-
-            <div class="col-lg-4 text-center">
-
+            <div class="btn-power-green btn-power col-lg-4 text-center" data-token="btn-power-green">
                 <div class="btn-rect">
-                    <button class="btn btn-power">
-                        <i class="fa fa-power-off btn-power-green"></i>
+                    <button class="btn">
+                        <i class="fa fa-power-off"></i>
                     </button>
                 </div>
                 <h2>Componente 3</h2>
-                <p><a class="btn btn-secondary" id="btn-power-green" href="#" data-toggle="modal" data-target="#componentesModal"
-                        data-btn="btn-power-green">Informar Componente</a></p>
+                <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Informar Componente</a>
             </div>
         </div>
         <hr class="featurette-divider">
-
     </div>
 
 
@@ -54,7 +47,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{-- Aqui lista de componentes --}}
+                    {{-- Aqui lista de componentes --}}                    
+                    <ul class="lista-componentes list-group">                        
+                    </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -70,26 +65,43 @@
             
             $('#componentesModal').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget);
-                var dataBtn = button.data('btn');
                 var modal = $(this);
-                modal.find('.modal-title').text('Componente para ' + dataBtn);
+                modal.find('.modal-title').text('Infomar Componente');
+                var listaComponentes = modal.find('.lista-componentes');
+
+                var url = "{{ route('api.componentes') }}";
+                    $.get(url)
+                    .always(function() {
+                        var loading = '<i class="fa fa-spin fa-spinner"></i>';
+                        listaComponentes.html(loading);
+                    }).done(function(data) {      
+                        console.log(data);
+                        listaComponentes.empty();
+                        $.each(data, function(key, componente){
+                            console.log(componente);
+                            var token =  button.parent('.btn-power').attr('data-token');
+                            var li = $('<li>').html(componente.nome).attr('class','list-group-item btn').attr('data-token', token);
+                            listaComponentes.append(li);
+                        });
+                    }); 
             });
 
             var loadComponente = function() {
                 var loading = '<i class="fa fa-spin fa-spinner"></i>';
-                var componentes = [$('#btn-power-red'), $('#btn-power-yellow'), $('#btn-power-green')];                
+                var componentes = [$('.btn-power-red'), $('.btn-power-yellow'), $('.btn-power-green')];                
                 $.each(componentes, function( key, btn ) {
-                    var html = btn.html();
-                    var token = btn.attr('data-btn');                    
+                    var token = btn.attr('data-token');
+                    var target = btn.find('h2');
+                    var html = target.html();
                     var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', token);
                     $.get(url)
                     .always(function() {
-                        btn.html(loading);
+                        target.html(loading);
                     }).done(function(data) {                        
                         if(data.length == 0) {
-                            btn.html(html);
+                            target.html(html);
                         } else {
-                            btn.html(data.nome);
+                            target.html(data.nome);
                         }
                     });                    
                 });                

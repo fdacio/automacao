@@ -119,14 +119,14 @@ body {
 .btn-power i {
   font-size: 10rem;
 }
-.btn-power-red {
+.btn-power-red i {
   color: red;
 }
 
-.btn-power-yellow {
+.btn-power-yellow i {
   color: yellow;
 }
 
-.btn-power-green {
+.btn-power-green i {
   color: green;
 }

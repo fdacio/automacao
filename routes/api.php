@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 
 Route::namespace('Api')->group(function () {
-    Route::resource('componentes', 'ComponentesController');
+    Route::get('/componentes', 'ComponentesController@index')->name('api.componentes');
     Route::get('/componente/token/{token}', 'ComponentesController@byToken')->name('api.componente.token');
 });
