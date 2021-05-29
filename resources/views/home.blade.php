@@ -10,7 +10,7 @@
                     </button>
                 </div>
                 <h2>Componente 1</h2>
-                <p><a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal"
+                <p><a class="btn btn-secondary" id="btn-power-red" href="#" data-toggle="modal" data-target="#componentesModal"
                         data-btn="btn-power-red">Informar Componente</a></p>
             </div>
 
@@ -21,7 +21,7 @@
                     </button>
                 </div>
                 <h2>Componente 2</h2>
-                <p><a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal"
+                <p><a class="btn btn-secondary" id="btn-power-yellow" href="#" data-toggle="modal" data-target="#componentesModal"
                         data-btn="btn-power-yellow">Informar Componente</a></p>
             </div>
 
@@ -33,7 +33,7 @@
                     </button>
                 </div>
                 <h2>Componente 3</h2>
-                <p><a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal"
+                <p><a class="btn btn-secondary" id="btn-power-green" href="#" data-toggle="modal" data-target="#componentesModal"
                         data-btn="btn-power-green">Informar Componente</a></p>
             </div>
         </div>
@@ -67,15 +67,35 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            
             $('#componentesModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var dataBtn = button.data('btn') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Componente para ' + dataBtn)
-                //modal.find('.modal-body input').val(recipient)
-            })
+                var button = $(event.relatedTarget);
+                var dataBtn = button.data('btn');
+                var modal = $(this);
+                modal.find('.modal-title').text('Componente para ' + dataBtn);
+            });
+
+            var loadComponente = function() {
+                var loading = '<i class="fa fa-spin fa-spinner"></i>';
+                var componentes = [$('#btn-power-red'), $('#btn-power-yellow'), $('#btn-power-green')];                
+                $.each(componentes, function( key, btn ) {
+                    var html = btn.html();
+                    var token = btn.attr('data-btn');                    
+                    var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', token);
+                    $.get(url)
+                    .always(function() {
+                        btn.html(loading);
+                    }).done(function(data) {                        
+                        if(data.length == 0) {
+                            btn.html(html);
+                        } else {
+                            btn.html(data.nome);
+                        }
+                    });                    
+                });                
+            }
+
+            loadComponente();
         
         });
 

@@ -19,6 +19,15 @@ class ComponentesController extends Controller
     }
 
     /**
+     *  
+     *  
+     */
+    public function byToken($token)
+    {
+        return Componente::where('token', $token)->first();
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
