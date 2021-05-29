@@ -19,14 +19,58 @@ class ComponentesController extends Controller
     }
 
     /**
+     *  Obtém um componente pelo token
      *  
-     *  
+     * @return Automacao\Models\Componente
      */
     public function byToken($token)
     {
         return Componente::where('token', $token)->first();
     }
 
+    /**
+     * Atualiza o token de um componente
+     * 
+     *  @return Automacao\Models\Componente
+     */
+    public function updateToken(Request $request)
+    {
+        if ($request->isMethod('put')) {
+            $id = $request->input('id');
+            $token = $request->input('token');
+            $componente = Componente::where('token', $token)->where('id', '<>', $id)->first();
+            if (empty($componente)) {
+                $componente = Componente::find($id);
+                $componente->token = $token;
+                $componente->update();
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'message' => 'Componente já vinculado'];
+            }
+        }
+        return ['success' => false, 'message' => 'Método inválido'];
+    }
+
+        /**
+     * Atualiza o token de um componente
+     * 
+     *  @return Automacao\Models\Componente
+     */
+    public function updateSinal(Request $request)
+    {
+        if ($request->isMethod('put')) {
+            $token = $request->input('token');
+            $componente = Componente::where('token', $token)->first();
+            if (!empty($componente)) {
+                $componente->sinal = (empty($componente->sinal)) ? true : !$componente->sinal;
+                $componente->update();
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'message' => 'Componente não vinculado'];
+            }
+        }
+        return ['success' => false, 'message' => 'Método inválido'];
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -111,11 +111,10 @@ body {
 }
 
 .btn-rect {
-  margin: 0 auto;
   border: #5a5a5a 2px solid;
   border-radius: 4px;
-  width: 60%;
 }
+
 .btn-power i {
   font-size: 10rem;
 }
