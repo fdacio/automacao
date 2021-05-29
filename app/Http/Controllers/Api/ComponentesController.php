@@ -15,7 +15,7 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        return Componente::where('id', 1)->get();
+        return Componente::get();
     }
 
     /**
