@@ -99,7 +99,7 @@
 
             $('.btn-power .btn-rect').on('click', function() {
 
-                var button = $(this);
+                var button = $(this).parent('.btn-power');
                 var _token = button.attr('data-token');
                 var dados = {
                     'token': _token,
