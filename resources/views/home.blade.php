@@ -3,7 +3,7 @@
 
     <div class="marketing">
         <div class="row">
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center m-2">
                 <div class="btn btn-power-red btn-power btn-rect" data-token="btn-power-red" data-clicked="false">
                     <i class="fa fa-power-off"></i>
                     <h3>Componente 1</h3>
@@ -11,7 +11,7 @@
                         Componente</a>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center m-2">
                 <div class="btn btn-power-yellow btn-power btn-rect" data-token="btn-power-yellow" data-clicked="false">
                     <i class="fa fa-power-off"></i>
                     <h3>Componente 2</h3>
@@ -19,7 +19,7 @@
                         Componente</a>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center m-2">
                 <div class="btn btn-power-green btn-power btn-rect" data-token="btn-power-green" data-clicked="false">
                     <i class="fa fa-power-off"></i>
                     <h3>Componente 3</h3>
@@ -74,9 +74,9 @@
                     var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_',
                         token);
                     $.get(url, function() {
-                        target.html(html);
+                        target.html(loading);                        
                     }).always(function() {
-                        target.html(loading);
+                        
                     }).done(function(data) {
                         if (data) {
                             target.html(data.nome);
