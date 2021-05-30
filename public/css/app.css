@@ -111,8 +111,10 @@ body {
 }
 
 .btn-rect {
+  margin: 0 auto;
   border: #5a5a5a 2px solid;
   border-radius: 4px;
+  max-width: 70%;
 }
 
 .btn-power i {
@@ -123,7 +125,7 @@ body {
 }
 
 .btn-power-yellow i {
-  color: yellow;
+  color: rgb(255, 230, 0);
 }
 
 .btn-power-green i {

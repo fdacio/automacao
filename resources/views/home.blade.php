@@ -3,25 +3,31 @@
 
     <div class="marketing">
         <div class="row">
-            <div class="col-md-4 text-center m-2">
-                <div class="btn btn-power-red btn-power btn-rect" data-token="btn-power-red" data-clicked="false">
-                    <i class="fa fa-power-off"></i>
+            <div class="col-md-4 text-center">
+                <div class="btn btn-power-red btn-power" data-token="btn-power-red" data-clicked="false">
+                    <div class="btn-rect">
+                        <i class="fa fa-power-off"></i>
+                    </div>
                     <h3>Componente 1</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
                         Componente</a>
                 </div>
             </div>
-            <div class="col-md-4 text-center m-2">
-                <div class="btn btn-power-yellow btn-power btn-rect" data-token="btn-power-yellow" data-clicked="false">
-                    <i class="fa fa-power-off"></i>
+            <div class="col-md-4 text-center">
+                <div class="btn btn-power-yellow btn-power" data-token="btn-power-yellow" data-clicked="false">
+                    <div class="btn-rect">
+                        <i class="fa fa-power-off"></i>
+                    </div>
                     <h3>Componente 2</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
                         Componente</a>
                 </div>
             </div>
-            <div class="col-md-4 text-center m-2">
-                <div class="btn btn-power-green btn-power btn-rect" data-token="btn-power-green" data-clicked="false">
-                    <i class="fa fa-power-off"></i>
+            <div class="col-md-4 text-center">
+                <div class="btn btn-power-green btn-power" data-token="btn-power-green" data-clicked="false">
+                    <div class="btn-rect">
+                        <i class="fa fa-power-off"></i>
+                    </div>
                     <h3>Componente 3</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
                         Componente</a>
@@ -71,21 +77,18 @@
                     var token = btn.attr('data-token');
                     var target = btn.find('h3');
                     var html = target.html();
-                    var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_',
-                        token);
+                    var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', token);
                     $.get(url, function() {
                         target.html(loading);                        
-                    }).always(function() {
-                        
                     }).done(function(data) {
                         if (data) {
                             target.html(data.nome);
                             var sinal = (data.sinal == 1) ? true : false;
                             btn.attr('data-clicked', sinal);
                             if (sinal) {
-                                btn.css('background-color', '#ffff80');
+                                btn.find('.btn-rect').css('background-color', '#ffff80');
                             } else {
-                                btn.css('background-color', '#ffffff');
+                                btn.find('.btn-rect').css('background-color', '#ffffff');
                             }
                         }
                     });
@@ -102,6 +105,8 @@
                     'token': _token,
                     '_token': "{{ csrf_token() }}"
                 };
+                var icon = button.find('.btn-rect');
+                icon.html('<i class="fa fa-spin fa-spinner"></i>');
 
                 $.ajax({
                     url: " {{ route('api.componente.sinal.update') }} ",
@@ -110,20 +115,20 @@
                     type: 'PUT',
                     success: function(response) {
                         if (response.success) {
+                            icon.html('<i class="fa fa-power-off"></i>');
                             var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', _token);
                             $.get(url).done(function(data) {
                                 if (data) {
                                     var sinal = (data.sinal == 1) ? true : false;
                                     button.attr('data-clicked', sinal);
                                     if (sinal) {
-                                        button.css('background-color', '#ffff80');
+                                        button.find('.btn-rect').css('background-color', '#ffff80');
                                     } else {
-                                        button.css('background-color', '#ffffff');
+                                        button.find('.btn-rect').css('background-color', '#ffffff');
                                     }
                                 }
                             });
                         }
-
                     }
                 });
             });
