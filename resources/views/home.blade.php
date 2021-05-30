@@ -97,7 +97,7 @@
 
             loadComponente();
 
-            $('.btn-power.btn-rect').on('click', function() {
+            $('.btn-power .btn-rect').on('click', function() {
 
                 var button = $(this);
                 var _token = button.attr('data-token');
