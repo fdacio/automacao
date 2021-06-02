@@ -5,7 +5,7 @@
         <div class="card-header">
             <h1>Cadastro de Componente</h1>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('fontes-recursos.index') }}">Voltar</a>
+                <a class="btn btn-primary" href="{{ route('componentes.index') }}">Voltar</a>
             </div>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
