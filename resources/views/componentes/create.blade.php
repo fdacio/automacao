@@ -3,9 +3,9 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1>Cadastro de Componente</h1>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('componentes.index') }}">Voltar</a>
+            <h5 class="float-left">Cadastro de Componente</h5>
+            <div class="float-left">
+                <a class="btn btn-primary" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
