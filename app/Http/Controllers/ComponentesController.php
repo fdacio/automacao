@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ComponentesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,7 @@ class ComponentesController extends Controller
     {
         $componentes = Componente::orderBy('id');
         $nome = request()->get('nome');
-         if (!empty($nome)) {
+        if (!empty($nome)) {
             $componentes =  $componentes->where('nome', 'LIKE', '%' . $nome . '%');
         }
         $componentes =  $componentes->paginate(10);
@@ -31,7 +32,20 @@ class ComponentesController extends Controller
      */
     public function create()
     {
-        //
+        $pinos = [
+            2 => 'Pino 2', 
+            3 => 'Pino 3', 
+            4 => 'Pino 4', 
+            5 => 'Pino 5', 
+            6 => 'Pino 6',
+            7 => 'Pino 7',
+            8 => 'Pino 8',
+            9 => 'Pino 9',
+            10 => 'Pino 10',
+            11 => 'Pino 11',
+            12 => 'Pino 12',
+        ];
+        return view('componentes.create', compact('pinos'));
     }
 
     /**
@@ -42,7 +56,8 @@ class ComponentesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Componente::create($request->all());
+        return redirect()->route('componentes.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
