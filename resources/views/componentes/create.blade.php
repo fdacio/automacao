@@ -2,11 +2,11 @@
 @section('title', 'Cadastrar Componente')
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h5 class="float-left">Cadastro de Componente</h5>
+        <div class="card-header">            
             <div class="float-left">
-                <a class="btn btn-primary" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
+                <a class="btn btn-primary border-radius-90 mx-2" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
+            <h5 class="float-left">Cadastro de Componente</h5>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
