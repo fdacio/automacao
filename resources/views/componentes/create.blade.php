@@ -6,7 +6,7 @@
             <div class="float-left">
                 <a class="mx-2" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
-            <h5 class="float-left">Cadastro de Componente</h5>
+            <h4 class="float-left">Cadastro de Componente</h4>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">

@@ -4,7 +4,7 @@
 @section('content')
 <div class="card mb-2">
     <div class="card-header">
-        <h3>Componentes</h3>
+        <h4>Componentes</h4>
         @if(session('success'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
