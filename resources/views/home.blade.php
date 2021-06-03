@@ -90,6 +90,8 @@
                             } else {
                                 btn.find('.btn-rect').css('background-color', '#ffffff');
                             }
+                        } else {
+                            target.html(html);
                         }
                     });
                 });
