@@ -5,6 +5,7 @@ namespace Automacao\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Componente;
+use Composer\Composer;
 
 class ComponentesController extends Controller
 {
@@ -36,22 +37,25 @@ class ComponentesController extends Controller
     public function updateToken(Request $request)
     {
         if ($request->isMethod('put')) {
+            
             $id = $request->input('id');
             $token = $request->input('token');
-            $componente = Componente::where('token', $token)->where('id', '<>', $id)->first();
-            if (empty($componente)) {
-                $componente = Componente::find($id);
-                $componente->token = $token;
-                $componente->update();
-                return ['success' => true];
-            } else {
-                return ['success' => false, 'message' => 'Componente já vinculado'];
-            }
+            
+            $componente = Componente::where('token', $token)->first();
+            $componente->token = NULL;
+            $componente->update();
+
+            $componente = Componente::find($id);
+            $componente->token = $token;
+            $componente->update();
+
+            return ['success' => true];
         }
+        
         return ['success' => false, 'message' => 'Método inválido'];
     }
 
-        /**
+    /**
      * Atualiza o token de um componente
      * 
      *  @return Automacao\Models\Componente
