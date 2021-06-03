@@ -41,10 +41,6 @@ class ComponentesController extends Controller
             $id = $request->input('id');
             $token = $request->input('token');
             
-            $componente = Componente::where('token', $token)->first();
-            $componente->token = NULL;
-            $componente->update();
-
             $componente = Componente::find($id);
             $componente->token = $token;
             $componente->update();
