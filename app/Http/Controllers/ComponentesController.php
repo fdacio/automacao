@@ -77,9 +77,22 @@ class ComponentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Componente $componente)
     {
-        //
+        $pinos = [
+            2 => 'Pino 2', 
+            3 => 'Pino 3', 
+            4 => 'Pino 4', 
+            5 => 'Pino 5', 
+            6 => 'Pino 6',
+            7 => 'Pino 7',
+            8 => 'Pino 8',
+            9 => 'Pino 9',
+            10 => 'Pino 10',
+            11 => 'Pino 11',
+            12 => 'Pino 12',
+        ];
+        return view('componentes.update', compact('componente', 'pinos'));
     }
 
     /**
@@ -89,9 +102,10 @@ class ComponentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Componente $componente)
     {
-        //
+        $componente->update($request->all());
+        return redirect()->route('componentes.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**

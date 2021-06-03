@@ -3,10 +3,10 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1>Alterar de Componente</h1>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('fontes-recursos.index') }}">Voltar</a>
+            <div class="float-left">
+                <a class="mx-2 h4" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
+            <h4 class="float-left">Alterar de Componente</h4>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
@@ -21,7 +21,7 @@
                 </div>
             @endif
         </div>
-        {!! Form::open(['id' => 'form_componente', 'method' => 'patch', 'route' => 'componentes.update']) !!}
+        {!! Form::open(['id' => 'form_componente', 'method' => 'patch', 'route' => ['componentes.update', $componente->id]]) !!}
         <div class="card-body">
             @include('componentes.form')
         </div>
