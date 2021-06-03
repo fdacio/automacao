@@ -2,8 +2,9 @@
 
 namespace Automacao\Http\Controllers;
 
+use Automacao\Http\Requests\CreateComponenteRequest;
+use Automacao\Http\Requests\UpdateComponenteRequest;
 use Automacao\Models\Componente;
-use Illuminate\Http\Request;
 
 class ComponentesController extends Controller
 {
@@ -54,7 +55,7 @@ class ComponentesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateComponenteRequest $request)
     {
         Componente::create($request->all());
         return redirect()->route('componentes.index')->with('success', 'Cadastrado com sucesso!');
@@ -102,7 +103,7 @@ class ComponentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Componente $componente)
+    public function update(UpdateComponenteRequest $request, Componente $componente)
     {
         $componente->update($request->all());
         return redirect()->route('componentes.index')->with('success', 'Cadastrado com sucesso!');
@@ -114,8 +115,10 @@ class ComponentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Componente $componente)
     {
-        //
+        Componente::destroy($componente);
+        return redirect()->route('componentes.index')->with('success', 'Cadastrado excluído com sucesso!');
+
     }
 }
