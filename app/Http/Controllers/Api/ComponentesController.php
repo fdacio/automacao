@@ -19,6 +19,17 @@ class ComponentesController extends Controller
         return Componente::whereNotNull('token')->get();
     }
 
+
+    /**
+     * Display a listing of the all resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all()
+    {
+        return Componente::get();
+    }
+
     /**
      *  Obtém um componente pelo token
      *  

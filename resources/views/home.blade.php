@@ -145,7 +145,7 @@
                 modal.find('.modal-alert').html('');
                 var listaComponentes = modal.find('.lista-componentes');
 
-                var url = "{{ route('api.componentes') }}";
+                var url = "{{ route('api.componentes.all') }}";
                 $.get(url)
                     .always(function() {
                         var loading = '<i class="fa fa-spin fa-spinner"></i>';
