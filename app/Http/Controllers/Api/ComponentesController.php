@@ -16,7 +16,7 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        return Componente::whereNotNull('token')->get();
+        return Componente::get();
     }
 
     /**
