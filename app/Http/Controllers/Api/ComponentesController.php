@@ -48,13 +48,15 @@ class ComponentesController extends Controller
     public function updateToken(Request $request)
     {
         if ($request->isMethod('put')) {
-            
+
             $id = $request->input('id');
             $token = $request->input('token');
-            
+
             $componente = Componente::where('token', $token)->where('id', '<>', $id)->first();
-            $componente->token = NULL;
-            $componente->update();
+            if (!empty($componente)) {
+                $componente->token = NULL;
+                $componente->update();
+            }
 
             $componente = Componente::find($id);
             $componente->token = $token;
