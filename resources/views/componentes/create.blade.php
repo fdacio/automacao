@@ -4,9 +4,9 @@
     <div class="card">
         <div class="card-header">            
             <div class="float-left">
-                <a class="mx-2 h4" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
+                <a class="mr-2 h4" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
-            <h4 class="float-left">Cadastro de Componente</h4>
+            <h4 class="float-left">Cadastrar Componente</h4>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
