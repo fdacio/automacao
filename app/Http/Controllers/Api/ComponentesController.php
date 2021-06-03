@@ -16,7 +16,7 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        return Componente::get();
+        return Componente::whereNotNull('token')->get();
     }
 
     /**
@@ -51,7 +51,7 @@ class ComponentesController extends Controller
 
             return ['success' => true];
         }
-        
+
         return ['success' => false, 'message' => 'Método inválido'];
     }
 
