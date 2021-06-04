@@ -33,20 +33,9 @@ class ComponentesController extends Controller
      */
     public function create()
     {
-        $pinos = [
-            2 => 'Pino 2', 
-            3 => 'Pino 3', 
-            4 => 'Pino 4', 
-            5 => 'Pino 5', 
-            6 => 'Pino 6',
-            7 => 'Pino 7',
-            8 => 'Pino 8',
-            9 => 'Pino 9',
-            10 => 'Pino 10',
-            11 => 'Pino 11',
-            12 => 'Pino 12',
-        ];
-        return view('componentes.create', compact('pinos'));
+        $pinos = Componente::PINOS;
+        $cores = Componente::CORES;
+        return view('componentes.create', compact('pinos', 'cores'));
     }
 
     /**
@@ -80,20 +69,9 @@ class ComponentesController extends Controller
      */
     public function edit(Componente $componente)
     {
-        $pinos = [
-            2 => 'Pino 2', 
-            3 => 'Pino 3', 
-            4 => 'Pino 4', 
-            5 => 'Pino 5', 
-            6 => 'Pino 6',
-            7 => 'Pino 7',
-            8 => 'Pino 8',
-            9 => 'Pino 9',
-            10 => 'Pino 10',
-            11 => 'Pino 11',
-            12 => 'Pino 12',
-        ];
-        return view('componentes.update', compact('componente', 'pinos'));
+        $pinos = Componente::PINOS;
+        $cores = Componente::CORES;
+        return view('componentes.update', compact('componente', 'pinos', 'cores'));
     }
 
     /**

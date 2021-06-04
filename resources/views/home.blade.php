@@ -4,7 +4,7 @@
     <div class="marketing">
         <div class="row">
             <div class="col-md-4 text-center">
-                <div class="btn btn-power-red btn-power" data-token="btn-power-red" data-clicked="false">
+                <div class="btn btn-power-1 btn-power" data-token="btn-power-1" data-clicked="false">
                     <div class="btn-rect">
                         <div class="fa-ico">
                             <i class="fa fa-power-off"></i>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-md-4 text-center">
-                <div class="btn btn-power-yellow btn-power" data-token="btn-power-yellow" data-clicked="false">
+                <div class="btn btn-power-2 btn-power" data-token="btn-power-2" data-clicked="false">
                     <div class="btn-rect">
                         <div class="fa-ico">
                             <i class="fa fa-power-off"></i>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="col-md-4 text-center">
-                <div class="btn btn-power-green btn-power" data-token="btn-power-green" data-clicked="false">
+                <div class="btn btn-power-3 btn-power" data-token="btn-power-3" data-clicked="false">
                     <div class="btn-rect">
                         <div class="fa-ico">
                             <i class="fa fa-power-off"></i>
@@ -90,12 +90,13 @@
 
                 var loading = '<i class="fa fa-spin fa-spinner"></i>';
 
-                var componentes = [$('.btn-power-red'), $('.btn-power-yellow'), $('.btn-power-green')];
+                var componentes = [$('.btn-power-1'), $('.btn-power-2'), $('.btn-power-3')];
 
                 $.each(componentes, function(key, btn) {
                     var token = btn.attr('data-token');
                     var target = btn.find('h3');
                     var html = target.html();
+                    var icon = btn.find('.btn-rect .fa-ico');
                     var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_',
                         token);
                     $.get(url, function() {
@@ -112,6 +113,7 @@
                                 btn.find('.text-on-off').html('OFF').removeClass(
                                     'badge-success').addClass('badge-danger');
                             }
+                            icon.css('color', data.cor);
                         } else {
                             target.html(html);
                         }

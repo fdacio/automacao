@@ -41,7 +41,7 @@
             <th>Nome</th>
             <th>Pino</th>
             <th>Sinal</th>
-            <th>Token</th>
+            <th>Cor</th>
             <th></th>
         </thead>
         <tbody>
@@ -54,9 +54,9 @@
             <tr>
                 <td>{{ $componente->id }}</td>
                 <td class="text-nowrap">{{ $componente->nome }}</td>
-                <td>{{ $componente->pino }}</td>
+                <td>{{ $componente->componente_pino }}</td>
                 <td>{{ ($componente->sinal) ? 'Ligado' : 'Desligado' }}</td>
-                <td>{{ $componente->token }}</td>
+                <td>{{ $componente->componente_cor }}</td>
                 <td class="text-right text-nowrap">
                     <a href="{{ route('componentes.edit', $componente->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a> 
                     <a href="{{ route('componentes.destroy', $componente->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a> 
