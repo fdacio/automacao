@@ -6,8 +6,15 @@
             <div class="col-md-4 text-center">
                 <div class="btn btn-power-red btn-power" data-token="btn-power-red" data-clicked="false">
                     <div class="btn-rect">
-                        <i class="fa fa-power-off"></i>
+                        <div class="fa-ico">
+                            <i class="fa fa-power-off"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-danger">OFF</small>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
+
                     <h3>Componente 1</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
                         Componente</a>
@@ -16,7 +23,13 @@
             <div class="col-md-4 text-center">
                 <div class="btn btn-power-yellow btn-power" data-token="btn-power-yellow" data-clicked="false">
                     <div class="btn-rect">
-                        <i class="fa fa-power-off"></i>
+                        <div class="fa-ico">
+                            <i class="fa fa-power-off"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-danger">OFF</small>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                     <h3>Componente 2</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
@@ -26,7 +39,13 @@
             <div class="col-md-4 text-center">
                 <div class="btn btn-power-green btn-power" data-token="btn-power-green" data-clicked="false">
                     <div class="btn-rect">
-                        <i class="fa fa-power-off"></i>
+                        <div class="fa-ico">
+                            <i class="fa fa-power-off"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-danger">OFF</small>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                     <h3>Componente 3</h3>
                     <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#componentesModal">Vincular
@@ -77,18 +96,21 @@
                     var token = btn.attr('data-token');
                     var target = btn.find('h3');
                     var html = target.html();
-                    var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', token);
+                    var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_',
+                        token);
                     $.get(url, function() {
-                        target.html(loading);                        
+                        target.html(loading);
                     }).done(function(data) {
                         if (data) {
                             target.html(data.nome);
                             var sinal = (data.sinal == 1) ? true : false;
                             btn.attr('data-clicked', sinal);
                             if (sinal) {
-                                btn.find('.btn-rect').css('background-color', '#ffff80');
+                                btn.find('.text-on-off').html('ON').removeClass('badge-danger')
+                                    .addClass('badge-success');
                             } else {
-                                btn.find('.btn-rect').css('background-color', '#ffffff');
+                                btn.find('.text-on-off').html('OFF').removeClass(
+                                    'badge-success').addClass('badge-danger');
                             }
                         } else {
                             target.html(html);
@@ -107,7 +129,7 @@
                     'token': _token,
                     '_token': "{{ csrf_token() }}"
                 };
-                var icon = button.find('.btn-rect');
+                var icon = button.find('.btn-rect .fa-ico');
                 icon.html('<i class="fa fa-spin fa-spinner"></i>');
 
                 $.ajax({
@@ -118,15 +140,20 @@
                     success: function(response) {
                         if (response.success) {
                             icon.html('<i class="fa fa-power-off"></i>');
-                            var url = "{{ route('api.componente.token', '_token_') }}".replace('_token_', _token);
+                            var url = "{{ route('api.componente.token', '_token_') }}"
+                                .replace('_token_', _token);
                             $.get(url).done(function(data) {
                                 if (data) {
                                     var sinal = (data.sinal == 1) ? true : false;
                                     button.attr('data-clicked', sinal);
                                     if (sinal) {
-                                        button.find('.btn-rect').css('background-color', '#ffff80');
+                                        button.find('.text-on-off').html('ON')
+                                            .removeClass('badge-danger').addClass(
+                                                'badge-success');
                                     } else {
-                                        button.find('.btn-rect').css('background-color', '#ffffff');
+                                        button.find('.text-on-off').html('OFF')
+                                            .removeClass('badge-success').addClass(
+                                                'badge-danger');
                                     }
                                 }
                             });
