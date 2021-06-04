@@ -28,7 +28,7 @@ class Componente extends Model
 
     public const CORES = [
         '#FF0000' => 'Vermelho',
-        '#FF8000' => 'Amarelo',
+        '#FFCC00' => 'Amarelo',
         '#00FF00' => 'Verde',
         '#0000FF' => 'Azul',
         '#993300' => 'Marron',
