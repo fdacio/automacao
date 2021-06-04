@@ -23,13 +23,16 @@ class Componente extends Model
             10 => 'Pino 10',
             11 => 'Pino 11',
             12 => 'Pino 12',
+            13 => 'Pino 13',
     ];
 
     public const CORES = [
         '#FF0000' => 'Vermelho',
-        '#FF8000' => 'Amarelo',
-        '#008000' => 'Verde',
-        '#0000FF' => 'Azul'
+        '#FFFF00' => 'Amarelo',
+        '#00FF00' => 'Verde',
+        '#0000FF' => 'Azul',
+        '#993300' => 'Marron',
+        '#000000' => 'Preto'
     ];
 
     public function getComponentePinoAttribute()
