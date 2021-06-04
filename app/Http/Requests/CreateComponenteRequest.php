@@ -25,7 +25,8 @@ class CreateComponenteRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:60',
-            'pino' => 'required|integer'
+            'pino' => 'required|integer',
+            'cor'  => 'required|max:77'
         ];
     }
 
@@ -38,7 +39,8 @@ class CreateComponenteRequest extends FormRequest
         return [
             'nome.required' => 'Nome é obrigatório.',
             'nome.max' => 'Nome tem que ter no máximo 60 caracteres',
-            'pino.required' => 'Pino é obrigatório'
+            'pino.required' => 'Pino é obrigatório',
+            'cor.required' => 'Cor é obrigatória'
         ];
     }
 }
