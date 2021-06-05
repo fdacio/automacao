@@ -2,12 +2,15 @@
 
 namespace Automacao\Http\Controllers;
 
+use Automacao\Models\Componente;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        
+        $componentes = Componente::get();
+        return view('home', compact('componentes'));
     }
 }
