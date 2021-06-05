@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 
 Route::namespace('Api')->group(function () {
+    Route::get('/componentes', 'ComponentesController@all')->name('api.componentes');
     Route::get('/componente/show/{id}', 'ComponentesController@show')->name('api.componente.show');
     Route::put('/componete/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
 });

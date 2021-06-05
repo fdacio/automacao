@@ -10,6 +10,11 @@ use Composer\Composer;
 class ComponentesController extends Controller
 {
 
+    public function all()
+    {
+        return Componente::all();
+    }
+    
     /**
      *  Obtém um componente pelo token
      *  
