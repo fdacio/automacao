@@ -10,7 +10,12 @@ use Composer\Composer;
 class ComponentesController extends Controller
 {
 
-    public function all()
+    public function statusInicial()
+    {
+        return Componente::get();
+    }
+
+    public function statusAtual()
     {
         $componentes = Componente::whereColumn('sinal' ,'!=', 'sinal_anterior')->get();
         foreach(Componente::all() as $componente) {
