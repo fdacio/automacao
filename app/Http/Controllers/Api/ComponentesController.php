@@ -12,7 +12,13 @@ class ComponentesController extends Controller
 
     public function all()
     {
-        return Componente::all();
+        $componentes = Componente::where('sinal' ,'<>', 'sinal_anterio')->get();
+        foreach(Componente::all() as $componente) {
+            $componente->sinal_anterior = $componente->sinal;
+            $componente->update(); 
+        }
+        return $componentes;
+
     }
     
     /**
