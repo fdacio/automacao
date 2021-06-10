@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+    <h3 class="text text-center">Painel de Controle</h3>
+    <hr class="featurette-divider">
     <div class="marketing">
         <div class="row">
             @foreach ($componentes as $componente)
