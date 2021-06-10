@@ -66,7 +66,7 @@
 
                 if (!_execute) return;
                 _execute = false;
-                
+
                 var button = $(this).parent('.btn-power');
                 var _id = button.attr('data-id');
                 var dados = {
@@ -84,10 +84,8 @@
                     success: function(response) {
                         if (response.success) {
                            updateComponente(button);     
+                           _execute = true;
                         }
-                    },
-                    complete: function() {
-                        _execute = true;
                     }
                 });
             });
