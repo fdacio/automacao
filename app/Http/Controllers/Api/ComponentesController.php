@@ -5,7 +5,6 @@ namespace Automacao\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Componente;
-use Composer\Composer;
 
 class ComponentesController extends Controller
 {
@@ -56,6 +55,4 @@ class ComponentesController extends Controller
         }
         return ['success' => false, 'message' => 'Método inválido'];
     }
-
-
 }

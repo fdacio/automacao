@@ -60,8 +60,13 @@
 
             loadComponente();
 
+            var _execute = true;
+
             $('.btn-power .btn-rect').on('click', function() {
 
+                if (!_execute) return;
+                _execute = false;
+                
                 var button = $(this).parent('.btn-power');
                 var _id = button.attr('data-id');
                 var dados = {
@@ -80,6 +85,9 @@
                         if (response.success) {
                            updateComponente(button);     
                         }
+                    },
+                    complete: function() {
+                        _execute = true;
                     }
                 });
             });
