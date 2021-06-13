@@ -9,6 +9,11 @@ use Automacao\Models\Componente;
 class ComponentesController extends Controller
 {
 
+    public function all()
+    {
+        return Componente::all();
+    }
+
     public function statusInicial()
     {
         return Componente::get();
