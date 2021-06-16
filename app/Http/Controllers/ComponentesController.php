@@ -84,7 +84,7 @@ class ComponentesController extends Controller
     public function update(UpdateComponenteRequest $request, Componente $componente)
     {
         $componente->update($request->all());
-        return redirect()->route('componentes.index')->with('success', 'Cadastrado com sucesso!');
+        return redirect()->route('componentes.index')->with('success', 'Alterado com sucesso!');
     }
 
     /**

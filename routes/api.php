@@ -25,5 +25,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/componentes/inicial', 'ComponentesController@statusInicial')->name('api.componentes.inicial'); 
     Route::get('/componentes/atual', 'ComponentesController@statusAtual')->name('api.componentes.atual');
     Route::get('/componente/show/{id}', 'ComponentesController@show')->name('api.componente.show');
-    Route::put('/componete/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
+    Route::put('/componente/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
+    Route::get('/informacoes', 'InfomacoesController@all')->name('api.informacoes');
+    Route::get('/informacao/{informacao}', 'InfomacoesController@show')->name('api.informacao');
 });

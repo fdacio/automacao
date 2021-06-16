@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Cadastrar Componente')
+@section('title', 'Altrar Informação')
 @section('content')
     <div class="card">
         <div class="card-header">
             <div class="float-left">
                 <a class="mr-2 h4" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
-            <h4 class="float-left">Alterar Componente</h4>
+            <h4 class="float-left">Alterar Informção</h4>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
