@@ -54,7 +54,7 @@
                     @foreach ($informacoes as $informacao)
                         <tr>
                             <td>{{ $informacao->id }}</td>
-                            <td class="text-nowrap">
+                            <td class="text-wrap">
                                 <p>{{ $informacao->texto }}</p>
                             </td>
                             <td class="text-right text-nowrap">
