@@ -54,8 +54,8 @@
                     @foreach ($informacoes as $informacao)
                         <tr>
                             <td>{{ $informacao->id }}</td>
-                            <td>
-                                <p class="text-wrap">{{ $informacao->texto }}</p>
+                            <td style="white-space: pre-line">
+                                {{ $informacao->texto }}
                             </td>
                             <td class="text-right text-nowrap">
                                 <a href="{{ route('informacoes.edit', $informacao->id) }}" class="btn btn-primary"><i
