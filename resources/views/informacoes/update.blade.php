@@ -4,9 +4,9 @@
     <div class="card">
         <div class="card-header">
             <div class="float-left">
-                <a class="mr-2 h4" href="{{ route('componentes.index') }}"><i class="fa fa-arrow-left"></i></a>
+                <a class="mr-2 h4" href="{{ route('informacoes.index') }}"><i class="fa fa-arrow-left"></i></a>
             </div>
-            <h4 class="float-left">Alterar Informção</h4>
+            <h4 class="float-left">Alterar Informação</h4>
             <div class="clearfix"></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
@@ -21,9 +21,9 @@
                 </div>
             @endif
         </div>
-        {!! Form::open(['id' => 'form_componente', 'method' => 'patch', 'route' => ['componentes.update', $componente->id]]) !!}
+        {!! Form::open(['id' => 'form_informacao', 'method' => 'patch', 'route' => ['informacoes.update', $informacao->id]]) !!}
         <div class="card-body">
-            @include('componentes.form')
+            @include('informacoes.form')
         </div>
         <div class="card-footer">
             {!! Form::submit('Alterar', ['class' => 'btn btn-primary']) !!}

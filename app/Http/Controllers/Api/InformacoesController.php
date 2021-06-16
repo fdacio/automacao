@@ -15,7 +15,7 @@ class InformacoesController extends Controller
      */
     public function all()
     {
-        Informacao::all();
+        return Informacao::all();
     }
 
     
@@ -25,8 +25,9 @@ class InformacoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Informacao $informacao)
+    public function show()
     {
+        $informacao = Informacao::get()->last();
         return $informacao->texto;
     }
 

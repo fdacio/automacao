@@ -66,9 +66,9 @@ class InformacoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Informacao $informacao)
     {
-        return view('informacoes.update');
+        return view('informacoes.update', compact('informacao'));
     }
 
     /**
@@ -92,7 +92,8 @@ class InformacoesController extends Controller
      */
     public function destroy(Informacao $informacao)
     {
-        Informacao::destroy($informacao);
+        
+        $informacao->delete();
         return redirect()->route('informacoes.index')->with('success', 'Cadastrado excluído com sucesso!');
     }
 }
