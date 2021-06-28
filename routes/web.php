@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('componentes', 'ComponentesController');
+Route::get('componentes/{componente}', 'ComponentesController@destroy')->name('componentes.destroy');
 Route::resource('informacoes', 'InformacoesController')->parameters(['informacoes' => 'informacao']);
 Route::get('infomacoes/destroy/{informacao}', 'InformacoesController@destroy')->name('informacoes.destroy');
