@@ -95,7 +95,7 @@ class ComponentesController extends Controller
      */
     public function destroy(Componente $componente)
     {
-        Componente::destroy($componente);
+        $componente->delete();
         return redirect()->route('componentes.index')->with('success', 'Cadastrado excluído com sucesso!');
 
     }
