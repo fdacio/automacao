@@ -62,7 +62,6 @@
                     <a href="{{ route('componentes.destroy', $componente->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a> 
                 </td>
             </tr>
-
             @endforeach
             @endif
         </tbody>
