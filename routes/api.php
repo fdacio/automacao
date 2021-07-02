@@ -28,4 +28,5 @@ Route::namespace('Api')->group(function () {
     Route::put('/componente/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
     Route::get('/informacoes', 'InformacoesController@all')->name('api.informacoes');
     Route::get('/informacao/{id}', 'InformacoesController@show')->name('api.informacao');
+    Route::post('/distancia/post', 'DistanciaControlle@post')->name('distancia.post');
 });
