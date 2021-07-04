@@ -28,7 +28,7 @@
                             <i class="fa fa-street-view"></i>
                         </div>
                         <div class="text-power float-right">
-                            <small class="text-on-off badge badge-danger valor-leitura">0.00 cm</small>
+                            <small class="text-on-off badge badge-success valor-leitura">0.00 cm</small>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -110,6 +110,11 @@
                 $.get("{{ route('api.distancia.show') }}", function(dados) {
                     var distancia = dados.distancia;
                     if (dados.distancia != undefined) {
+                        if (dados.distancia < 100) {
+                            $('.valor-leitura').removeClass('badge-danger').addClass('badge-success');
+                        } else {
+                            $('.valor-leitura').removeClass('badge-success').addClass('badge-danger');
+                        }
                         $('.valor-leitura').html(distancia + " cm");
                     }
                 });
