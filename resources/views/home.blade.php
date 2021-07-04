@@ -111,9 +111,9 @@
                     var distancia = dados.distancia;
                     if (dados.distancia != undefined) {
                         if (dados.distancia < 100) {
-                            $('.valor-leitura').removeClass('badge-danger').addClass('badge-success');
+                            $('.valor-leitura').addClass('badge-danger').removeClass('badge-success');
                         } else {
-                            $('.valor-leitura').removeClass('badge-success').addClass('badge-danger');
+                            $('.valor-leitura').addClass('badge-success').removeClass('badge-danger');
                         }
                         $('.valor-leitura').html(distancia + " cm");
                     }
