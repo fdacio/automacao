@@ -106,7 +106,7 @@
                 });
             });
 
-            setTimeout(function() {
+            setInterval(function() {
                 $.get("{{ route('api.distancia.show') }}", function(dados) {
                     var distancia = dados.distancia;
                     if (dados.distancia != undefined) {
