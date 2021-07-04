@@ -121,6 +121,11 @@ body {
 .btn-power i {
   font-size: 10rem;
 }
+
+.btn-sensor i {
+  font-size: 10rem;
+}
+
 .btn-power-red i {
   color: red;
 }

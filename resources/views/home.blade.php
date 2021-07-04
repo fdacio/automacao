@@ -21,6 +21,20 @@
                     </div>
                 </div>                
             @endforeach
+            <div class="col-md-4 text-center">
+                <div class="btn btn-sensor">
+                    <div class="btn-rect">
+                        <div class="fa-ico">
+                            <i class="fa fa-street-view"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-danger valor-leitura">0.00 cm</small>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h3>Aproximação</h3>
+                </div>
+            </div>
         </div>
         <hr class="featurette-divider">
     </div>
@@ -91,7 +105,15 @@
                     }
                 });
             });
-            
+
+            setTimeout(function() {
+                $.get("{{ route('api.distancia.show') }}", function(dados) {
+                    var distancia = dados.distancia;
+                    if (dados.distancia != undefined) {
+                        $('.valor-leitura').html(distancia + " cm");
+                    }
+                });
+            }, 2000);
 
         }); // fim documento jquery
 

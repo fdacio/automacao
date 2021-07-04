@@ -19,4 +19,9 @@ class DistanciaController extends Controller
             Distancia::create($request->all());
         }
     }
+
+    public function show()
+    {
+        return Distancia::get()->last();
+    }
 }
