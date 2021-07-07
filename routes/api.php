@@ -27,7 +27,8 @@ Route::namespace('Api')->group(function () {
     Route::get('/componente/show/{id}', 'ComponentesController@show')->name('api.componente.show');
     Route::put('/componente/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
     Route::get('/informacoes', 'InformacoesController@all')->name('api.informacoes');
-    Route::get('/informacao/{id}', 'InformacoesController@show')->name('api.informacao');
+    Route::get('/informacoes/{id}', 'InformacoesController@show')->name('api.informacao');
+    Route::get('/informacao/data-hora', 'InformacoesController@showDateTime')->name('api.informacao.datetime');
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
 });

@@ -5,6 +5,7 @@ namespace Automacao\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Informacao;
+use Carbon\Carbon;
 
 class InformacoesController extends Controller
 {
@@ -31,5 +32,12 @@ class InformacoesController extends Controller
         return $informacao->texto;
     }
 
-   
+ 
+    public function showDateTime()
+    {
+        $date = \Carbon\Carbon::now("America/Fortaleza")->format('d/m/Y');
+        $time = \Carbon\Carbon::now("America/Fortaleza")->format('H:i:s'); 
+
+        return ['date-time' => ['local' => 'Fortaleza - CE', 'date' => $date, 'time' => $time]];
+    }
 }
