@@ -35,16 +35,16 @@ class InformacoesController extends Controller
  
     public function showDateTime($id)
     {
-        $timeZone = [
-            ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
-            ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
-            ['city' => 'Paris- FRA', 'timezone' => 'Europe/Paris'],
+        $timeZones = [
+            1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
+            2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
+            3 => ['city' => 'Paris- FRA', 'timezone' => 'Europe/Paris'],
         ];
         
-
-        $city = $timeZone[$id]['city'];
-        $date = \Carbon\Carbon::now($timeZone[$id]['timezone'])->format('d/m/Y');
-        $time = \Carbon\Carbon::now($timeZone[$id]['timezone'])->format('H:i:s'); 
+        $timeZone = $timeZones[$id];
+        $city = $timeZone['city'];
+        $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
+        $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
