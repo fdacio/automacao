@@ -38,7 +38,7 @@ class InformacoesController extends Controller
         $timeZones = [
             1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
             2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
-            3 => ['city' => 'Paris- FRA', 'timezone' => 'Europe/Paris'],
+            3 => ['city' => 'Paris - França', 'timezone' => 'Europe/Paris'],
         ];
         
         $timeZone = $timeZones[$id];
