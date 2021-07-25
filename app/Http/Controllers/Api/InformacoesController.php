@@ -54,7 +54,7 @@ class InformacoesController extends Controller
         
         $index++;
         if($index < 6) {
-            showDateTime();
+            $this->showDateTime();
         }
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
