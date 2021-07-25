@@ -53,8 +53,8 @@ class InformacoesController extends Controller
         $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
         $index++;
-        if($index > 5) {
-            $index = 1;
+        if($index < 6) {
+            showDateTime();
         }
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
