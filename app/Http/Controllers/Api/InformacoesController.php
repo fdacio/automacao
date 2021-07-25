@@ -45,12 +45,12 @@ class InformacoesController extends Controller
             5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
         ];
         
-        $timeZone = $timeZones[$this->index];
+        $timeZone = $timeZones[self::$index];
         $city = $timeZone['city'];
         $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
         $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
-        $this->index++;
+        self::$index++;
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
 }
