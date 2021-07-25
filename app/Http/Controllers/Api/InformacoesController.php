@@ -9,6 +9,8 @@ use Carbon\Carbon;
 
 class InformacoesController extends Controller
 {
+    
+    static $index = 1;
     /**
      * Display a listing of the resource.
      *
@@ -33,19 +35,22 @@ class InformacoesController extends Controller
     }
 
  
-    public function showDateTime($id)
+    public function showDateTime()
     {
         $timeZones = [
             1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
             2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
             3 => ['city' => 'Paris - Franca', 'timezone' => 'Europe/Paris'],
+            4 => ['city' => 'Roma - Italia', 'timezone' => 'Europe/Rome'],
+            5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
         ];
         
-        $timeZone = $timeZones[$id];
+        $timeZone = $timeZones[$this->index];
         $city = $timeZone['city'];
         $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
         $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
+        $this->index++;
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
 }
