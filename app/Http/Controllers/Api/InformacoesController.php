@@ -37,6 +37,8 @@ class InformacoesController extends Controller
  
     public function showDateTime($index)
     {
+        if ($index > 5) return "";
+        
         $timeZones = [
             1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
             2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
