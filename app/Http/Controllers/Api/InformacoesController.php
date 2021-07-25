@@ -35,10 +35,8 @@ class InformacoesController extends Controller
     }
 
  
-    public function showDateTime()
+    public function showDateTime($index)
     {
-
-
         $timeZones = [
             1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
             2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
@@ -47,15 +45,11 @@ class InformacoesController extends Controller
             5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
         ];
         
-        $timeZone = $timeZones[self::$index];
+        $timeZone = $timeZones[$index];
         $city = $timeZone['city'];
         $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
         $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
-        self::$index++;
-        if(self::$index > 5) {
-            self::$index = 0;
-        }
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
 }
