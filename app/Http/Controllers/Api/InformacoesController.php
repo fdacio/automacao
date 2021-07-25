@@ -10,7 +10,7 @@ use Carbon\Carbon;
 class InformacoesController extends Controller
 {
     
-    static $index = 1;
+    public static $index = 1;
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +37,7 @@ class InformacoesController extends Controller
  
     public function showDateTime()
     {
-        static $index = 1;
+
 
         $timeZones = [
             1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
@@ -47,14 +47,14 @@ class InformacoesController extends Controller
             5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
         ];
         
-        $timeZone = $timeZones[$index];
+        $timeZone = $timeZones[self::$index];
         $city = $timeZone['city'];
         $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
         $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
         
-        $index++;
-        if($index < 6) {
-            $this->showDateTime();
+        self::$index++;
+        if(self::$index > 5) {
+            self::$index = 0;
         }
         return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
