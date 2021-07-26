@@ -46,6 +46,9 @@ class InformacoesController extends Controller
             5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
             6 => ['city' => 'Cairo - Egito', 'timezone' => 'Africa/Cairo'],
             7 => ['city' => 'Jerusalem - Israel', 'timezone' => 'Asia/Jerusalem'],
+            8 => ['city' => 'Buenos Aires - Argentina', 'timezone' => 'America/Argentina/Buenos_Aires'],
+            9 => ['city' => 'Belem - Brasil', 'timezone' => 'America/Belem'],
+           10 => ['city' => 'Toronto - Canada', 'timezone' => 'America/Toronto'],
                  
         ];
 
