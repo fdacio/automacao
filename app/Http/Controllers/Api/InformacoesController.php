@@ -44,7 +44,11 @@ class InformacoesController extends Controller
             3 => ['city' => 'Paris - Franca', 'timezone' => 'Europe/Paris'],
             4 => ['city' => 'Roma - Italia', 'timezone' => 'Europe/Rome'],
             5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
+            6 => ['city' => 'Cairo - Egito', 'timezone' => 'Africa/Cairo'],
+            7 => ['city' => 'Jerusalem - Israel', 'timezone' => 'Asia/Jerusalem'],
+                 
         ];
+
         $cities = [];
         foreach ($timeZones as $key => $timeZone) {
             $city = $timeZone['city'];
