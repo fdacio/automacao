@@ -35,7 +35,7 @@ class InformacoesController extends Controller
     }
 
  
-    public function showDateTime()
+    public function fusoHorarios()
     {
         
         $timeZones = [
