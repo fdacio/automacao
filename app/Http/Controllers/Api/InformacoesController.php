@@ -39,16 +39,17 @@ class InformacoesController extends Controller
     {
         
         $timeZones = [
-            1 => ['city' => 'Fortaleza - Brasil', 'timezone' => 'America/Fortaleza'],
-            2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
-            3 => ['city' => 'Paris - Franca', 'timezone' => 'Europe/Paris'],
-            4 => ['city' => 'Roma - Italia', 'timezone' => 'Europe/Rome'],
-            5 => ['city' => 'Toquio - Japao', 'timezone' => 'Asia/Tokyo'],
-            6 => ['city' => 'Cairo - Egito', 'timezone' => 'Africa/Cairo'],
-            7 => ['city' => 'Jerusalem - Israel', 'timezone' => 'Asia/Jerusalem'],
-            8 => ['city' => 'Buenos Aires - Argentina', 'timezone' => 'America/Argentina/Buenos_Aires'],
-            9 => ['city' => 'Belem - Brasil', 'timezone' => 'America/Belem'],
-           10 => ['city' => 'Toronto - Canada', 'timezone' => 'America/Toronto'],
+            1 => ['city' => 'Fortaleza', 'timezone' => 'America/Fortaleza'],
+            2 => ['city' => 'New York', 'timezone' => 'America/New_York'],
+            3 => ['city' => 'Paris', 'timezone' => 'Europe/Paris'],
+            4 => ['city' => 'Londres', 'timezone' => 'Europe/London'],
+            5 => ['city' => 'Toquio', 'timezone' => 'Asia/Tokyo'],
+            6 => ['city' => 'Cairo', 'timezone' => 'Africa/Cairo'],
+            7 => ['city' => 'Jerusalem', 'timezone' => 'Asia/Jerusalem'],
+            8 => ['city' => 'Buenos Aires', 'timezone' => 'America/Argentina/Buenos_Aires'],
+            9 => ['city' => 'Toronto - Canada', 'timezone' => 'America/Toronto'],
+           10 => ['city' => 'Parnaiba', 'timezone' => 'America/Fortaleza'],
+           
                  
         ];
 
