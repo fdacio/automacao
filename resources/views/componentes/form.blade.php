@@ -19,14 +19,13 @@
         <div class="form-group">
             <label for="cor">Cores</label>
             <div class="row">
-            @foreach ($cores as $key => $cor)
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    {!! Form::radio('cor', $key, isset($componente) ? (($componente->cor == $key) ? true:false) : null, ['class' => 'radio', 'id' => 'cor']) !!}
-                    {!! Form::label($cor) !!}
-                </div>
-            @endforeach
+                @foreach ($cores as $key => $cor)
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        {!! Form::radio('cor', $key, isset($componente) ? ($componente->cor == $key ? true : false) : null, ['class' => 'radio', 'id' => 'cor']) !!}
+                        {!! Form::label($cor) !!}
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-</div>
 </div>
