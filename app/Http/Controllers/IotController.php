@@ -9,7 +9,7 @@ class IotController extends Controller
 {
     public function index()
     {
-        $componentes = Componente::whereIn('pino', [0,2])->get();
+        $componentes = Componente::whereIn('name', ['IoT 0', 'IoT 2'])->get();
         return view('iot.index', compact('componentes'));
     }
 }
