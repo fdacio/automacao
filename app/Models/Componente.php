@@ -12,6 +12,8 @@ class Componente extends Model
 
 
     public const PINOS = [
+            0 => 'Pino 0',
+            1 => 'Pino 1',
             2 => 'Pino 2', 
             3 => 'Pino 3', 
             4 => 'Pino 4', 

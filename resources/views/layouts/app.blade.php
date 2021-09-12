@@ -33,6 +33,10 @@
                         <a class="nav-link text-light" aria-current="page"
                             href="{{ route('informacoes.index') }}">Informações</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" aria-current="page"
+                            href="{{ route('iot.index') }}">IoT</a>
+                    </li>
                 </ul>
             </div>
         </nav>
