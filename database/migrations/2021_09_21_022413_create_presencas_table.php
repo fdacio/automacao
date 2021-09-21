@@ -13,7 +13,7 @@ class CreatePresencasTable extends Migration
      */
     public function up()
     {
-        Schema::create('presencas', function (Blueprint $table) {
+        Schema::create('presenca', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('presenca')->default(false);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreatePresencasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presencas');
+        Schema::dropIfExists('presenca');
     }
 }
