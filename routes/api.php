@@ -31,4 +31,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/informacao/data-hora', 'InformacoesController@fusoHorarios')->name('api.informacao.datetime');
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
+    Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');
+    Route::get('/presenca/show', 'PresencaController@show')->name('api.presenca.show');
+
 });
