@@ -21,6 +21,20 @@
                     </div>
                 </div>                
             @endforeach
+            <div class="col-md-4 text-center">
+                <div class="btn btn-sensor">
+                    <div class="btn-rect">
+                        <div class="fa-ico">
+                            <i class="fa fa-street-view"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-success valor-leitura">Não há movimento</small>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h3>Aproximação</h3>
+                </div>
+            </div>
         </div>
         <hr class="featurette-divider">
     </div>
@@ -92,6 +106,21 @@
                 });
             });
 
+            setInterval(function() {
+                $.get("{{ route('api.presenca.show') }}", function(dados) {
+                    var presenca = dados.presenca;
+                    if (dados.presenca != undefined) {
+                        if (dados.presenca) {
+                            $('.valor-leitura').addClass('badge-danger').removeClass('badge-success');
+                            $('.valor-leitura').html("Presença de Movimento");
+                        } else {
+                            $('.valor-leitura').addClass('badge-success').removeClass('badge-danger');
+                            $('.valor-leitura').html("Não há movimento");
+                        }
+                       
+                    }
+                });
+            }, 2000);
 
 
         }); // fim documento jquery
