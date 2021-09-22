@@ -151,12 +151,12 @@
                     dataType: 'json',
                     type: 'GET',
                     success: function(presencas) {
-                        console.log(presencas);
                         var lista = $('<ul class="list-group list-group-flush" style="max-height:250px; overflow:auto">');
                         $.each(presencas,  function(key, item) {                            
-                            var acao = (item.presenca == 1) ? 'Entrou' : 'Saiu';
+                            var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:  ';
                             var li = $('<li class="list-group-item">');
-                            li.html(acao + ' -->' + item.created_at);
+                            var dataHora = item.created_at;
+                            li.html(acao + dataHora.substring(11));
                             lista.append(li);
                         });  
                         $("#presencaModal .modal-body").html(lista);
