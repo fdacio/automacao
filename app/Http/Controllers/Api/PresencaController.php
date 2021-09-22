@@ -30,7 +30,7 @@ class PresencaController extends Controller
     public function index()
     {
         $data1 = Carbon::now();
-        $presencas = Presenca::whereDate('created_at', '>=', $data1->format('Y-m-d'))->whereDate('created_at', '<=', $data1->addDays(1)->format('Y-m-d'))->get();   
+        $presencas = Presenca::whereDate('created_at', '>=', $data1->format('Y-m-d'))->whereDate('created_at', '<=', $data1->addDays(1)->format('Y-m-d'))->orderby('id', 'desc')->get();   
         return $presencas;
     }
 }
