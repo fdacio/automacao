@@ -31,7 +31,7 @@ class PresencaController extends Controller
     {
         $data1 = Carbon::now();
         $data2 = $data1->addDay(1);
-        $presencas = Presenca::where('created_at', '>=', $data1->format('Y-m-d'))->where('created_at', '<=', $data2->formta('Y-m-d'))->get();   
+        $presencas = Presenca::where('created_at', '>=', $data1->format('Y-m-d'))->where('created_at', '<=', $data2->format('Y-m-d'))->get();   
         return $presencas;
     }
 }
