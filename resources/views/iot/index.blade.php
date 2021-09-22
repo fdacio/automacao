@@ -150,13 +150,13 @@
                     url: " {{ route('api.presenca.index') }} ",
                     dataType: 'json',
                     type: 'GET',
-                    success: function(presencas) {
-                        
+                    success: function(presencas) {                        
                         var lista = $('<ul>');
-                        $.each(function(presencas, key, item){
-                            console.log(item);
+                        $.each(presencas,  function(key, item) {
+                            var acao = (item.presenca) ? 'Entrou' : 'Saiu';
+                            lista.append(( acao. ' -->' item.created_at);
                         });  
-                        $("#presencaModal.modal-bory").html(lista);
+                        $("#presencaModal.modal-body").html(lista);
                     }
                 });
 
