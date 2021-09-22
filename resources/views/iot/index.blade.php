@@ -156,7 +156,11 @@
                             var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:   ';
                             var li = $('<li class="list-group-item">');
                             var dataHora = item.created_at;
-                            li.html(acao + dataHora.substring(11));
+                            var row = '<div class="row">'+
+                                        '<div class="col-2">'+acao+'</div>' +
+                                        '<div class="col-10">'+ dataHora.substring(11)+'</div>' +
+                                    '</div>';
+                            li.html(row);
                             lista.append(li);
                         });  
                         $("#presencaModal .modal-body").html(lista);
