@@ -151,11 +151,13 @@
                     dataType: 'json',
                     type: 'GET',
                     success: function(presencas) {                        
-                        var lista = $('<ul>');
+                        var lista = $('ul');
                         $.each(presencas,  function(key, item) {
                             console.log(item);
                             var acao = (item.presenca == 1) ? 'Entrou' : 'Saiu';
-                            lista.append(acao + ' -->' + item.created_at);
+                            var li = $('li');
+                            li.html(acao + ' -->' + item.created_at);
+                            lista.append(li);
                         });  
                         $("#presencaModal.modal-body").html(lista);
                     }
