@@ -9,13 +9,13 @@ use Automacao\Models\Presenca;
 
 class PresencaController extends Controller
 {
-    public function post(Request $request) 
+    public function post(Request $request)
     {
-        $temPresenca = Presenca::get()->count() > 0;
-        if ($temPresenca) {
-            $presenca = Presenca::first();
-            $presenca->presenca = $request->input('presenca');
-            $presenca->update();
+        $presenca = Presenca::get()->last();
+        if (!empty($presenca)) {
+            if ($request->input('presenca') != $presenca->presenca) {
+                Presenca::create($request->all());
+            }
         } else {
             Presenca::create($request->all());
         }
