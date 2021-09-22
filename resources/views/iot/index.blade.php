@@ -154,8 +154,8 @@
                         var lista = $('<ul>');
                         $.each(presencas,  function(key, item) {
                             console.log(item);
-                            var acao = (item.presenca) ? 'Entrou' : 'Saiu';
-                            lista.append(( acao. ' -->' item.created_at);
+                            var acao = (item.presenca == 1) ? 'Entrou' : 'Saiu';
+                            lista.append(( acao + ' -->' + item.created_at);
                         });  
                         $("#presencaModal.modal-body").html(lista);
                     }
