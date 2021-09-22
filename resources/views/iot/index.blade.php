@@ -157,7 +157,7 @@
                             var li = $('<li class="list-group-item">');
                             var dataHora = item.created_at;
                             var row = '<div class="row">'+
-                                        '<div class="col-2 text-rigth">'+acao+'</div>' +
+                                        '<div class="col-2 text-right">'+acao+'</div>' +
                                         '<div class="col-10">'+ dataHora.substring(11)+'</div>' +
                                     '</div>';
                             li.html(row);
