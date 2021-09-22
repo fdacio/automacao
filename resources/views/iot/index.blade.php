@@ -151,11 +151,10 @@
                     dataType: 'json',
                     type: 'GET',
                     success: function(presencas) {                        
-                        var lista = $('ul');
-                        $.each(presencas,  function(key, item) {
-                            console.log(item);
+                        var lista = $('<ul>');
+                        $.each(presencas,  function(key, item) {                            
                             var acao = (item.presenca == 1) ? 'Entrou' : 'Saiu';
-                            var li = $('li');
+                            var li = $('<li>');
                             li.html(acao + ' -->' + item.created_at);
                             lista.append(li);
                         });  
