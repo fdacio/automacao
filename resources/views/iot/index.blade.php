@@ -144,31 +144,39 @@
                 });
             }, 2000);
 
+            var carregaPresencas = $.ajax({
+                                        url: " {{ route('api.presenca.index') }} ",
+                                        dataType: 'json',
+                                        type: 'GET',
+                                        success: function(presencas) {
+                                            var lista = $('<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">');
+                                            $.each(presencas,  function(key, item) {                            
+                                                var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:   ';
+                                                var li = $('<li class="list-group-item">');
+                                                var dataHora = item.created_at;
+                                                var row = '<div class="row">'+
+                                                            '<div class="col-2 text-right">'+acao+'</div>' +
+                                                            '<div class="col-10">'+ dataHora.substring(11)+'</div>' +
+                                                        '</div>';
+                                                li.html(row);
+                                                lista.append(li);
+                                            });  
+                                            $("#presencaModal .modal-body").html(lista);
+                                        }
+                                    });
+
 
             $("#presencaModal").on("shown.bs.modal", function() {
-                $.ajax({
-                    url: " {{ route('api.presenca.index') }} ",
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function(presencas) {
-                        var lista = $('<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">');
-                        $.each(presencas,  function(key, item) {                            
-                            var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:   ';
-                            var li = $('<li class="list-group-item">');
-                            var dataHora = item.created_at;
-                            var row = '<div class="row">'+
-                                        '<div class="col-2 text-right">'+acao+'</div>' +
-                                        '<div class="col-10">'+ dataHora.substring(11)+'</div>' +
-                                    '</div>';
-                            li.html(row);
-                            lista.append(li);
-                        });  
-                        $("#presencaModal .modal-body").html(lista);
-                    }
-                });
-
+                carregaPresencas();
+                setInterval(function() {
+                    carregaPresencas();
+                }, 2000);                
             });
 
+
+
         }); // fim documento jquery
+
+
     </script>
 @endsection
