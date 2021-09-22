@@ -159,7 +159,7 @@
                             li.html(acao + ' -->' + item.created_at);
                             lista.append(li);
                         });  
-                        $("#presencaModal.modal-body").html(lista);
+                        $("#presencaModal .modal-body").html(lista);
                     }
                 });
 
