@@ -26,7 +26,7 @@
                         <div class="fa-ico">
                             <i class="fa fa-street-view"></i>
                         </div>
-                        <div class="text-power float-right">
+                        <div class="text-power text-center">
                             <small class="text-on-off badge badge-success valor-leitura">Não há movimento</small>
                         </div>
                         <div class="clearfix"></div>
@@ -143,8 +143,6 @@
                     }
                 });
             }, 2000);
-
-            
 
 
         }); // fim documento jquery
