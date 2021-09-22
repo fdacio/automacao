@@ -145,6 +145,21 @@
             }, 2000);
 
 
+            $("#presencaModal").on("shown.bs.modal") {
+                $.ajax({
+                    url: " {{ route('api.presenca.index') }} ",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(response) {
+                        console.log(response);
+                        var lista = $('<ul>');
+
+                        $("#presencaModal.modal-bory").html(lista);
+                    }
+                });
+
+            }
+
         }); // fim documento jquery
     </script>
 @endsection

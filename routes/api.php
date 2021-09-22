@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +32,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');
     Route::get('/presenca/show', 'PresencaController@show')->name('api.presenca.show');
+    Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
+
 
 });
