@@ -145,7 +145,7 @@
             }, 2000);
 
 
-            $("#presencaModal").on("shown.bs.modal") {
+            $("#presencaModal").on("shown.bs.modal", function() {
                 $.ajax({
                     url: " {{ route('api.presenca.index') }} ",
                     dataType: 'json',
@@ -158,7 +158,7 @@
                     }
                 });
 
-            }
+            });
 
         }); // fim documento jquery
     </script>
