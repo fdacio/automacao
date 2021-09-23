@@ -143,9 +143,9 @@
                         }
                     }
 
-                    if (lastItemId != dados.presenca.id) {
+                    if (lastItemId != dados.id) {
                         carregaPresencas();
-                        lastItemId = dados.presenca.id;
+                        lastItemId = dados.id;
                     }
                 });
             }, 1000);
