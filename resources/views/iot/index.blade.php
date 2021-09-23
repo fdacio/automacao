@@ -168,7 +168,7 @@
             });
 
             var updateListDados = function(presencas) {
-                if (lastItem == presencas[0].id) return;
+
                 var lista = $(
                     '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
                 );
