@@ -177,8 +177,8 @@
                     var li = $('<li class="list-group-item">');
                     var dataHora = item.created_at;
                     var row = '<div class="row">' +
-                        '<div class="col-md-3 col-sm-3 text-right">' + acao + '</div>' +
-                        '<div class="col-md-9 col-sm-9">' + dataHora.substring(11) + '</div>' +
+                        '<div class="col-md-3 col-sm-3 col-xs-3">' + acao + '</div>' +
+                        '<div class="col-md-9 col-sm-9 col-xs-9">' + dataHora.substring(11) + '</div>' +
                         '</div>';
                     li.html(row);
                     lista.append(li);
