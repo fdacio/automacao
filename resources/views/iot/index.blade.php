@@ -147,7 +147,25 @@
             }, 1000);
 
 
-            var loadList = function(presencas) {
+
+
+            var carregaPresencas = function() {
+                $.ajax({
+                    url: " {{ route('api.presenca.index') }} ",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(presencas) {
+                        lastItem = presencas[0].id;
+                        updateListDados(presencas);
+                    }
+                });
+            }
+
+            $("#presencaModal").on("shown.bs.modal", function() {
+                carregaPresencas();
+            });
+
+            var updateListDados = function(presencas) {
                 if (lastItem == presencas[0].id) return;
                 var lista = $(
                     '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
@@ -165,22 +183,6 @@
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
-
-            var carregaPresencas = function() {
-                $.ajax({
-                    url: " {{ route('api.presenca.index') }} ",
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function(presencas) {
-                        lastItem = presencas[0].id;
-                        loadList(presencas);
-                    }
-                });
-            }
-
-            $("#presencaModal").on("shown.bs.modal", function() {
-                carregaPresencas();
-            });
 
         }); // fim documento jquery
     </script>
