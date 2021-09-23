@@ -142,11 +142,12 @@
                             $('.valor-leitura').html("Não há movimento");
                         }
                     }
+
+                    if (lastItemId != dados.presenca.id) {
+                        carregaPresencas();
+                        lastItemId = dados.presenca.id;
+                    }
                 });
-                if (lastItemId != dados.presenca.id) {
-                    carregaPresencas();
-                    lastItemId = dados.presenca.id;
-                }
             }, 1000);
 
 
