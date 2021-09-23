@@ -127,6 +127,7 @@
             /*
              * Sensor de Presença
              */
+            var lastItem = 0;
             setInterval(function() {
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
                     var presenca = dados.presenca;
@@ -142,10 +143,12 @@
                         }
                     }
                 });
-            }, 2000);
+                carregaPresencas();
+            }, 1000);
 
 
             var loadList = function(presencas) {
+                if (lastItem == presencas[0].id) return;
                 var lista = $(
                     '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
                 );
@@ -169,6 +172,7 @@
                     dataType: 'json',
                     type: 'GET',
                     success: function(presencas) {
+                        lastItem = presencas[0].id;
                         loadList(presencas);
                     }
                 });
