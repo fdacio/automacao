@@ -28,6 +28,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/informacoes', 'InformacoesController@all')->name('api.informacoes');
     Route::get('/informacoes/{id}', 'InformacoesController@show')->name('api.informacao');
     Route::get('/informacao/data-hora', 'InformacoesController@fusoHorarios')->name('api.informacao.datetime');
+    Route::get('/informacao/data-hora/{id}', 'InformacoesController@city')->name('api.informacao.datetime');
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');

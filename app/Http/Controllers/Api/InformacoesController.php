@@ -11,6 +11,19 @@ class InformacoesController extends Controller
 {
     
     public static $index = 1;
+
+    private $timeZones = [
+        1 => ['city' => 'Fortaleza', 'timezone' => 'America/Fortaleza'],
+        2 => ['city' => 'New York', 'timezone' => 'America/New_York'],
+        3 => ['city' => 'Paris', 'timezone' => 'Europe/Paris'],
+        4 => ['city' => 'Londres', 'timezone' => 'Europe/London'],
+        5 => ['city' => 'Toquio', 'timezone' => 'Asia/Tokyo'],
+        6 => ['city' => 'Cairo', 'timezone' => 'Africa/Cairo'],
+        7 => ['city' => 'Jerusalem', 'timezone' => 'Asia/Jerusalem'],
+        8 => ['city' => 'Parnaiba', 'timezone' => 'America/Fortaleza'],
+        9 => ['city' => 'Toronto', 'timezone' => 'America/Toronto'],
+       10 => ['city' => 'B.Aires', 'timezone' => 'America/Argentina/Buenos_Aires']     
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -34,27 +47,19 @@ class InformacoesController extends Controller
         return $informacao->texto;
     }
 
+    public function city($index)
+    {
+        $city = $this->timeZone[$index]['city'];
+        $date = \Carbon\Carbon::now($this->timeZone[$index]['timezone'])->format('d/m/Y');
+        $time = \Carbon\Carbon::now($this->timeZone[$index]['timezone'])->format('H:i:s'); 
+        return ['local' => $city, 'date' => $date, 'time' => $time];
+    }
+
  
     public function fusoHorarios()
     {
-        
-        $timeZones = [
-            1 => ['city' => 'Fortaleza', 'timezone' => 'America/Fortaleza'],
-            2 => ['city' => 'New York', 'timezone' => 'America/New_York'],
-            3 => ['city' => 'Paris', 'timezone' => 'Europe/Paris'],
-            4 => ['city' => 'Londres', 'timezone' => 'Europe/London'],
-            5 => ['city' => 'Toquio', 'timezone' => 'Asia/Tokyo'],
-            6 => ['city' => 'Cairo', 'timezone' => 'Africa/Cairo'],
-            7 => ['city' => 'Jerusalem', 'timezone' => 'Asia/Jerusalem'],
-            8 => ['city' => 'Parnaiba', 'timezone' => 'America/Fortaleza'],
-            9 => ['city' => 'Toronto', 'timezone' => 'America/Toronto'],
-           10 => ['city' => 'B.Aires', 'timezone' => 'America/Argentina/Buenos_Aires'],
-           
-                 
-        ];
-
         $cities = [];
-        foreach ($timeZones as $key => $timeZone) {
+        foreach ($this->timeZones as $key => $timeZone) {
             $city = $timeZone['city'];
             $date = \Carbon\Carbon::now($timeZone['timezone'])->format('d/m/Y');
             $time = \Carbon\Carbon::now($timeZone['timezone'])->format('H:i:s'); 
