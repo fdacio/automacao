@@ -52,7 +52,7 @@ class InformacoesController extends Controller
         $city = $this->timeZones[$index]['city'];
         $date = \Carbon\Carbon::now($this->timeZones[$index]['timezone'])->format('d/m/Y');
         $time = \Carbon\Carbon::now($this->timeZones[$index]['timezone'])->format('H:i:s'); 
-        return ['local' => $city, 'date' => $date, 'time' => $time];
+        return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
     }
 
  
