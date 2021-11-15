@@ -11,8 +11,7 @@ use Carbon\Carbon;
 class PresencaController extends Controller
 {
     public function post(Request $request)
-    {
-        
+    {        
         $presenca = Presenca::get()->last();
         $dado = ['presenca' => $request->input('presenca')];
         if (!empty($presenca)) {
@@ -21,8 +20,7 @@ class PresencaController extends Controller
             }
         } else {
             Presenca::create($dado);
-        }
-        
+        }        
     }
 
     public function show()
