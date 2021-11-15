@@ -13,12 +13,13 @@ class PresencaController extends Controller
     public function post(Request $request)
     {
         $presenca = Presenca::get()->last();
+        $dado = ['presenca' => $request->get('presenca')];
         if (!empty($presenca)) {
             if ($request->input('presenca') != $presenca->presenca) {
-                Presenca::create($request->all());
+                Presenca::create($dado);
             }
         } else {
-            Presenca::create($request->all());
+            Presenca::create($dado);
         }
     }
 
