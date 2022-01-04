@@ -27,8 +27,9 @@ Route::namespace('Api')->group(function () {
     Route::put('/componente/sinal/update', 'ComponentesController@updateSinal')->name('api.componente.sinal.update');
     Route::get('/informacoes', 'InformacoesController@all')->name('api.informacoes');
     Route::get('/informacoes/{id}', 'InformacoesController@show')->name('api.informacao');
-    Route::get('/informacao/data-hora', 'InformacoesController@fusoHorarios')->name('api.informacao.datetime');
-    Route::get('/informacao/data-hora/{id}', 'InformacoesController@city')->name('api.informacao.datetime');
+    Route::get('/informacao/fuso-horario', 'InformacoesController@fusoHorarios')->name('api.informacao.fusohorario');
+    Route::get('/informacao/data-hora', 'InformacoesController@dataHora')->name('api.informacao.datahora');
+    Route::get('/informacao/data-hora/{id}', 'InformacoesController@city')->name('api.informacao.cidade');
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');

@@ -68,4 +68,12 @@ class InformacoesController extends Controller
            
         return $cities;
     }
+
+    public function dataHora()
+    {
+        $date = \Carbon\Carbon::now('America/Fortaleza')->format('d/m/Y');
+        $time = \Carbon\Carbon::now('America/Fortaleza')->format('H:i:s'); 
+        $city = 'Fortaleza';
+        return ['date-time' => ['local' => $city, 'date' => $date, 'time' => $time]];
+    }
 }
