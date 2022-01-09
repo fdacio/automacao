@@ -14,8 +14,10 @@ class TemperaturasController extends Controller
         $temperatura = Temperatura::get()->last();
         $dado = ['temperatura' => $request->input('temperatura'), 'humidade' => $request->input('humidade')];
         if (!empty($temperatura)) {
+            
             $temperaturaEnviado = (float) $request->input('temperatura');
-            if ($temperaturaEnviado != $temperatura->temperatura) {
+            $ultimaTemperatura = (float) $temperatura->temperatura;
+            if (round($temperaturaEnviado, 2) != round($ultimaTemperatura, 2)) {
                 Temperatura::create($dado);
             }
         } else {
