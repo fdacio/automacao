@@ -35,6 +35,8 @@ Route::namespace('Api')->group(function () {
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');
     Route::get('/presenca/show', 'PresencaController@show')->name('api.presenca.show');
     Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
-
+    Route::post('/temperatura/post', 'TemperaturasController@post')->name('api.temperatura.post');
+    Route::get('/temperatura/show', 'TemperaturasController@show')->name('api.temperatura.show');
+    Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperatura.index');
 
 });

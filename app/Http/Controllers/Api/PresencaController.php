@@ -4,7 +4,6 @@ namespace Automacao\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
-use Automacao\Models\Distancia;
 use Automacao\Models\Presenca;
 use Carbon\Carbon;
 
