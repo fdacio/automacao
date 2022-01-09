@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Temperatura extends Model
 {
-    protected $table = 'presenca';
+    protected $table = 'temperaturas';
 
     protected $fillable = ['temperatura', 'humidade'];
 }
