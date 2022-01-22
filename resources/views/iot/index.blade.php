@@ -40,7 +40,7 @@
                 <div class="btn btn-temperatura">
                     <div class="btn-rect">
                         <div class="fa-ico">
-                            <i class="fa fa-thermometer-full" style="font-size: 32px"></i>
+                            <i class="fa fa-thermometer-full" style="font-size: 64px"></i>
                         </div>
                         <h1 class="valor-temperatura" style="font-size: 60px">0.00°c</h1>
                         <div class="clearfix"></div>
@@ -52,7 +52,7 @@
                 <div class="btn btn-humidade">
                     <div class="btn-rect">
                         <div class="fa-ico">
-                            <i class="fa fa-tint" style="font-size: 32px"></i>
+                            <i class="fa fa-tint" style="font-size: 64px"></i>
                         </div>
                         <h1 class="valor-humidade" style="font-size: 60px">0%</h1>
                         <div class="clearfix"></div>
