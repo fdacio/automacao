@@ -221,7 +221,7 @@
                     $('.btn-humidade .valor-humidade').html(humidade+"%");
 
                 });
-            }, 1000);
+            }, 3000);
 
 
         }); // fim documento jquery
