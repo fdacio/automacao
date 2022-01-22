@@ -5,7 +5,7 @@
     <div class="marketing">
         <div class="row">
             @foreach ($componentes as $componente)
-                <div class="col-md-4 text-center">
+                <div class="col-md-6 text-center">
                     <div class="btn btn-power" data-id="{{ $componente->id }}" data-clicked="false">
                         <div class="btn-rect">
                             <div class="fa-ico">
@@ -20,6 +20,8 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="row">    
             <div class="col-md-4 text-center">
                 <div class="btn btn-sensor" data-toggle="modal" data-target="#presencaModal">
                     <div class="btn-rect">
@@ -31,7 +33,31 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <h3>Sensor de Presença</h3>
+                    <h3>Presença</h3>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="btn btn-temperatura">
+                    <div class="btn-rect">
+                        <div class="fa-ico">
+                            <i class="fa fa-thermometer-full" style="font-size: 32px"></i>
+                        </div>
+                        <h1 class="valor-temperatura" style="font-size: 60px">30.90°c</h1>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h4>Temperatura</h4>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="btn btn-humidade">
+                    <div class="btn-rect">
+                        <div class="fa-ico">
+                            <i class="fa fa-tint" style="font-size: 32px"></i>
+                        </div>
+                        <h1 class="valor-humidade" style="font-size: 60px">79%</h1>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h4>Humidade</h4>
                 </div>
             </div>
         </div>
@@ -185,6 +211,18 @@
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
+
+            setInterval(function() {
+                $.get("{{ route('api.temperatura.show') }}", function(dados) {
+                    var temperatura = dados.temperatura;
+                    var humidade = dados.humidade;
+
+                    $('.btn-temperatura .valor-temperatura').html(temperatura+"°c");
+                    $('.btn-humidade .valor-humidade').html(humidade+"%");
+
+                });
+            }, 1000);
+
 
         }); // fim documento jquery
     </script>
