@@ -42,7 +42,7 @@
                         <div class="fa-ico">
                             <i class="fa fa-thermometer-full" style="font-size: 32px"></i>
                         </div>
-                        <h1 class="valor-temperatura" style="font-size: 60px">30.90°c</h1>
+                        <h1 class="valor-temperatura" style="font-size: 60px">0.00°c</h1>
                         <div class="clearfix"></div>
                     </div>
                     <h4>Temperatura</h4>
@@ -54,7 +54,7 @@
                         <div class="fa-ico">
                             <i class="fa fa-tint" style="font-size: 32px"></i>
                         </div>
-                        <h1 class="valor-humidade" style="font-size: 60px">79%</h1>
+                        <h1 class="valor-humidade" style="font-size: 60px">0%</h1>
                         <div class="clearfix"></div>
                     </div>
                     <h4>Humidade</h4>
