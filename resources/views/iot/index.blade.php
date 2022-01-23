@@ -22,7 +22,7 @@
             @endforeach
         </div>
         <div class="row">    
-            <div class="col-md-4 text-center">
+            <div class="col-md-12 text-center">
                 <div class="btn btn-sensor" data-toggle="modal" data-target="#presencaModal">
                     <div class="btn-rect">
                         <div class="fa-ico">
@@ -36,7 +36,9 @@
                     <h3>Presença</h3>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-center">
                 <div class="btn btn-temperatura">
                     <div class="btn-rect">
                         <div class="fa-ico">
@@ -48,7 +50,7 @@
                     <h4>Temperatura</h4>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-6 text-center">
                 <div class="btn btn-humidade">
                     <div class="btn-rect">
                         <div class="fa-ico">
