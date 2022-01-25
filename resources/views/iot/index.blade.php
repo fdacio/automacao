@@ -29,7 +29,6 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-
             var updateComponente = function(componente) {
                 var id = componente.attr('data-id');
                 var icon = componente.find('.btn-rect .fa-ico');
@@ -63,6 +62,34 @@
             loadComponente();
 
             var _execute = true;
+
+            $('.btn-power .btn-rect').on('click', function() {
+
+                if (!_execute) return;
+                _execute = false;
+
+                var button = $(this).parent('.btn-power');
+                var _id = button.attr('data-id');
+                var dados = {
+                    'id': _id,
+                    '_token': "{{ csrf_token() }}"
+                };
+                var icon = button.find('.btn-rect .fa-ico');
+                icon.html('<i class="fa fa-spin fa-spinner"></i>');
+
+                $.ajax({
+                    url: " {{ route('api.componente.sinal.update') }} ",
+                    data: dados,
+                    dataType: 'json',
+                    type: 'PUT',
+                    success: function(response) {
+                        if (response.success) {
+                            updateComponente(button);
+                            _execute = true;
+                        }
+                    }
+                });
+            });
 
         }); // fim documento jquery
     </script>
