@@ -20,3 +20,4 @@ Route::get('componentes/{componente}', 'ComponentesController@destroy')->name('c
 Route::resource('informacoes', 'InformacoesController')->parameters(['informacoes' => 'informacao']);
 Route::get('infomacoes/destroy/{informacao}', 'InformacoesController@destroy')->name('informacoes.destroy');
 Route::get('iot', 'IotController@index')->name('iot.index');
+Route::get('iot', 'SensoresController@index')->name('sensores.index');
