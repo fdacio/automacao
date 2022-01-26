@@ -71,9 +71,10 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-
-
-
+            
+            var carregaTemperatura = false;
+            var carregaPresenca    = true;
+            
             /*
              * Sensor de Presença
              */
@@ -97,7 +98,11 @@
                         carregaPresencas();
                         lastItemId = dados.id;
                     }
+
+                    carregaTemperatura = true;
+                    carregaPresenca    = false;
                 });
+
             }, 1000);
 
 
@@ -137,15 +142,20 @@
             }
 
             setInterval(function() {
-                $.get("{{ route('api.temperatura.show') }}", function(dados) {
-                    var temperatura = dados.temperatura;
-                    var humidade = dados.humidade;
 
-                    $('.btn-temperatura .valor-temperatura').html(temperatura+"°c");
-                    $('.btn-humidade .valor-humidade').html(humidade+"%");
+                if (carregaTemperatura) {
+                    $.get("{{ route('api.temperatura.show') }}", function(dados) {
+                        var temperatura = dados.temperatura;
+                        var humidade = dados.humidade;
+                        $('.btn-temperatura .valor-temperatura').html(temperatura+"°c");
+                        $('.btn-humidade .valor-humidade').html(humidade+"%");
+                    });
 
-                });
-            }, 3000);
+                    carregaTemperatura = false;
+                    carregaPresenca    = true;
+
+                }
+            }, 1000);
 
 
         }); // fim documento jquery
