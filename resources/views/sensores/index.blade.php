@@ -103,9 +103,10 @@
                     carregaPresenca    = false;
                 });
 
-            }, 1000);
+            }, 3000);
+            // **** Fim cartga de Presença *****//
 
-
+            // ***** Tela para carregar presenças ****//
             var carregaPresencas = function() {
                 $.ajax({
                     url: " {{ route('api.presenca.index') }} ",
@@ -140,7 +141,9 @@
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
+            // ***** FIM da Tela de Listar Presenças *****//
 
+            // ***** Carrega temperatura ******//
             setInterval(function() {
 
                 if (carregaTemperatura) {
@@ -155,7 +158,7 @@
                     carregaPresenca    = true;
 
                 }
-            }, 1000);
+            }, 3000);
 
 
         }); // fim documento jquery
