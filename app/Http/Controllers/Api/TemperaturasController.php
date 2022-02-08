@@ -34,6 +34,8 @@ class TemperaturasController extends Controller
         $tempMax = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'desc')->first();
         $tempMin = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'asc')->first();
         
+        dd($tempMax, $tempMin);
+
         $t_max = $tempMax->temperatura;
         $h_max = $tempMax->created_at->format('H:i');
         $t_min = $tempMin->temperatura;
