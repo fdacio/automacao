@@ -27,6 +27,8 @@
                             <i class="fa fa-thermometer-full mb-3" style="font-size: 64px"></i>
                         </div>
                         <h1 class="valor-temperatura mb-5" style="font-size: 60px">0.00°c</h1>
+                        <p class="text-sm t-max">Máx:30.4°c - 13:45</p>
+                        <p class="text-sm t-min">Min:28.2°c - 04:25</p>
                         <div class="clearfix"></div>
                     </div>
                     <h4>Temperatura</h4>
