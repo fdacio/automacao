@@ -31,8 +31,8 @@ class TemperaturasController extends Controller
         $humi = number_format($tempLast->humidade, 0);
 
         $data1 = Carbon::now();        
-        $tempMax = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->format('Y-m-d')])->orderby('temperatura', 'desc')->first();
-        $tempMin = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->format('Y-m-d')])->orderby('temperatura', 'asc')->first();
+        $tempMax = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'desc')->first();
+        $tempMin = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'asc')->first();
         
         $t_max = $tempMax->temperatura;
         $h_max = $tempMax->created_at->format('H:i');
