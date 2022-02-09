@@ -35,7 +35,7 @@ class TemperaturasController extends Controller
         $tempMax = $temperaturas->last();
         $tempMin = $temperaturas->first();
         
-        dd($tempMax, $tempMin);
+        //dd($tempMax, $tempMin);
 
         $t_max = $tempMax->temperatura;
         $h_max = $tempMax->created_at->format('H:i');
