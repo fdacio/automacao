@@ -105,8 +105,8 @@
                     carregaPresenca    = false;
                 });
 
-            }, 1000);
-            // **** Fim cartga de Presença *****//
+            }, 1500);
+            // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
             var carregaPresencas = function() {
