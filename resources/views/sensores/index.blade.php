@@ -166,7 +166,7 @@
                     carregaPresenca    = true;
 
                 }
-            }, 1000);
+            }, 1700);
 
 
         }); // fim documento jquery
