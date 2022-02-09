@@ -27,8 +27,8 @@ class TemperaturasController extends Controller
     public function show()
     {
         $tempLast = Temperatura::get()->last();
-        $temp = number_format($tempLast->temperatura, 0);
-        $humi = number_format($tempLast->humidade, 0);
+        $temp = floor($tempLast->temperatura);
+        $humi = floor($tempLast->humidade);
 
         $data1 = Carbon::now();        
         $temperaturas = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'asc')->get();
