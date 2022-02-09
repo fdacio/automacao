@@ -3,7 +3,7 @@
     <h3 class="text text-center">Sensores</h3>
     <hr>
     <div class="marketing">
-        <div class="row">    
+        <div class="row">
             <div class="col-md-12 text-center">
                 <div class="btn btn-sensor" data-toggle="modal" data-target="#presencaModal">
                     <div class="btn-rect">
@@ -73,39 +73,41 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            
+
             var carregaTemperatura = false;
-            var carregaPresenca    = true;
-            
+            var carregaPresenca = true;
+
             /*
              * Sensor de Presença
              */
             var lastItemId = 0;
             setInterval(function() {
-                $.get("{{ route('api.presenca.show') }}", function(dados) {
-                    var presenca = dados.presenca;
-                    if (dados.presenca != undefined) {
-                        if (dados.presenca) {
-                            $('.valor-leitura').addClass('badge-danger').removeClass(
-                                'badge-success');
-                            $('.valor-leitura').html("Presença de Movimento");
-                        } else {
-                            $('.valor-leitura').addClass('badge-success').removeClass(
-                                'badge-danger');
-                            $('.valor-leitura').html("Não há movimento");
+                if (carregaPresenca) {
+                    $.get("{{ route('api.presenca.show') }}", function(dados) {
+                        var presenca = dados.presenca;
+                        if (dados.presenca != undefined) {
+                            if (dados.presenca) {
+                                $('.valor-leitura').addClass('badge-danger').removeClass(
+                                    'badge-success');
+                                $('.valor-leitura').html("Presença de Movimento");
+                            } else {
+                                $('.valor-leitura').addClass('badge-success').removeClass(
+                                    'badge-danger');
+                                $('.valor-leitura').html("Não há movimento");
+                            }
                         }
-                    }
 
-                    if (lastItemId != dados.id) {
-                        carregaPresencas();
-                        lastItemId = dados.id;
-                    }
+                        if (lastItemId != dados.id) {
+                            carregaPresencas();
+                            lastItemId = dados.id;
+                        }
 
-                    carregaTemperatura = true;
-                    carregaPresenca    = false;
-                });
+                        carregaTemperatura = true;
+                        carregaPresenca = false;
+                    });
+                }
 
-            }, 1500);
+            }, 1000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -156,17 +158,17 @@
                         var h_max = dados.h_max;
                         var t_min = dados.t_min;
                         var h_min = dados.h_min;
-                        $('.btn-temperatura .valor-temperatura').html(temperatura+"°c");
-                        $('.btn-humidade .valor-humidade').html(humidade+"%");
+                        $('.btn-temperatura .valor-temperatura').html(temperatura + "°c");
+                        $('.btn-humidade .valor-humidade').html(humidade + "%");
                         $('.btn-temperatura .t-max').html("Max: " + t_max + "°c - " + h_max);
                         $('.btn-temperatura .t-min').html("Min: " + t_min + "°c - " + h_min);
                     });
 
                     carregaTemperatura = false;
-                    carregaPresenca    = true;
+                    carregaPresenca = true;
 
                 }
-            }, 1700);
+            }, 3000);
 
 
         }); // fim documento jquery
