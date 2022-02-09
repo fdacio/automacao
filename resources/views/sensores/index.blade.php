@@ -107,7 +107,7 @@
                     });
                 }
 
-            }, 1000);
+            }, 2000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -168,7 +168,7 @@
                     carregaPresenca = true;
 
                 }
-            }, 3000);
+            }, 3300);
 
 
         }); // fim documento jquery
