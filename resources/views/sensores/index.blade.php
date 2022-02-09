@@ -158,8 +158,8 @@
                         var h_min = dados.h_min;
                         $('.btn-temperatura .valor-temperatura').html(temperatura+"°c");
                         $('.btn-humidade .valor-humidade').html(humidade+"%");
-                        $('.btn-temperatura .t-max').html(t_max + "°c - " + h_max);
-                        $('.btn-temperatura .t-min').html(t_min + "°c - " + h_min);
+                        $('.btn-temperatura .t-max').html("Max: " + t_max + "°c - " + h_max);
+                        $('.btn-temperatura .t-min').html("Min: " + t_min + "°c - " + h_min);
                     });
 
                     carregaTemperatura = false;
