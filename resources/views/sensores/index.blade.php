@@ -105,7 +105,7 @@
                     carregaPresenca    = false;
                 });
 
-            }, 3000);
+            }, 1000);
             // **** Fim cartga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
