@@ -40,7 +40,7 @@
                         <div class="fa-ico">
                             <i class="fa fa-tint mb-3" style="font-size: 64px"></i>
                         </div>
-                        <h1 class="valor-humidade mb-5" style="font-size: 60px">0%</h1>
+                        <h1 class="valor-humidade" style="font-size: 60px">0%</h1>
                         <div class="text-sm h-max text-danger">Máx:0% - 00:00</div>
                         <div class="text-sm h-min text-primary">Min:0% - 00:00</div>
                         <div class="clearfix"></div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
