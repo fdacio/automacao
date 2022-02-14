@@ -26,9 +26,9 @@
                         <div class="fa-ico">
                             <i class="fa fa-thermometer-full mb-3" style="font-size: 64px"></i>
                         </div>
-                        <h1 class="valor-temperatura mb-1" style="font-size: 60px">0°c</h1>
-                        <p class="text-sm t-max text-danger">Máx:0.00°c - 00:00</p>
-                        <p class="text-sm t-min text-primary">Min:00.0°c - 00:00</p>
+                        <h1 class="valor-temperatura mb-1" style="font-size: 60px"> 0°C</h1>
+                        <div class="text-sm t-max text-danger">Máx:0.00 °C - 00:00</div>
+                        <div class="text-sm t-min text-primary">Min:00.0 °C - 00:00</div>
                         <div class="clearfix"></div>
                     </div>
                     <h4>Temperatura</h4>
@@ -107,7 +107,7 @@
                     });
                 }
 
-            }, 2000);
+            }, 1000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -158,17 +158,17 @@
                         var h_max = dados.h_max;
                         var t_min = dados.t_min;
                         var h_min = dados.h_min;
-                        $('.btn-temperatura .valor-temperatura').html(temperatura + "°c");
+                        $('.btn-temperatura .valor-temperatura').html(temperatura + " °C");
                         $('.btn-humidade .valor-humidade').html(humidade + "%");
-                        $('.btn-temperatura .t-max').html("Max: " + t_max + "°c - " + h_max);
-                        $('.btn-temperatura .t-min').html("Min: " + t_min + "°c - " + h_min);
+                        $('.btn-temperatura .t-max').html("Max: " + t_max + " °C - " + h_max);
+                        $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + h_min);
                     });
 
                     carregaTemperatura = false;
                     carregaPresenca = true;
 
                 }
-            }, 3300);
+            }, 1300);
 
 
         }); // fim documento jquery
