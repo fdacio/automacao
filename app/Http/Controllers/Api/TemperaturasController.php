@@ -38,6 +38,7 @@ class TemperaturasController extends Controller
         $humidades = Temperatura:: whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('humidade', 'asc')->get();
         $humiMax = $humidades->last();
         $humiMin = $humidades->first();
+        dd($humiMax, $humiMin);
         
         $t_max = $tempMax->temperatura;
         $t_hr_max = $tempMax->created_at->format('H:i');
