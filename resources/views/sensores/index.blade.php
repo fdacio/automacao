@@ -41,6 +41,8 @@
                             <i class="fa fa-tint mb-3" style="font-size: 64px"></i>
                         </div>
                         <h1 class="valor-humidade mb-5" style="font-size: 60px">0%</h1>
+                        <div class="text-sm h-max text-danger">Máx:0% - 00:00</div>
+                        <div class="text-sm h-min text-primary">Min:0% - 00:00</div>
                         <div class="clearfix"></div>
                     </div>
                     <h4>Humidade</h4>
@@ -154,14 +156,23 @@
                     $.get("{{ route('api.temperatura.show') }}", function(dados) {
                         var temperatura = dados.temperatura;
                         var humidade = dados.humidade;
+                        
                         var t_max = dados.t_max;
-                        var h_max = dados.h_max;
+                        var t_hr_max = dados.t_hr_max;
                         var t_min = dados.t_min;
+                        var t_hr_min = dados.t_h_min;
+
+                        var h_max = dados.h_max;
+                        var h_hr_max = dados.h_hr_max;
                         var h_min = dados.h_min;
-                        $('.btn-temperatura .valor-temperatura').html(temperatura + " °C");
+                        var h_hr_min = dados.h_hr_min;
+
+                        $('.btn-temperatura .valor-temperatura').html(temperatura + "°C");
                         $('.btn-humidade .valor-humidade').html(humidade + "%");
-                        $('.btn-temperatura .t-max').html("Max: " + t_max + " °C - " + h_max);
-                        $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + h_min);
+                        $('.btn-temperatura .t-max').html("Max: " + t_max + " °C - " + t_hr_max);
+                        $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
+                        $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
+                        $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
                     });
 
                     carregaTemperatura = false;
