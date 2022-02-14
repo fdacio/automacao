@@ -109,7 +109,7 @@
                     });
                 }
 
-            }, 1200);
+            }, 2100);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
