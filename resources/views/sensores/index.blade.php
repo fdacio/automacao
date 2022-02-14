@@ -160,7 +160,7 @@
                         var t_max = dados.t_max;
                         var t_hr_max = dados.t_hr_max;
                         var t_min = dados.t_min;
-                        var t_hr_min = dados.t_h_min;
+                        var t_hr_min = dados.t_hr_min;
 
                         var h_max = dados.h_max;
                         var h_hr_max = dados.h_hr_max;
