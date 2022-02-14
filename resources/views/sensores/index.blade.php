@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
