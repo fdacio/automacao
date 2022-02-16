@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Temperatura;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TemperaturasController extends Controller
 {
     public function post(Request $request)
     {        
+        
+        DB::beginTransaction();
         $temperatura = Temperatura::get()->last();
         $dado = ['temperatura' => $request->input('t'), 'humidade' => $request->input('h')];
         if (!empty($temperatura)) {            
@@ -21,7 +24,8 @@ class TemperaturasController extends Controller
             }
         } else {
             Temperatura::create($dado);
-        }        
+        }
+        DB::commit();        
     }
 
     public function show()
