@@ -76,6 +76,25 @@
     <script>
         $(document).ready(function() {
 
+            var spinnerSm = "<div class=\"spinner-border spinner-border\" role=\"status\">" +
+                "<span class=\"sr-only\">Loading...</span>" +
+                "</div>";
+
+            var spinnerSm = "<div class=\"spinner-border spinner-border-sm\" role=\"status\">" +
+                "<span class=\"sr-only\">Loading...</span>" +
+                "</div>";
+
+            $('.valor-leitura').html(spinnerSm);
+            $('.btn-temperatura .valor-temperatura').html(spinner);
+            $('.btn-humidade .valor-humidade').html(spinner);
+            $('.btn-temperatura .t-max').html(spinnerSm);
+            $('.btn-temperatura .t-min').html(spinnerSm);
+            $('.btn-humidade .h-max').html(spinnerSm);
+            $('.btn-humidade .h-min').html(spinnerSm);
+
+
+
+
             var carregaTemperatura = false;
             var carregaPresenca = true;
 
