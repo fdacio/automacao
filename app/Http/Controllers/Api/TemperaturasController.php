@@ -11,12 +11,8 @@ use Illuminate\Support\Facades\DB;
 class TemperaturasController extends Controller
 {
 
-    private $gravando = false;
-
     public function post(Request $request)
     {        
-        $this->gravando = true;
-        DB::beginTransaction();
         $temperatura = Temperatura::get()->last();
         $dado = ['temperatura' => $request->input('t'), 'humidade' => $request->input('h')];
         if (!empty($temperatura)) {            
@@ -27,14 +23,11 @@ class TemperaturasController extends Controller
             }
         } else {
             Temperatura::create($dado);
-        }
-        DB::commit();        
-        $this->gravando = false;
+        }   
     }
 
     public function show()
     {
-        if ($this->gravando) return;
 
         $tempLast = Temperatura::get()->last();
         $temp = floor($tempLast->temperatura);
