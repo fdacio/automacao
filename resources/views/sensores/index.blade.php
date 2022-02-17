@@ -76,7 +76,7 @@
     <script>
         $(document).ready(function() {
 
-            var spinnerSm = "<div class=\"spinner-border spinner-border\" role=\"status\">" +
+            var spinner = "<div class=\"spinner-border spinner-border\" role=\"status\">" +
                 "<span class=\"sr-only\">Loading...</span>" +
                 "</div>";
 
