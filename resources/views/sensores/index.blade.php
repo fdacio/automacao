@@ -109,7 +109,7 @@
                     });
                 }
 
-            }, 2100);
+            }, 3000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -156,7 +156,7 @@
                     $.get("{{ route('api.temperatura.show') }}", function(dados) {
                         var temperatura = dados.temperatura;
                         var humidade = dados.humidade;
-                        
+
                         var t_max = dados.t_max;
                         var t_hr_max = dados.t_hr_max;
                         var t_min = dados.t_min;
@@ -179,7 +179,7 @@
                     carregaPresenca = true;
 
                 }
-            }, 3000);
+            }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
 
         }); // fim documento jquery
