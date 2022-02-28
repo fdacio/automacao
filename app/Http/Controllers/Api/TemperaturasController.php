@@ -46,7 +46,7 @@ class TemperaturasController extends Controller
         $h_hr_max = 0;
         $h_min = 0;
         $h_hr_min = 0;
-
+        dd($temperaturas);
         if (!empty($temperaturas)) {
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
