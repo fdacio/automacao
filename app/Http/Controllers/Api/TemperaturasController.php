@@ -14,7 +14,8 @@ class TemperaturasController extends Controller
 
     public function post(Request $request)
     {
-        $temperatura = Temperatura::get()->last();
+        $maxId = DB::table('temperaturas')->max('id');
+        $temperatura = Temperatura::find($maxId);
         $dado = ['temperatura' => $request->input('t'), 'humidade' => $request->input('h')];
         if (!empty($temperatura)) {
             $temperaturaEnviado = (float) $request->input('t');
