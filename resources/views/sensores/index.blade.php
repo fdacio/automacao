@@ -92,9 +92,6 @@
             $('.btn-humidade .h-max').html(spinnerSm);
             $('.btn-humidade .h-min').html(spinnerSm);
 
-
-
-
             var carregaTemperatura = false;
             var carregaPresenca = true;
 

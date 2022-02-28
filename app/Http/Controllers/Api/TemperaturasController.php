@@ -29,6 +29,7 @@ class TemperaturasController extends Controller
     public function show()
     {
 
+        /*
         $tempLast = Temperatura::get()->last();
         $temp = floor($tempLast->temperatura);
         $humi = floor($tempLast->humidade);
@@ -69,6 +70,7 @@ class TemperaturasController extends Controller
             'h_min' => $h_min,
             'h_hr_min' => $h_hr_min
         ];
+        */
     }
 
     public function index()
