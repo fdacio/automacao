@@ -30,37 +30,45 @@ class TemperaturasController extends Controller
     public function show()
     {
 
-        try {
 
-            $maxId = DB::table('temperaturas')->max('id');
-            $tempLast = Temperatura::find($maxId);
-            dd($tempLast);
-            $temp = floor($tempLast->temperatura);
-            $humi = floor($tempLast->humidade);
+        $maxId = DB::table('temperaturas')->max('id');
+        $tempLast = Temperatura::find($maxId);
+        $temp = floor($tempLast->temperatura);
+        $humi = floor($tempLast->humidade);
 
-            $data1 = Carbon::now();
+        $data1 = Carbon::now();
+        $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderBy('temperatura', 'asc')->get();
 
-            $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderBy('temperatura', 'asc')->get();
+        $t_max = 0;
+        $t_hr_max = 0;
+        $t_min = 0;
+        $t_hr_min = 0;
+
+        $h_max = 0;
+        $h_hr_max = 0;
+        $h_min = 0;
+        $h_hr_min = 0;
+
+        if (!empty($temperaturas)) {
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
-
-            $data2 = Carbon::now();
-            $humidades = Temperatura::whereBetween('created_at', [$data2->format('Y-m-d'), $data2->addDays(1)->format('Y-m-d')])->orderBy('humidade', 'asc')->get();
-            $humiMax = $humidades->last();
-            $humiMin = $humidades->first();
-
             $t_max = $tempMax->temperatura;
             $t_hr_max = $tempMax->created_at->format('H:i');
             $t_min = $tempMin->temperatura;
             $t_hr_min = $tempMin->created_at->format('H:i');
+        }
 
+        $data2 = Carbon::now();
+        $humidades = Temperatura::whereBetween('created_at', [$data2->format('Y-m-d'), $data2->addDays(1)->format('Y-m-d')])->orderBy('humidade', 'asc')->get();
+        if (!empty($humidades)) {
+            $humiMax = $humidades->last();
+            $humiMin = $humidades->first();
             $h_max = $humiMax->humidade;
             $h_hr_max = $humiMax->created_at->format('H:i');
             $h_min = $humiMin->humidade;
             $h_hr_min = $humiMin->created_at->format('H:i');
-        } catch (Exception $e) {
-            dd($e->getMessage());
         }
+
 
         return [
 
