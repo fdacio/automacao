@@ -33,8 +33,8 @@ class TemperaturasController extends Controller
         try {
 
             $maxId = DB::table('temperaturas')->max('id');
-            dd($maxId);
             $tempLast = Temperatura::find($maxId);
+            dd($tempLast);
             $temp = floor($tempLast->temperatura);
             $humi = floor($tempLast->humidade);
 
