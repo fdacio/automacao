@@ -31,8 +31,8 @@ class TemperaturasController extends Controller
     {
 
         try {
-            
-            $tempLast = Temperatura::get()->last();
+
+            $tempLast = Temperatura::find(DB::table('temperaturas')->max('id'));
             $temp = floor($tempLast->temperatura);
             $humi = floor($tempLast->humidade);
 
