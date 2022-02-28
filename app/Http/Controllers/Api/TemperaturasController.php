@@ -29,8 +29,6 @@ class TemperaturasController extends Controller
 
     public function show()
     {
-
-
         $maxId = DB::table('temperaturas')->max('id');
         $tempLast = Temperatura::find($maxId);
         $temp = floor($tempLast->temperatura);
