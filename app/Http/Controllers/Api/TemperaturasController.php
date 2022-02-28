@@ -47,7 +47,7 @@ class TemperaturasController extends Controller
         $h_min = 0;
         $h_hr_min = 0;
         dd($temperaturas);
-        if (!empty($temperaturas)) {
+        if (isset($temperaturas->items)) {
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
             $t_max = $tempMax->temperatura;
@@ -58,7 +58,7 @@ class TemperaturasController extends Controller
 
         $data2 = Carbon::now();
         $humidades = Temperatura::whereBetween('created_at', [$data2->format('Y-m-d'), $data2->addDays(1)->format('Y-m-d')])->orderBy('humidade', 'asc')->get();
-        if (!empty($humidades)) {
+        if (isset($humidades->items)) {
             $humiMax = $humidades->last();
             $humiMin = $humidades->first();
             $h_max = $humiMax->humidade;
