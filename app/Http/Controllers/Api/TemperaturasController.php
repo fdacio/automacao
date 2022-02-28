@@ -32,18 +32,19 @@ class TemperaturasController extends Controller
 
         try {
 
-            $tempLast = Temperatura::find(DB::table('temperaturas')->max('id'));
+            $maxId = DB::table('temperaturas')->max('id');
+            $tempLast = Temperatura::find($maxId);
             $temp = floor($tempLast->temperatura);
             $humi = floor($tempLast->humidade);
 
             $data1 = Carbon::now();
 
-            $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('temperatura', 'asc')->get();
+            $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderBy('temperatura', 'asc')->get();
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
 
             $data2 = Carbon::now();
-            $humidades = Temperatura::whereBetween('created_at', [$data2->format('Y-m-d'), $data2->addDays(1)->format('Y-m-d')])->orderby('humidade', 'asc')->get();
+            $humidades = Temperatura::whereBetween('created_at', [$data2->format('Y-m-d'), $data2->addDays(1)->format('Y-m-d')])->orderBy('humidade', 'asc')->get();
             $humiMax = $humidades->last();
             $humiMin = $humidades->first();
 
@@ -56,7 +57,6 @@ class TemperaturasController extends Controller
             $h_hr_max = $humiMax->created_at->format('H:i');
             $h_min = $humiMin->humidade;
             $h_hr_min = $humiMin->created_at->format('H:i');
-        
         } catch (Exception $e) {
             dd($e->getMessage());
         }
