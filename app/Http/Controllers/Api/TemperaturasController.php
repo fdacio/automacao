@@ -54,6 +54,7 @@ class TemperaturasController extends Controller
         $data2 = $hoje->addDays(1)->format('Y-m-d');
 
         $temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->orderBy('temperatura', 'asc')->get();
+        dd($temperaturas);
         if (count($temperaturas->items) > 0) {
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
