@@ -54,7 +54,7 @@ class TemperaturasController extends Controller
         $data2 = $hoje->addDays(1)->format('Y-m-d');
 
         $temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->orderBy('temperatura', 'asc')->get();
-        if (count($temperaturas->items) > 0) {
+        if ($temperaturas->count() > 0) {
             $tempMax = $temperaturas->last();
             $tempMin = $temperaturas->first();
             $t_max = $tempMax->temperatura;
@@ -64,7 +64,7 @@ class TemperaturasController extends Controller
         }
 
         $humidades = Temperatura::whereBetween('created_at', [$data1, $data2])->orderBy('humidade', 'asc')->get();
-        if (count($humidades->items) > 0) {
+        if ($humidades->count() > 0) {
             $humiMax = $humidades->last();
             $humiMin = $humidades->first();
             $h_max = $humiMax->humidade;
