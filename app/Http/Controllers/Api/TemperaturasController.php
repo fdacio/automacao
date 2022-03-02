@@ -49,7 +49,7 @@ class TemperaturasController extends Controller
         $h_min = 0;
         $h_hr_min = 0;
 
-        $hoje = Carbon::now()->addDay();
+        $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
 
