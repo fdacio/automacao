@@ -7,7 +7,7 @@
             <div class="col-md-4 text-center offset-md-4">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('home') }}">Painel de
+                        <a class="nav-link" aria-current="page" href="{{ route('painel-controle.index') }}">Painel de
                             Controle</a>
                     </li>
                     <li class="list-group-item">

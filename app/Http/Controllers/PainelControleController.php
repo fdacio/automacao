@@ -10,7 +10,7 @@ class PainelControleController extends Controller
     {
         
         $componentes = Componente::whereNotIn('nome', ['IoT 0', 'IoT 2'])->get();
-        return view('painel-controle.index');
+        return view('painel-controle.index', compact('componentes'));
     }
 }
 
