@@ -4,7 +4,7 @@
     <hr>
     <div class="marketing">
         <div class="row">
-            <div class="col-md-4 text-center col-offset-4">
+            <div class="col-md-4 text-center offset-md-4">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <a class="nav-link" aria-current="page" href="{{ route('home') }}">Painel de
