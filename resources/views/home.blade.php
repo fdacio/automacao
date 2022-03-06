@@ -4,36 +4,28 @@
     <hr>
     <div class="marketing">
         <div class="row">
-            @foreach ($componentes as $componente)
-                <div class="col-md-4 text-center">
-                    <div class="btn btn-power" data-id="{{ $componente->id }}"
-                        data-clicked="false">
-                        <div class="btn-rect">
-                            <div class="fa-ico">
-                                <i class="fa fa-power-off"></i>
-                            </div>
-                            <div class="text-power float-right">
-                                <small class="text-on-off badge badge-danger">OFF</small>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <h3>{{ $componente->nome }}</h3>
-                    </div>
-                </div>                
-            @endforeach
-            <div class="col-md-4 text-center">
-                <div class="btn btn-sensor">
-                    <div class="btn-rect">
-                        <div class="fa-ico">
-                            <i class="fa fa-street-view"></i>
-                        </div>
-                        <div class="text-power float-right">
-                            <small class="text-on-off badge badge-success valor-leitura">0.00 cm</small>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <h3>Aproximação</h3>
-                </div>
+            <div class="col-md-4 text-center col-md-offset-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a class="nav-link text-light" aria-current="page" href="{{ route('home') }}">Painel de
+                            Controle</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link text-light" aria-current="page"
+                            href="{{ route('componentes.index') }}">Componentes</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link text-light" aria-current="page"
+                            href="{{ route('informacoes.index') }}">Informações</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link text-light" aria-current="page" href="{{ route('iot.index') }}">IoT</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link text-light" aria-current="page"
+                            href="{{ route('sensores.index') }}">Sensores</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
