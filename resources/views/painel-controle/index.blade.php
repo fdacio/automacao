@@ -1,0 +1,126 @@
+@extends('layouts.app')
+@section('content')
+    <h3 class="text text-center">Painel de Controle</h3>
+    <hr>
+    <div class="marketing">
+        <div class="row">
+            @foreach ($componentes as $componente)
+                <div class="col-md-4 text-center">
+                    <div class="btn btn-power" data-id="{{ $componente->id }}"
+                        data-clicked="false">
+                        <div class="btn-rect">
+                            <div class="fa-ico">
+                                <i class="fa fa-power-off"></i>
+                            </div>
+                            <div class="text-power float-right">
+                                <small class="text-on-off badge badge-danger">OFF</small>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <h3>{{ $componente->nome }}</h3>
+                    </div>
+                </div>                
+            @endforeach
+            <div class="col-md-4 text-center">
+                <div class="btn btn-sensor">
+                    <div class="btn-rect">
+                        <div class="fa-ico">
+                            <i class="fa fa-street-view"></i>
+                        </div>
+                        <div class="text-power float-right">
+                            <small class="text-on-off badge badge-success valor-leitura">0.00 cm</small>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h3>Aproximação</h3>
+                </div>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            var updateComponente = function(componente) {
+                    var id = componente.attr('data-id');
+                    var icon = componente.find('.btn-rect .fa-ico');
+                    var url = "{{ route('api.componente.show', '_id_') }}".replace('_id_', id);
+                    $.get(url, function() {
+                        icon.html('<i class="fa fa-spin fa-spinner"></i>');
+                    }).done(function(data) {
+                        if (data) {
+                            var sinal = (data.sinal == 1) ? true : false;
+                            $(componente).attr('data-clicked', sinal);
+                            if (sinal) {
+                                $(componente).find('.text-on-off').html('ON').removeClass('badge-danger')
+                                    .addClass('badge-success');
+                            } else {
+                                $(componente).find('.text-on-off').html('OFF').removeClass(
+                                    'badge-success').addClass('badge-danger');
+                            }
+                            icon.html('<i class="fa fa-power-off"></i>');
+                            icon.css('color', data.cor);
+                        } 
+                    });
+            }
+
+            var loadComponente = function() {
+                var componentes = $(".btn-power");
+                $.each(componentes, function(key, componente) {                    
+                    updateComponente($(componente));
+                });
+            }
+
+            loadComponente();
+
+            var _execute = true;
+
+            $('.btn-power .btn-rect').on('click', function() {
+
+                if (!_execute) return;
+                _execute = false;
+
+                var button = $(this).parent('.btn-power');
+                var _id = button.attr('data-id');
+                var dados = {
+                    'id': _id,
+                    '_token': "{{ csrf_token() }}"
+                };
+                var icon = button.find('.btn-rect .fa-ico');
+                icon.html('<i class="fa fa-spin fa-spinner"></i>');
+
+                $.ajax({
+                    url: " {{ route('api.componente.sinal.update') }} ",
+                    data: dados,
+                    dataType: 'json',
+                    type: 'PUT',
+                    success: function(response) {
+                        if (response.success) {
+                           updateComponente(button);     
+                           _execute = true;
+                        }
+                    }
+                });
+            });
+
+            setInterval(function() {
+                $.get("{{ route('api.distancia.show') }}", function(dados) {
+                    var distancia = dados.distancia;
+                    if (dados.distancia != undefined) {
+                        if (dados.distancia < 100) {
+                            $('.valor-leitura').addClass('badge-danger').removeClass('badge-success');
+                        } else {
+                            $('.valor-leitura').addClass('badge-success').removeClass('badge-danger');
+                        }
+                        $('.valor-leitura').html(distancia + " cm");
+                    }
+                });
+            }, 2000);
+
+        }); // fim documento jquery
+
+    </script>
+@endsection
