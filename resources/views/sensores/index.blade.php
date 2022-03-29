@@ -98,7 +98,6 @@
             /*
              * Sensor de Presença
              */
-            var lastItemId = 0;
             setInterval(function() {
                 if (carregaPresenca) {
                     $.get("{{ route('api.presenca.show') }}", function(dados) {
