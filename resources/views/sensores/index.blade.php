@@ -115,17 +115,12 @@
                             }
                         }
 
-                        if (lastItemId != dados.id) {
-                            carregaPresencas();
-                            lastItemId = dados.id;
-                        }
-
                         carregaTemperatura = true;
                         carregaPresenca = false;
                     });
                 }
 
-            }, 3000);
+            }, 1300);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -195,7 +190,7 @@
                     carregaPresenca = true;
 
                 }
-            }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
+            }, 5000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
 
         }); // fim documento jquery
