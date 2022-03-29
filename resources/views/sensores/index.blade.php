@@ -98,6 +98,7 @@
             /*
              * Sensor de Presença
              */
+             var lastItemId = 0;
             setInterval(function() {
                 if (carregaPresenca) {
                     $.get("{{ route('api.presenca.show') }}", function(dados) {
@@ -112,6 +113,11 @@
                                     'badge-danger');
                                 $('.valor-leitura').html("Não há movimento");
                             }
+                        }
+                        
+                        if (lastItemId != dados.id) {
+                            carregaPresencas();
+                            lastItemId = dados.id;
                         }
 
                         carregaTemperatura = true;
@@ -187,11 +193,11 @@
 
                     carregaTemperatura = false;
                     carregaPresenca = true;
-
                 }
+
             }, 5000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
-
         }); // fim documento jquery
+
     </script>
 @endsection
