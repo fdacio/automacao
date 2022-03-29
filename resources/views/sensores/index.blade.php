@@ -114,7 +114,7 @@
                                 $('.valor-leitura').html("Não há movimento");
                             }
                         }
-                        
+
                         if (lastItemId != dados.id) {
                             carregaPresencas();
                             lastItemId = dados.id;
@@ -125,7 +125,7 @@
                     });
                 }
 
-            }, 1300);
+            }, 3000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -195,7 +195,7 @@
                     carregaPresenca = true;
                 }
 
-            }, 5000); //Carrega as medições de temperara e humidade a cada 10 segundos
+            }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
         }); // fim documento jquery
 
