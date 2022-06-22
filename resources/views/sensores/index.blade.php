@@ -81,8 +81,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="border text-center" id="chat">
-                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                    <div class="border text-center">
+                        <canvas id="chat">
+                            <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                        </canvas>                        
                     </div>
                 </div>
             </div>
