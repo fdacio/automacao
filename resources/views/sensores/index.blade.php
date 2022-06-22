@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <div class="btn btn-humidade">
+                <div class="btn btn-humidade" data-toggle="modal" data-target="#humidadeModal">
                     <div class="btn-rect">
                         <div class="fa-ico">
                             <i class="fa fa-tint mb-3" style="font-size: 64px"></i>
@@ -81,7 +81,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="border text-center">
+                    <div class="border text-center" id="chat">
                         <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -233,6 +233,30 @@
                 }
 
             }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
+
+            $("#temperaturaModal").on("shown.bs.modal", function() {
+                
+                const data = {
+                    labels: ['Hora1', 'Hora2', 'Hora3'],
+                    datasets: [{
+                        label: 'Temperatura',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [28.87, 27.68, 28.98],
+                    }]
+                };
+
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
+
+                const myChart = new Chart (document.getElementById('chat'), config );
+
+            });
+
+            $("#temperaturaModal .modal-body").html(lista);
 
         }); // fim documento jquery
     </script>
