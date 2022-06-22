@@ -256,7 +256,7 @@
 
             });
 
-            $("#temperaturaModal .modal-body").html(lista);
+
 
         }); // fim documento jquery
     </script>
