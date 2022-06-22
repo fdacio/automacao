@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-6 text-center">
-                <div class="btn btn-temperatura">
+                <div class="btn btn-temperatura" data-toggle="modal" data-target="#temperaturaModal">
                     <div class="btn-rect">
                         <div class="fa-ico">
                             <i class="fa fa-thermometer-full mb-3" style="font-size: 64px"></i>
@@ -70,6 +70,43 @@
             </div>
         </div>
     </div>
+    <!-- Temperatura Modal -->
+    <div class="modal fade" id="temperaturaModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Temperatura</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="border text-center">
+                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Humidade Modal -->
+    <div class="modal fade" id="humidadeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Umidade</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="border text-center">
+                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -98,7 +135,7 @@
             /*
              * Sensor de Presença
              */
-             var lastItemId = 0;
+            var lastItemId = 0;
             setInterval(function() {
                 if (carregaPresenca) {
                     $.get("{{ route('api.presenca.show') }}", function(dados) {
@@ -198,6 +235,5 @@
             }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
         }); // fim documento jquery
-
     </script>
 @endsection
