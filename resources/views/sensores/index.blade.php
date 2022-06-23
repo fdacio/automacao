@@ -270,6 +270,7 @@
                     };
                     new Chart(document.getElementById('chat'), config);
                     $('#chat').show();
+                    $('.chat').html('');
 
                 });
 
