@@ -82,9 +82,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <div class="chat">
-                            <canvas id="chat"></canvas>
-                        </div>
+                        <div class="chat"></div>
+                        <canvas id="chat"></canvas>
                     </div>
                 </div>
             </div>
