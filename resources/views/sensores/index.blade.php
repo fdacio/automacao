@@ -239,7 +239,7 @@
             $("#temperaturaModal").on("shown.bs.modal", function() {
 
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
-                    dados.array.forEach(element => {
+                    dados.forEach(element => {
                         console.log(element);
                     });
                     const data = {
