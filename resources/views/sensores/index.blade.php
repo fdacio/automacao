@@ -271,8 +271,8 @@
 
                     var canvas = $("canvas");
                     canvas.attr('id', 'chat');
-                    $('.chat').html(canvas);
-                    new Chart(document.getElementById('chat'), config);
+                    var chat = new Chart(document.getElementById('chat'), config);
+                    $('.chat').html(chat);
 
                 });
 
