@@ -83,7 +83,7 @@
                 <div class="modal-body">
                     <div class="border text-center">
                         <div class="chat">
-
+                            <canvas id="chat"></canvas>
                         </div>
                     </div>
                 </div>
@@ -242,6 +242,7 @@
                 "<span class=\"sr-only\">Loading...</span>" +
                 "</div>";
                 $('.chat').html(spinner);
+                $('#chat').hide();
 
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
@@ -268,11 +269,8 @@
                         data: data,
                         options: {}
                     };
-
-                    var canvas = $("canvas");
-                    canvas.attr('id', 'chat');
-                    var chat = new Chart(document.getElementById('chat'), config);
-                    $('.chat').html(canvas);
+                    new Chart(document.getElementById('chat'), config);
+                    $('#chat').show();
 
                 });
 
