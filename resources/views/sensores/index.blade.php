@@ -243,7 +243,7 @@
                     var temperaturas = [];
                     var index = 0;
                     dados.forEach(dado => {
-                        horas[index] = dado.created_at.substring(11, 15);
+                        horas[index] = dado.created_at.substring(11, 16);
                         temperaturas[index] = dado.temperatura;
                         index++;
                     });
@@ -251,7 +251,7 @@
                     const data = {
                         labels: horas,
                         datasets: [{
-                            label: 'Temperatura',
+                            label: 'Temperatura em °C',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
                             data:temperaturas,
