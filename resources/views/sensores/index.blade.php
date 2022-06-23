@@ -238,6 +238,11 @@
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
                 
+                $.get("{{ route('api.temperatura.index') }}"
+                ).done(function(dados){
+                    console.log(dados);
+                });
+
                 const data = {
                     labels: ['Hora1', 'Hora2', 'Hora3'],
                     datasets: [{
