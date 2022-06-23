@@ -237,7 +237,11 @@
             }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
-
+                
+                var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
+                "<span class=\"sr-only\">Loading...</span>" +
+                "</div>";
+                $('#chat').html(spinner);
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
                     var temperaturas = [];
