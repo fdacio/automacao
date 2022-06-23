@@ -84,7 +84,7 @@
                     <div class="border text-center">
                         <canvas id="chat">
                             <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
-                        </canvas>                        
+                        </canvas>
                     </div>
                 </div>
             </div>
@@ -237,29 +237,31 @@
             }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
-                
-                $.get("{{ route('api.temperatura.index') }}"
-                ).done(function(dados){
-                    console.log(dados);
+
+                $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
+                    dados.array.forEach(element => {
+                        console.log(element);
+                    });
+                    const data = {
+                        labels: ['Hora1', 'Hora2', 'Hora3'],
+                        datasets: [{
+                            label: 'Temperatura',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [28.87, 27.68, 28.98],
+                        }]
+                    };
+
+                    const config = {
+                        type: 'line',
+                        data: data,
+                        options: {}
+                    };
+
+                    new Chart(document.getElementById('chat'), config);
+
+
                 });
-
-                const data = {
-                    labels: ['Hora1', 'Hora2', 'Hora3'],
-                    datasets: [{
-                        label: 'Temperatura',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [28.87, 27.68, 28.98],
-                    }]
-                };
-
-                const config = {
-                    type: 'line',
-                    data: data,
-                    options: {}
-                };
-
-                const myChart = new Chart (document.getElementById('chat'), config );
 
             });
 
