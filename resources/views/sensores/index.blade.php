@@ -241,9 +241,11 @@
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
                     var temperaturas = [];
+                    var index = 0;
                     dados.forEach(dado => {
-                        horas[] = dado.created_at.substring(11, 5);
-                        temperaturas[] = dado.temperatura;
+                        horas[index] = dado.created_at.substring(11, 5);
+                        temperaturas[index] = dado.temperatura;
+                        index++;
                     });
 
                     const data = {
