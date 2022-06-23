@@ -243,6 +243,7 @@
                     var temperaturas = [];
                     var index = 0;
                     dados.forEach(dado => {
+                        console.log(dado.created_at);
                         horas[index] = dado.created_at.substring(11, 5);
                         temperaturas[index] = dado.temperatura;
                         index++;
