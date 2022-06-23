@@ -239,16 +239,20 @@
             $("#temperaturaModal").on("shown.bs.modal", function() {
 
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
-                    dados.forEach(element => {
-                        console.log(element);
+                    var horas = [];
+                    var temperaturas = [];
+                    dados.forEach(dado => {
+                        horas[] = dado.created_at.substring(11, 5);
+                        temperaturas[] = dado.temperatura;
                     });
+
                     const data = {
-                        labels: ['Hora1', 'Hora2', 'Hora3'],
+                        labels: horas,
                         datasets: [{
                             label: 'Temperatura',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data: [28.87, 27.68, 28.98],
+                            data:temperaturas,
                         }]
                     };
 
