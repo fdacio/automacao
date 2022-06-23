@@ -82,8 +82,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <canvas id="chat">
-                        </canvas>
+                        <div class="chat">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -237,6 +238,11 @@
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
                 
+                var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
+                "<span class=\"sr-only\">Loading...</span>" +
+                "</div>";
+                $('.chat').html(spinner);
+
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
                     var temperaturas = [];
@@ -263,6 +269,9 @@
                         options: {}
                     };
 
+                    var canvas = $("canvas");
+                    canvas.attr('id', 'chat');
+                    $('.chat').html(canvas);
                     new Chart(document.getElementById('chat'), config);
 
                 });
