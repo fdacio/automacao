@@ -283,7 +283,7 @@
                 }
             });
 
-            $("#humidadesModal").on("shown.bs.modal", function() {
+            $("#humidadeModal").on("shown.bs.modal", function() {
 
                 var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
                     "<span class=\"sr-only\">Loading...</span>" +
@@ -329,7 +329,7 @@
                     chartStatus.destroy();
                 }
             });
-            
+
         });
     </script>
 @endsection
