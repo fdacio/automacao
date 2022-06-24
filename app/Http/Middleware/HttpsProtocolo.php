@@ -15,7 +15,9 @@ class HttpsProtocolo
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->secure()) {
+        $local = (getenv('APP_ENV') == 'local');
+
+        if (!$request->secure()  && !$local) {
 
             return redirect()->secure($request->getRequestUri());
 

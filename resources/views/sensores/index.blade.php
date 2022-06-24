@@ -82,8 +82,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <div class="chat"></div>
-                        <canvas id="chat"></canvas>
+                        <div class="chart"></div>
+                        <canvas id="chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -236,12 +236,12 @@
             }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
-                
+
                 var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
-                "<span class=\"sr-only\">Loading...</span>" +
-                "</div>";
-                $('.chat').html(spinner);
-                $('#chat').hide();
+                    "<span class=\"sr-only\">Loading...</span>" +
+                    "</div>";
+                $('.chart').html(spinner);
+                $('#chart').hide();
 
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
@@ -259,7 +259,7 @@
                             label: 'Temperatura em °C',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data:temperaturas,
+                            data: temperaturas,
                         }]
                     };
 
@@ -268,16 +268,19 @@
                         data: data,
                         options: {}
                     };
-                    new Chart(document.getElementById('chat'), config);
-                    $('#chat').show();
-                    $('.chat').html('');
-
+                    var chart = new Chart($('#chart'), config);
+                    $('#chart').show();
+                    $('.chart').html('');
                 });
 
             });
 
-
-
-        }); // fim documento jquery
+            $('#temperaturaModal').on('hidden.bs.modal', function (e) {
+                let chartStatus = Chart.getChart("chart"); 
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
+            });
+        });
     </script>
 @endsection
