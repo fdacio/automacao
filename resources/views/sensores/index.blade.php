@@ -234,7 +234,7 @@
                     carregaPresenca = true;
                 }
 
-            }, 10000); //Carrega as medições de temperara e humidade a cada 10 segundos
+            }, 1000 * 60 * 10); //Carrega as medições de temperara e humidade a cada 10 minutos
 
             $("#temperaturaModal").on("shown.bs.modal", function() {
 
