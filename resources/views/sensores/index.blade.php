@@ -205,37 +205,41 @@
             // ***** FIM da Tela de Listar Presenças *****//
 
             // ***** Carrega temperatura ******//
-            setInterval(function() {
 
-                if (carregaTemperatura) {
-                    $.get("{{ route('api.temperatura.show') }}", function(dados) {
-                        var temperatura = dados.temperatura;
-                        var humidade = dados.humidade;
+            function loadTemperatura() {
+                $.get("{{ route('api.temperatura.show') }}", function(dados) {
+                    var temperatura = dados.temperatura;
+                    var humidade = dados.humidade;
 
-                        var t_max = dados.t_max;
-                        var t_hr_max = dados.t_hr_max;
-                        var t_min = dados.t_min;
-                        var t_hr_min = dados.t_hr_min;
+                    var t_max = dados.t_max;
+                    var t_hr_max = dados.t_hr_max;
+                    var t_min = dados.t_min;
+                    var t_hr_min = dados.t_hr_min;
 
-                        var h_max = dados.h_max;
-                        var h_hr_max = dados.h_hr_max;
-                        var h_min = dados.h_min;
-                        var h_hr_min = dados.h_hr_min;
+                    var h_max = dados.h_max;
+                    var h_hr_max = dados.h_hr_max;
+                    var h_min = dados.h_min;
+                    var h_hr_min = dados.h_hr_min;
 
-                        $('.btn-temperatura .valor-temperatura').html(temperatura + "°C");
-                        $('.btn-humidade .valor-humidade').html(humidade + "%");
-                        $('.btn-temperatura .t-max').html("Max: " + t_max + " °C - " + t_hr_max);
-                        $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
-                        $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
-                        $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
-                    });
+                    $('.btn-temperatura .valor-temperatura').html(temperatura + "°C");
+                    $('.btn-humidade .valor-humidade').html(humidade + "%");
+                    $('.btn-temperatura .t-max').html("Max: " + t_max + " °C - " + t_hr_max);
+                    $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
+                    $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
+                    $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
+                });
+            }
+            
+            loadTemperatura();
 
-                    carregaTemperatura = false;
-                    carregaPresenca = true;
-                }
+            var delayTemperatura = 1000 * 60 * 10; // 10 minutos
+            setInterval(function() {           
+                loadTemperatura();                  
+            }, delayTemperatura); 
 
-            }, 1000 * 60 * 10); //Carrega as medições de temperara e humidade a cada 10 minutos
-
+            /*
+            * Gráficos Chart
+            */
             $("#temperaturaModal").on("shown.bs.modal", function() {
 
                 var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
@@ -248,6 +252,7 @@
                     var horas = [];
                     var temperaturas = [];
                     var index = 0;
+                    console.log(dados);
                     dados.forEach(dado => {
                         horas[index] = dado.created_at.substring(11, 16);
                         temperaturas[index] = dado.temperatura;
@@ -276,7 +281,7 @@
 
             });
 
-            $('#temperaturaModal').on('hidden.bs.modal', function(e) {
+            $('#temperaturaModal').on('hidden.bs.modal', function() {
                 let chartStatus = Chart.getChart("chartTemp");
                 if (chartStatus != undefined) {
                     chartStatus.destroy();
@@ -323,7 +328,7 @@
 
             });
 
-            $('#humidadeModal').on('hidden.bs.modal', function(e) {
+            $('#humidadeModal').on('hidden.bs.modal', function() {
                 let chartStatus = Chart.getChart("chartHumid");
                 if (chartStatus != undefined) {
                     chartStatus.destroy();
