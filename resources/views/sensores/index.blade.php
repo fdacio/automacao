@@ -137,33 +137,28 @@
             /*
              * Sensor de Presença
              */
-            var lastItemId = 0;
+            function loadPresenca() {
+                $.get("{{ route('api.presenca.show') }}", function(dados) {
+                    var presenca = dados.presenca;
+                    if (dados.presenca != undefined) {
+                        if (dados.presenca) {
+                            $('.valor-leitura').addClass('badge-danger').removeClass(
+                                'badge-success');
+                            $('.valor-leitura').html("Presença de Movimento");
+                        } else {
+                            $('.valor-leitura').addClass('badge-success').removeClass(
+                                'badge-danger');
+                            $('.valor-leitura').html("Não há movimento");
+                        }
+                    }
+
+                });
+            }
+
+            loadPresenca();
+
             setInterval(function() {
-                if (carregaPresenca) {
-                    $.get("{{ route('api.presenca.show') }}", function(dados) {
-                        var presenca = dados.presenca;
-                        if (dados.presenca != undefined) {
-                            if (dados.presenca) {
-                                $('.valor-leitura').addClass('badge-danger').removeClass(
-                                    'badge-success');
-                                $('.valor-leitura').html("Presença de Movimento");
-                            } else {
-                                $('.valor-leitura').addClass('badge-success').removeClass(
-                                    'badge-danger');
-                                $('.valor-leitura').html("Não há movimento");
-                            }
-                        }
-
-                        if (lastItemId != dados.id) {
-                            carregaPresencas();
-                            lastItemId = dados.id;
-                        }
-
-                        carregaTemperatura = true;
-                        carregaPresenca = false;
-                    });
-                }
-
+                loadPresenca();
             }, 3000);
             // **** Fim carga de Presença *****//
 
@@ -229,17 +224,17 @@
                     $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
                 });
             }
-            
+
             loadTemperatura();
 
             var delayTemperatura = 1000 * 60 * 10; // 10 minutos
-            setInterval(function() {           
-                loadTemperatura();                  
-            }, delayTemperatura); 
+            setInterval(function() {
+                loadTemperatura();
+            }, delayTemperatura);
 
             /*
-            * Gráficos Chart
-            */
+             * Gráficos Chart
+             */
             $("#temperaturaModal").on("shown.bs.modal", function() {
 
                 var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
