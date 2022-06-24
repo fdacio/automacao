@@ -82,8 +82,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <div class="chart"></div>
-                        <canvas id="chart"></canvas>
+                        <div class="chartTemp"></div>
+                        <canvas id="chartTemp"></canvas>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="border text-center">
-                        <i class="fa fa-spinner fa-spin mt-4" aria-hidden="true"></i>
+                        <div class="chartHumid"></div>
+                        <canvas id="chartHumid"></canvas>
                     </div>
                 </div>
             </div>
@@ -240,8 +241,8 @@
                 var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
                     "<span class=\"sr-only\">Loading...</span>" +
                     "</div>";
-                $('.chart').html(spinner);
-                $('#chart').hide();
+                $('.chartTemp').html(spinner);
+                $('#chartTemp').hide();
 
                 $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
                     var horas = [];
@@ -268,19 +269,67 @@
                         data: data,
                         options: {}
                     };
-                    var chart = new Chart($('#chart'), config);
-                    $('#chart').show();
-                    $('.chart').html('');
+                    var chartTemp = new Chart($('#chartTemp'), config);
+                    $('#chartTemp').show();
+                    $('.chartTemp').html('');
                 });
 
             });
 
-            $('#temperaturaModal').on('hidden.bs.modal', function (e) {
-                let chartStatus = Chart.getChart("chart"); 
+            $('#temperaturaModal').on('hidden.bs.modal', function(e) {
+                let chartStatus = Chart.getChart("chartTemp");
                 if (chartStatus != undefined) {
                     chartStatus.destroy();
                 }
             });
+
+            $("#humidadesModal").on("shown.bs.modal", function() {
+
+                var spinner = "<div class=\"spinner-border spinner-grow\" role=\"status\">" +
+                    "<span class=\"sr-only\">Loading...</span>" +
+                    "</div>";
+                $('.chartHumid').html(spinner);
+                $('#chartHumid').hide();
+
+                $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
+                    var horas = [];
+                    var humidades = [];
+                    var index = 0;
+                    dados.forEach(dado => {
+                        horas[index] = dado.created_at.substring(11, 16);
+                        humidades[index] = dado.humidade;
+                        index++;
+                    });
+
+                    const data = {
+                        labels: horas,
+                        datasets: [{
+                            label: 'Humidade %',
+                            backgroundColor: 'rgb(255, 132, 99)',
+                            borderColor: 'rgb(255, 132,  99)',
+                            data: humidades,
+                        }]
+                    };
+
+                    const config = {
+                        type: 'line',
+                        data: data,
+                        options: {}
+                    };
+                    var chartHumid = new Chart($('#chartHumid'), config);
+                    $('#chartHumid').show();
+                    $('.chartHumid').html('');
+                });
+
+            });
+
+            $('#humidadeModal').on('hidden.bs.modal', function(e) {
+                let chartStatus = Chart.getChart("chartHumid");
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
+            });
+            
         });
     </script>
 @endsection
