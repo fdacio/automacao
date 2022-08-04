@@ -76,6 +76,11 @@
         <h6><b>{{ $informacoes->total() }}</b> {{ $informacoes->total() == 1 ? 'registro' : 'registros' }} no total
         </h6>
     </section>
+
+    <div class="h-50 mb-5" style="background-color: red"></div>
+    <div class="h-50 mb-5" style="background-color: green"></div>
+    <div class="h-50 mb-5" style="background-color: blue"></div>
+
 @endsection
 
 @section('scripts')
