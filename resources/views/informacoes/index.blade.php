@@ -77,9 +77,9 @@
         </h6>
     </section>
 
-    <div class="h-50 mb-5" style="background-color: red"></div>
-    <div class="h-50 mb-5" style="background-color: green"></div>
-    <div class="h-50 mb-5" style="background-color: blue"></div>
+    <div class="mb-5" style="background-color: red; height: 200px;"></div>
+    <div class="mb-5" style="background-color: green; height: 200px;"></div>
+    <div class="mb-5" style="background-color: blue; height: 200px;"></div>
 
 @endsection
 
