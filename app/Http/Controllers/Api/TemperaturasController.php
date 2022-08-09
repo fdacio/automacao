@@ -93,4 +93,21 @@ class TemperaturasController extends Controller
         $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('id', 'desc')->get();
         return $temperaturas;
     }
+
+    public function temperatura()
+    {
+        $maxId = DB::table('temperaturas')->max('id');
+        $tempLast = Temperatura::find($maxId);
+        $temperatura = floor($tempLast->temperatura);
+        return ['temperatura' => $temperatura];
+    }
+
+    public function humidade()
+    {   
+        $maxId = DB::table('temperaturas')->max('id');
+        $tempLast = Temperatura::find($maxId);
+        $humidade = floor($tempLast->humidade);
+        return ['humidade' => $humidade];
+
+    }
 }
