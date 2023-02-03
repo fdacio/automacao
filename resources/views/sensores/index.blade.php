@@ -150,6 +150,10 @@
                                 'badge-danger');
                             $('.valor-leitura').html("Não há movimento");
                         }
+                    } else {
+                        console.log(dados);
+                        $('.valor-leitura').addClass('badge-success').removeClass('badge-danger');
+                        $('.valor-leitura').html("Error");
                     }
 
                 });
@@ -181,9 +185,8 @@
 
             var updateListDados = function(presencas) {
 
-                var lista = $(
-                    '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
-                );
+                var lista = $('<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">');
+                
                 $.each(presencas, function(key, item) {
                     var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:';
                     var li = $('<li class="list-group-item">');
