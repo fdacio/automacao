@@ -151,7 +151,7 @@
                             $('.valor-leitura').html("Não há movimento");
                         }
                     } else {
-                        console.log(dados);
+                        //console.log(dados);
                         $('.valor-leitura').addClass('badge-danger').removeClass('badge-danger');
                         $('.valor-leitura').html("Error");
                     }
