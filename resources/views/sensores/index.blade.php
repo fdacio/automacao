@@ -152,7 +152,7 @@
                         }
                     } else {
                         console.log(dados);
-                        $('.valor-leitura').addClass('badge-success').removeClass('badge-danger');
+                        $('.valor-leitura').addClass('badge-danger').removeClass('badge-danger');
                         $('.valor-leitura').html("Error");
                     }
 
