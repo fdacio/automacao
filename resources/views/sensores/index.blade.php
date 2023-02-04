@@ -191,7 +191,7 @@
             function setLoadPresenca() {
                 timeLoadPresenca = setInterval(function() {
                     loadPresenca();
-                }, 3000);
+                }, 5000);
             }
 
             function clearLoadPresenca() {
@@ -206,7 +206,6 @@
 
             function clearLoadListPresencas() {
                 clearInterval(timeLoadListaPresensa);
-
             }
 
 
