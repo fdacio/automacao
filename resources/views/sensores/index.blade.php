@@ -189,7 +189,7 @@
 
             setInterval(function() {
                 loadPresenca();
-            }, 300000);
+            }, 3500);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -198,7 +198,7 @@
             $("#presencaModal").on("shown.bs.modal", function() {
                 setInterval(function() {
                     carregaListaPresencas();
-                }, 1500);
+                }, 3000);
             });
 
   
@@ -210,7 +210,9 @@
 
             function loadTemperatura() {
                 $.get("{{ route('api.temperatura.show') }}", function(dados) {
-                    console.log(dados);
+
+                    if (dados.temperatura == undefined) return;
+                    
                     var temperatura = dados.temperatura;
                     var humidade = dados.humidade;
 
