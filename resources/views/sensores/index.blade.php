@@ -197,7 +197,7 @@
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
-            loadPresenca();
+
 
             $("#presencaModal").on("shown.bs.modal", function() {
                 clearInterval(timeLoadPresenca);
@@ -252,13 +252,15 @@
                 });
             }
 
-            loadTemperatura();
+            
             var delayTemperatura = 1000 * 60 * 5; // 5 minutos
             setInterval(function() {
                 loadTemperatura();
             }, delayTemperatura);
 
-            
+           
+            loadTemperatura();
+
 
             /*
              * Gráficos Chart
