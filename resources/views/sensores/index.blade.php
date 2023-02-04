@@ -210,6 +210,7 @@
 
             function loadTemperatura() {
                 $.get("{{ route('api.temperatura.show') }}", function(dados) {
+                    console.log(dados);
                     var temperatura = dados.temperatura;
                     var humidade = dados.humidade;
 
