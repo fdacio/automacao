@@ -219,7 +219,9 @@
             // ***** Carrega temperatura ******//
 
             function loadTemperatura() {
+                
                 clearInterval(timeLoadPresenca);
+
                 $.get("{{ route('api.temperatura.show') }}", function(dados) {
 
                     if (dados.temperatura == undefined) return;
