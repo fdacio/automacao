@@ -140,23 +140,17 @@
             function loadPresenca() {
 
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
+                    console.log(dados);
                     var presenca = dados.presenca;
-                    if (dados.presenca != undefined) {
-                        if (dados.presenca) {
-                            $('.valor-leitura').addClass('badge-danger').removeClass(
-                                'badge-success');
-                            $('.valor-leitura').html("Presença de Movimento");
-                        } else {
-                            $('.valor-leitura').addClass('badge-success').removeClass(
-                                'badge-danger');
-                            $('.valor-leitura').html("Não há movimento");
-                        }
+                    if (presenca) {
+                        $('.valor-leitura').addClass('badge-danger').removeClass(
+                            'badge-success');
+                        $('.valor-leitura').html("Presença de Movimento");
                     } else {
-                        //console.log(dados);
-                        $('.valor-leitura').addClass('badge-danger').removeClass('badge-danger');
-                        $('.valor-leitura').html("Error");
+                        $('.valor-leitura').addClass('badge-success').removeClass(
+                            'badge-danger');
+                        $('.valor-leitura').html("Não há movimento");
                     }
-
                 });
 
             }
@@ -243,6 +237,8 @@
             setInterval(function() {
                 loadTemperatura();
             }, delayTemperatura);
+
+            loadTemperatura();
 
             /*
              * Gráficos Chart
