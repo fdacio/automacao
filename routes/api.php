@@ -33,10 +33,10 @@ Route::namespace('Api')->group(function () {
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');
-    Route::get('/presenca/presenca', 'PresencaController@show')->name('api.presenca.show');
+    Route::get('/presenca', 'PresencaController@show')->name('api.presenca.show');
     Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
     Route::post('/temperatura/post', 'TemperaturasController@post')->name('api.temperatura.post');
-    Route::get('/temperatura/temperatura', 'TemperaturasController@show')->name('api.temperatura.show');
+    Route::get('/temperatura', 'TemperaturasController@show')->name('api.temperatura.show');
     Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperatura.index');
     Route::get('/temperatura', 'TemperaturasController@temperatura')->name('api.temperatura');
     Route::get('/humidade', 'TemperaturasController@humidade')->name('api.humidade');
