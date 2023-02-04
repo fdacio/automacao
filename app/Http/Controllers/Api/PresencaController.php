@@ -24,7 +24,9 @@ class PresencaController extends Controller
 
     public function show()
     {
-        return Presenca::get()->last();
+        $data1 = Carbon::now();
+        $presenca = Presenca::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderBy('id', 'desc')->get()->first();
+        return $presenca;
     }
 
     public function index()
