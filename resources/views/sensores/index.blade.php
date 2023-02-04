@@ -196,10 +196,9 @@
             loadPresenca();
 
             $("#presencaModal").on("shown.bs.modal", function() {
-                alert('Modal');
                 setInterval(function() {
                     carregaListaPresencas();
-                }, 3500);
+                }, 3000);
             });
 
   
