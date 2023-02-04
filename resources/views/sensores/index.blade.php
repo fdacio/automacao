@@ -142,7 +142,7 @@
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
 
                     if (dados.presenca == undefined) return;
-                    
+
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
                             'badge-success');
@@ -219,6 +219,7 @@
             // ***** Carrega temperatura ******//
 
             function loadTemperatura() {
+                clearInterval(timeLoadPresenca);
                 $.get("{{ route('api.temperatura.show') }}", function(dados) {
 
                     if (dados.temperatura == undefined) return;
@@ -242,6 +243,10 @@
                     $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
                     $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
                     $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
+                }).done(function(){
+                    timeLoadPresenca = setInterval(function() {
+                        loadPresenca();
+                    }, 3000);
                 });
             }
 
