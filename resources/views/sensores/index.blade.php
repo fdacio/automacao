@@ -140,9 +140,10 @@
             function loadPresenca() {
 
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
-                    console.log(dados);
-                    var presenca = dados.presenca;
-                    if (presenca) {
+
+                    if (dados.presenca == undefined) return;
+                    
+                    if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
                             'badge-success');
                         $('.valor-leitura').html("Presença de Movimento");
