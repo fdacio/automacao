@@ -187,22 +187,31 @@
                 });
             }
 
-            setInterval(function() {
+            var timeLoadPresenca;
+            var timeLoadListaPresensa;
+
+            timeLoadPresenca = setInterval(function() {
                 loadPresenca();
-            }, 5000);
+            }, 3000);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
             loadPresenca();
 
             $("#presencaModal").on("shown.bs.modal", function() {
-                setInterval(function() {
+                clearInterval(timeLoadPresenca);
+                timeLoadListaPresensa = setInterval(function() {
                     carregaListaPresencas();
                 }, 3000);
             });
 
   
-
+            $("#presencaModal").on("hidden.bs.modal", function() {
+                clearInterval(timeLoadListaPresensa);
+                timeLoadPresenca = setInterval(function() {
+                    loadPresenca();
+                }, 3000);
+            });
 
             // ***** FIM da Tela de Listar Presenças *****//
 
