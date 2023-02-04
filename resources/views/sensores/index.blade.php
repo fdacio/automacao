@@ -131,9 +131,6 @@
             $('.btn-humidade .h-max').html(spinnerSm);
             $('.btn-humidade .h-min').html(spinnerSm);
 
-            var carregaTemperatura = false;
-            var carregaPresenca = true;
-
             /*
              * Sensor de Presença
              */
@@ -191,32 +188,39 @@
             var timeLoadPresenca;
             var timeLoadListaPresensa;
 
-            timeLoadPresenca = setInterval(function() {
-                loadPresenca();
-            }, 3000);
-            // **** Fim carga de Presença *****//
+            function setLoadPresenca() {
+                timeLoadPresenca = setInterval(function() {
+                    loadPresenca();
+                }, 3000);
+            }
 
-            // ***** Tela para carregar presenças ****//
+            function clearLoadPresenca() {
+                clearInterval(timeLoadPresenca);
+            }
+
+            function setLoadListPresencas() {
+                timeLoadListaPresensa =  setInterval(function() {
+                    carregaListaPresencas();
+                }, 3000);
+            }
+
+            function clearLoadListPresencas() {
+                clearInterval(timeLoadListaPresensa);
+
+            }
 
 
             $("#presencaModal").on("shown.bs.modal", function() {
-                clearInterval(timeLoadPresenca);
-                timeLoadListaPresensa = setInterval(function() {
-                    carregaListaPresencas();
-                }, 3000);
+                clearLoadPresenca();
+                setLoadListPresencas();
             });
 
   
             $("#presencaModal").on("hidden.bs.modal", function() {
-                clearInterval(timeLoadListaPresensa);
-                timeLoadPresenca = setInterval(function() {
-                    loadPresenca();
-                }, 3000);
+                clearLoadListPresencas();
+                setLoadPresenca();
             });
 
-            // ***** FIM da Tela de Listar Presenças *****//
-
-            // ***** Carrega temperatura ******//
 
             function loadTemperatura() {
                 
@@ -245,10 +249,9 @@
                     $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
                     $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
                     $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
+
                 }).done(function(){
-                    timeLoadPresenca = setInterval(function() {
-                        loadPresenca();
-                    }, 3000);
+                    setLoadPresenca();
                 });
             }
 
