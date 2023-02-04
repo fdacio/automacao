@@ -195,7 +195,7 @@
 
             setInterval(function() {
                 loadPresenca();
-            }, 2000);
+            }, 2500);
             // **** Fim carga de Presença *****//
 
             // ***** Tela para carregar presenças ****//
@@ -203,7 +203,7 @@
 
             $("#presencaModal").on("shown.bs.modal", function() {
                 setInterval(function() {
-                    carregaPresencas();
+                    carregaListaPresencas();
                 }, 1000);
             });
 
