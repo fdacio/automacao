@@ -138,6 +138,7 @@
              * Sensor de Presença
              */
             function loadPresenca() {
+
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
                     var presenca = dados.presenca;
                     if (dados.presenca != undefined) {
@@ -157,40 +158,15 @@
                     }
 
                 });
+
             }
 
-            loadPresenca();
+            function updateListDados(presencas) {
 
-            setInterval(function() {
-                loadPresenca();
-            }, 3000);
-            // **** Fim carga de Presença *****//
+                var lista = $(
+                    '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
+                    );
 
-            // ***** Tela para carregar presenças ****//
-            var carregaPresencas = function() {
-                $.ajax({
-                    url: " {{ route('api.presenca.index') }} ",
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function(presencas) {
-                        lastItem = presencas[0].id;
-                        updateListDados(presencas);
-                    }
-                });
-            }
-
-            $("#presencaModal").on("shown.bs.modal", function() {
-                carregaPresencas();
-            });
-
-            setInterval(function() {
-                carregaPresencas();
-            }, 3120);
-
-            var updateListDados = function(presencas) {
-
-                var lista = $('<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">');
-                
                 $.each(presencas, function(key, item) {
                     var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:';
                     var li = $('<li class="list-group-item">');
@@ -204,6 +180,36 @@
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
+
+            function carregaListaPresencas () {
+                $.ajax({
+                    url: " {{ route('api.presenca.index') }} ",
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(presencas) {
+                        lastItem = presencas[0].id;
+                        updateListDados(presencas);
+                    }
+                });
+            }
+
+            setInterval(function() {
+                loadPresenca();
+            }, 2000);
+            // **** Fim carga de Presença *****//
+
+            // ***** Tela para carregar presenças ****//
+
+
+            $("#presencaModal").on("shown.bs.modal", function() {
+                setInterval(function() {
+                    carregaPresencas();
+                }, 1000);
+            });
+
+  
+
+
             // ***** FIM da Tela de Listar Presenças *****//
 
             // ***** Carrega temperatura ******//
@@ -232,9 +238,8 @@
                 });
             }
 
-            loadTemperatura();
 
-            var delayTemperatura = 1000 * 60 * 3; // 3 minutos
+            var delayTemperatura = 1000 * 60 * 5; // 5 minutos
             setInterval(function() {
                 loadTemperatura();
             }, delayTemperatura);
