@@ -183,6 +183,10 @@
                 carregaPresencas();
             });
 
+            setInterval(function() {
+                carregaPresencas();
+            }, 3120);
+
             var updateListDados = function(presencas) {
 
                 var lista = $('<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">');
