@@ -20,9 +20,9 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    <IfModule mod_security.c>
-        SecFilterEngine Off
-        SecFilterScanPOST Off
+    <IfModule mod_security.c
+        SecFilterEngine Off
+        SecFilterScanPOST Off
     </IfModule>
 
 </IfModule>
