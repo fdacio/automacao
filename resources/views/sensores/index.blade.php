@@ -168,6 +168,7 @@
                         '<div class="col-md-9 col-sm-9 col-xs-9">' + dataHora.substring(11) + '</div>' +
                         '</div>';
                     li.html(row);
+                    li.on('scrol', function(){alert('scrol')});
                     lista.append(li);
                 });
                 $("#presencaModal .modal-body").html(lista);
@@ -211,7 +212,7 @@
 
             $("#presencaModal").on("shown.bs.modal", function() {
                 clearLoadPresenca();
-                setLoadListPresencas();
+                carregaListaPresencas();
             });
 
   
