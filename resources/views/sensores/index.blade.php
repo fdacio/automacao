@@ -168,8 +168,8 @@
                         '<div class="col-md-9 col-sm-9 col-xs-9">' + dataHora.substring(11) + '</div>' +
                         '</div>';
                     li.html(row);
-                    li.on('scrol', function(){alert('scrol')});
                     lista.append(li);
+                    lista.on('scroll', function(){alert('scrol')});
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
