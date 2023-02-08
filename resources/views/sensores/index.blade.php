@@ -72,7 +72,7 @@
     </div>
     <!-- Temperatura Modal -->
     <div class="modal fade" id="temperaturaModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Temperatura</h5>
@@ -169,7 +169,7 @@
                         '</div>';
                     li.html(row);
                     lista.append(li);
-                    lista.on('scroll', function(){alert('scrol')});
+                    //lista.on('scroll', function(){alert('scrol')});
                 });
                 $("#presencaModal .modal-body").html(lista);
             }
