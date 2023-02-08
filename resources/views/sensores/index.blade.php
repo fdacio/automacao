@@ -70,6 +70,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Temperatura Modal -->
     <div class="modal fade" id="temperaturaModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
