@@ -27,6 +27,16 @@ IfModule mod_rewrite.c>
 
 </IfModule>
 
+<<<<<<< HEAD
+=======
+# php -- BEGIN cPanel-generated handler, do not edit
+# Defina o pacote “ea-php74” como a linguagem padrão de programação “PHP”.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+>>>>>>> 8d97e15f671e3761b15162e4fe137aa609cf0d21
 # BEGIN cPanel-generated php ini directives, do not edit
 # Manual editing of this file may result in unexpected behavior.
 # To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
@@ -36,7 +46,11 @@ IfModule mod_rewrite.c>
    php_value max_execution_time 120
    php_value max_input_time 60
    php_value max_input_vars 1000
+<<<<<<< HEAD
    php_value memory_limit 512M
+=======
+   php_value memory_limit 1024M
+>>>>>>> 8d97e15f671e3761b15162e4fe137aa609cf0d21
    php_value post_max_size 516M
    php_value session.gc_maxlifetime 1440
    php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
@@ -48,7 +62,11 @@ IfModule mod_rewrite.c>
    php_value max_execution_time 120
    php_value max_input_time 60
    php_value max_input_vars 1000
+<<<<<<< HEAD
    php_value memory_limit 512M
+=======
+   php_value memory_limit 1024M
+>>>>>>> 8d97e15f671e3761b15162e4fe137aa609cf0d21
    php_value post_max_size 516M
    php_value session.gc_maxlifetime 1440
    php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
@@ -56,6 +74,7 @@ IfModule mod_rewrite.c>
    php_flag zlib.output_compression Off
 </IfModule>
 # END cPanel-generated php ini directives, do not edit
+<<<<<<< HEAD
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # Defina o pacote “ea-php74” como a linguagem padrão de programação “PHP”.
@@ -63,3 +82,5 @@ IfModule mod_rewrite.c>
   AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
 </IfModule>
 # php -- END cPanel-generated handler, do not edit
+=======
+>>>>>>> 8d97e15f671e3761b15162e4fe137aa609cf0d21
