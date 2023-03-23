@@ -202,9 +202,12 @@
             }
 
             function setLoadListPresencas() {
+                carregaListaPresencas();
+                /*
                 timeLoadListaPresensa = setInterval(function() {
                     carregaListaPresencas();
                 }, 3000);
+                */
             }
 
             function clearLoadListPresencas() {
