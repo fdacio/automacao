@@ -189,12 +189,12 @@
             var timeLoadListaPresensa;
 
             function setLoadPresenca() {
-                /*
+                
                 timeLoadPresenca = setInterval(function() {
                     loadPresenca();
                 }, 5000);
-                */
-                loadPresenca();
+                
+                //loadPresenca();
             }
 
             function clearLoadPresenca() {
