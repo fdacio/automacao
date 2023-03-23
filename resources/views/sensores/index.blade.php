@@ -157,7 +157,7 @@
 
                 var lista = $(
                     '<ul class="list-group list-group-flush text-monospace" style="max-height:250px; overflow:auto">'
-                    );
+                );
 
                 $.each(presencas, function(key, item) {
                     var acao = (item.presenca == 1) ? 'Entrou:' : 'Saiu:';
@@ -173,7 +173,7 @@
                 $("#presencaModal .modal-body").html(lista);
             }
 
-            function carregaListaPresencas () {
+            function carregaListaPresencas() {
                 $.ajax({
                     url: " {{ route('api.presenca.index') }} ",
                     dataType: 'json',
@@ -189,9 +189,12 @@
             var timeLoadListaPresensa;
 
             function setLoadPresenca() {
+                /*
                 timeLoadPresenca = setInterval(function() {
                     loadPresenca();
                 }, 5000);
+                */
+                loadPresenca();
             }
 
             function clearLoadPresenca() {
@@ -199,7 +202,7 @@
             }
 
             function setLoadListPresencas() {
-                timeLoadListaPresensa =  setInterval(function() {
+                timeLoadListaPresensa = setInterval(function() {
                     carregaListaPresencas();
                 }, 3000);
             }
@@ -214,7 +217,7 @@
                 setLoadListPresencas();
             });
 
-  
+
             $("#presencaModal").on("hidden.bs.modal", function() {
                 clearLoadListPresencas();
                 setLoadPresenca();
@@ -222,7 +225,7 @@
 
 
             function loadTemperatura() {
-                
+
                 clearInterval(timeLoadPresenca);
 
                 $.get("{{ route('api.temperatura.show') }}", function(dados) {
@@ -248,22 +251,22 @@
                     $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
                     $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
                     $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
-                    
+
                     console.log("carregou temperaturas");
 
-                }).done(function(){
+                }).done(function() {
                     console.log("iniciou escutador de presenca");
                     setLoadPresenca();
                 });
             }
 
-            
+
             var delayTemperatura = 1000 * 60 * 5; // 5 minutos
             setInterval(function() {
                 loadTemperatura();
             }, delayTemperatura);
 
-           
+
             loadTemperatura();
 
 
