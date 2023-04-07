@@ -284,7 +284,7 @@
                 $('.chartTemp').html(spinner);
                 $('#chartTemp').hide();
 
-                $.get("{{ route('api.temperatura.index') }}").done(function(dados) {
+                $.get("{{ route('api.temperatura.chart') }}").done(function(dados) {
                     var horas = [];
                     var temperaturas = [];
                     var index = 0;
