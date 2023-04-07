@@ -110,4 +110,11 @@ class TemperaturasController extends Controller
         return ['humidade' => $humidade];
 
     }
+
+    public function chart()
+    {
+        $data1 = Carbon::now();
+        $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('id', 'asc')->get();
+        return $temperaturas;
+    }
 }
