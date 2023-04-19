@@ -140,6 +140,6 @@ body {
 
 @media(max-width: 600px) {
   .modal-lg { 
-    width: 500px
+    width: auto;
   };
 }
