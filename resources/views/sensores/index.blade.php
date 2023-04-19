@@ -72,7 +72,7 @@
     </div>
     <!-- Temperatura Modal -->
     <div class="modal fade" id="temperaturaModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Temperatura</h5>
@@ -92,7 +92,7 @@
 
     <!-- Humidade Modal -->
     <div class="modal fade" id="humidadeModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Humidade</h5>
@@ -288,7 +288,7 @@
                     var horas = [];
                     var temperaturas = [];
                     var index = 0;
-                    console.log(dados);
+
                     dados.forEach(dado => {
                         horas[index] = dado.created_at.substring(11, 16);
                         temperaturas[index] = dado.temperatura;
@@ -310,9 +310,11 @@
                         data: data,
                         options: {}
                     };
+
                     var chartTemp = new Chart($('#chartTemp'), config);
                     $('#chartTemp').show();
                     $('.chartTemp').html('');
+
                 });
 
             });
