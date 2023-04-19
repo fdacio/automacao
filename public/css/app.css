@@ -137,3 +137,9 @@ body {
 .btn-power-green i {
   color: green;
 }
+
+@media (min-width: 600px) {
+  .modal-lg { 
+    width: 500px
+  };
+}
