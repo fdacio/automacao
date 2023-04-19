@@ -138,7 +138,7 @@ body {
   color: green;
 }
 
-@media (width: 600px) {
+@media(max-width: 600px) {
   .modal-lg { 
     width: 500px
   };
