@@ -138,6 +138,8 @@
 
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
 
+                    console.log(dados);
+                    
                     if (dados.presenca == undefined) return;
 
                     if (dados.presenca) {
