@@ -138,8 +138,10 @@
 
                 $.get("{{ route('api.presenca.show') }}", function(dados) {
 
-                    console.log(dados);
-                    
+                    if (dados == '') {
+                        $('.valor-leitura').html("Sem Informação");
+                    }
+
                     if (dados.presenca == undefined) return;
 
                     if (dados.presenca) {
