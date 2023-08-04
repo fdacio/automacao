@@ -141,7 +141,7 @@
                     console.log(dados);
                     console.log(status);
                     console.log(jqXHR);
-                    
+
                     if (dados == '') {
                         $('.valor-leitura').html("Sem Informação");
                     }
@@ -200,7 +200,7 @@
                 
                 timeLoadPresenca = setInterval(function() {
                     loadPresenca();
-                }, 5000);
+                }, 2000);
                 
                 //loadPresenca();
             }
