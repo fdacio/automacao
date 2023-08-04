@@ -29,7 +29,7 @@ class PresencaController extends Controller
             $data1 = Carbon::now();
             $presenca = Presenca::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderBy('id', 'desc')->get()->first();
             //dd($presenca);
-            return $presenca;
+            //return $presenca;
             return response("Error", 403);
         } catch(Exception $e) {
             return response($e->getMessage(), 403);
