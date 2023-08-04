@@ -136,15 +136,17 @@
              */
             function loadPresenca() {
 
-                $.get("{{ route('api.presenca.show') }}", function(dados, status, jqXHR) {
+                $.get("{{ route('api.presenca.show') }}", dados, function(dados, status, jqXHR) {
                     
                     $('.valor-leitura').html("Sem Informação");
 
                     console.log(jqXHR.status);
+                    
+                    console.log(dados);
 
                     if (jqXHR.status != 200) return;
 
-                    console.log(dados);
+                    
 
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
