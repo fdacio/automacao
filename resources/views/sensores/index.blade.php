@@ -136,8 +136,12 @@
              */
             function loadPresenca() {
 
-                $.get("{{ route('api.presenca.show') }}", function(dados) {
-
+                $.get("{{ route('api.presenca.show') }}", function(dados, status, jqXHR) {
+                    
+                    console.log(dados);
+                    console.log(status);
+                    console.log(jqXHR);
+                    
                     if (dados == '') {
                         $('.valor-leitura').html("Sem Informação");
                     }
