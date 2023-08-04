@@ -136,18 +136,7 @@
              */
             function loadPresenca() {
 
-                $.get("{{ route('api.presenca.show') }}", function(dados, status, jqXHR) {
-                    
-                    $('.valor-leitura').html("Sem Informação");
-
-                    console.log(jqXHR.status);
-                    
-                    console.log(dados);
-
-                    if (jqXHR.status != 200) return;
-
-                    
-
+                $.get("{{ route('api.presenca.show') }}", function(dados) {         
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
                             'badge-success');
@@ -157,6 +146,9 @@
                             'badge-danger');
                         $('.valor-leitura').html("Não há movimento");
                     }
+                 }).fail(function(jqXHR) {
+                        console.log(jqXHR);
+                        $('.valor-leitura').html("Sem Informação");
                 });
 
             }
