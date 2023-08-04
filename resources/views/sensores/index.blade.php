@@ -260,6 +260,13 @@
                 }).done(function() {
                     console.log("iniciou escutador de presenca");
                     setLoadPresenca();
+                }).fail(function(jqXHR) {
+                    $('.btn-temperatura .valor-temperatura').html(0 + "°C");
+                    $('.btn-humidade .valor-humidade').html(0 + "%");
+                    $('.btn-temperatura .t-max').html("Max: " + 0 + " °C - " + 0);
+                    $('.btn-temperatura .t-min').html("Min: " + 0 + " °C - " + 0);
+                    $('.btn-humidade .h-max').html("Max: " + 0 + "% - " + 0);
+                    $('.btn-humidade .h-min').html("Min: " + 0 + "% - " + 0);
                 });
             }
 
