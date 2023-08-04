@@ -140,7 +140,11 @@
                     
                     $('.valor-leitura').html("Sem Informação");
 
+                    console.log(jqXHR.status);
+
                     if (jqXHR.status != 200) return;
+
+                    console.log(dados);
 
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
