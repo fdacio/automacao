@@ -136,7 +136,8 @@
              */
             function loadPresenca() {
 
-                $.get("{{ route('api.presenca.show') }}", function(dados) {         
+                $.get("{{ route('api.presenca.show') }}", function(dados, status, jqXHR) {
+                    console.log(jqXHR);         
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
                             'badge-success');
