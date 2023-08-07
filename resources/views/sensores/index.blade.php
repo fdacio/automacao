@@ -192,7 +192,7 @@
                 
                 timeLoadPresenca = setInterval(function() {
                     loadPresenca();
-                }, 2000);
+                }, 5000);
                 
                 //loadPresenca();
             }
