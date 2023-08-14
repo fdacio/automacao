@@ -13,16 +13,16 @@ class InformacoesController extends Controller
     public static $index = 1;
 
     private $timeZones = [
-        1 => ['city' => 'Fortaleza', 'timezone' => 'America/Fortaleza'],
-        2 => ['city' => 'New York', 'timezone' => 'America/New_York'],
-        3 => ['city' => 'Paris', 'timezone' => 'Europe/Paris'],
-        4 => ['city' => 'Londres', 'timezone' => 'Europe/London'],
-        5 => ['city' => 'Toquio', 'timezone' => 'Asia/Tokyo'],
-        6 => ['city' => 'Cairo', 'timezone' => 'Africa/Cairo'],
-        7 => ['city' => 'Jerusalem', 'timezone' => 'Asia/Jerusalem'],
-        8 => ['city' => 'Parnaiba', 'timezone' => 'America/Fortaleza'],
-        9 => ['city' => 'Toronto', 'timezone' => 'America/Toronto'],
-       10 => ['city' => 'B.Aires', 'timezone' => 'America/Argentina/Buenos_Aires']     
+        1 => ['city' => 'Fortaleza - CE', 'timezone' => 'America/Fortaleza'],
+        2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
+        3 => ['city' => 'Paris - FRA', 'timezone' => 'Europe/Paris'],
+        4 => ['city' => 'Londres - ENG', 'timezone' => 'Europe/London'],
+        5 => ['city' => 'Toquio - JAP', 'timezone' => 'Asia/Tokyo'],
+        6 => ['city' => 'Cairo - EGT', 'timezone' => 'Africa/Cairo'],
+        7 => ['city' => 'Jerusalem - ISL', 'timezone' => 'Asia/Jerusalem'],        
+        8 => ['city' => 'Toronto - CND', 'timezone' => 'America/Toronto'],
+        9 => ['city' => 'B.Aires - ARG', 'timezone' => 'America/Argentina/Buenos_Aires'],
+       10 => ['city' => 'Parnaiba - PI', 'timezone' => 'America/Fortaleza']
     ];
     /**
      * Display a listing of the resource.
@@ -73,7 +73,7 @@ class InformacoesController extends Controller
     {
         $date = \Carbon\Carbon::now('America/Fortaleza')->format('d/m/Y');
         $time = \Carbon\Carbon::now('America/Fortaleza')->format('H:i:s'); 
-        $city = 'Fortaleza';
+        $city = 'Fortaleza - CE';
         return  ['local' => $city, 'date' => $date, 'time' => $time];
     }
 }
