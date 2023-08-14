@@ -17,12 +17,12 @@ class InformacoesController extends Controller
         2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
         3 => ['city' => 'Paris - FRA', 'timezone' => 'Europe/Paris'],
         4 => ['city' => 'Londres - ENG', 'timezone' => 'Europe/London'],
-        5 => ['city' => 'Tóquio - JAP', 'timezone' => 'Asia/Tokyo'],
+        5 => ['city' => 'Toquio - JAP', 'timezone' => 'Asia/Tokyo'],
         6 => ['city' => 'Cairo - EGT', 'timezone' => 'Africa/Cairo'],
         7 => ['city' => 'Jerusalem - ISL', 'timezone' => 'Asia/Jerusalem'],        
         8 => ['city' => 'Toronto - CND', 'timezone' => 'America/Toronto'],
         9 => ['city' => 'Buenos Aires - ARG', 'timezone' => 'America/Argentina/Buenos_Aires'],
-       10 => ['city' => 'Parnaíba - PI', 'timezone' => 'America/Fortaleza']
+       10 => ['city' => 'Parnaiba - PI', 'timezone' => 'America/Fortaleza']
     ];
     /**
      * Display a listing of the resource.
