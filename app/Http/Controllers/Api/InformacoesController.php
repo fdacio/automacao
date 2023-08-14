@@ -21,7 +21,7 @@ class InformacoesController extends Controller
         6 => ['city' => 'Cairo - EGT', 'timezone' => 'Africa/Cairo'],
         7 => ['city' => 'Jerusalem - ISL', 'timezone' => 'Asia/Jerusalem'],        
         8 => ['city' => 'Toronto - CND', 'timezone' => 'America/Toronto'],
-        9 => ['city' => 'Pequim - CHN', 'timezone' => 'America/Argentina/Pequin'],
+        9 => ['city' => 'Shanghai - CHN', 'timezone' => 'Asia/Shanghai'],
        10 => ['city' => 'Parnaiba - PI', 'timezone' => 'America/Fortaleza']
     ];
     /**
