@@ -84,6 +84,7 @@
                     <div class="border text-center">
                         <div class="chartTemp"></div>
                         <canvas id="chartTemp"></canvas>
+                        <canvas id="chartTemp2"></canvas>
                     </div>
                 </div>
             </div>
@@ -285,6 +286,7 @@
                     "</div>";
                 $('.chartTemp').html(spinner);
                 $('#chartTemp').hide();
+                $('#chartTemp2').hide();
 
                 $.get("{{ route('api.temperatura.chart2') }}").done(function(dados) {
                     console.log(dados);
@@ -327,14 +329,22 @@
                         }]
                     };
 
-                    const config = {
+                    const config1 = {
                         type: 'line',
                         data: dataChartHoje,
                         options: {}
                     };
 
-                    var chartTemp = new Chart($('#chartTemp'), config);
+                    const config2 = {
+                        type: 'line',
+                        data: dataChartOntem,
+                        options: {}
+                    };
+
+                    var chartTemp = new Chart($('#chartTemp'), config1);
+                    var chartTemp2 = new Chart($('#chartTemp2'), config2);
                     $('#chartTemp').show();
+                    $('#chartTemp2').show();
                     $('.chartTemp').html('');
 
                 });
