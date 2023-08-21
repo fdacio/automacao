@@ -299,7 +299,7 @@
                         temperaturas1[index] = dado.temperatura;
                         index++;
                     });
-                    
+
                     index = 0;
                     dados.ontem.forEach(dado => {
                         horas2[index] = dado.created_at.substring(11, 16);
@@ -311,8 +311,8 @@
                         labels: [horas1, horas2],
                         datasets: [{
                             label: 'Temperatura em °C',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99, 132)',
+                            backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 109, 152)'],
+                            borderColor: ['rgb(255, 99, 132)', 'rgb(255, 109, 142)'],
                             data: [temperaturas1, temperaturas2]
                         }]
                     };
