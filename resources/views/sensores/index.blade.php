@@ -137,7 +137,6 @@
             function loadPresenca() {
 
                 $.get("{{ route('api.presenca.show') }}", function(dados, status, jqXHR) {
-                    console.log(jqXHR);         
                     if (dados.presenca) {
                         $('.valor-leitura').addClass('badge-danger').removeClass(
                             'badge-success');
@@ -148,7 +147,6 @@
                         $('.valor-leitura').html("Não há movimento");
                     }
                  }).fail(function(jqXHR) {
-                        console.log(jqXHR);
                         $('.valor-leitura').html("Sem Informação");
                 });
 
@@ -255,11 +253,7 @@
                     $('.btn-temperatura .t-min').html("Min: " + t_min + " °C - " + t_hr_min);
                     $('.btn-humidade .h-max').html("Max: " + h_max + "% - " + h_hr_max);
                     $('.btn-humidade .h-min').html("Min: " + h_min + "% - " + h_hr_min);
-
-                    console.log("carregou temperaturas");
-
                 }).done(function() {
-                    console.log("iniciou escutador de presenca");
                     setLoadPresenca();
                 }).fail(function(jqXHR) {
                     $('.btn-temperatura .valor-temperatura').html(0 + "°C");
