@@ -307,19 +307,29 @@
                         index++;
                     });
 
-                    const dataChart = {
-                        labels: [horas1, horas2],
+                    const dataChartHoje = {
+                        labels: horas1,
                         datasets: [{
-                            label: 'Temperatura em °C',
-                            backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 109, 152)'],
-                            borderColor: ['rgb(255, 99, 132)', 'rgb(255, 109, 142)'],
-                            data: [temperaturas1, temperaturas2]
+                            label: 'Temperatura em °C - Hoje',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data:temperaturas1
+                        }]
+                    };
+
+                    const dataChartOntem = {
+                        labels: horas2,
+                        datasets: [{
+                            label: 'Temperatura em °C - Ontem',
+                            backgroundColor: 'rgb(255, 109, 142)',
+                            borderColor: 'rgb(255, 109, 142)',
+                            data:temperaturas2
                         }]
                     };
 
                     const config = {
                         type: 'line',
-                        data: dataChart,
+                        data: [dataChartHoje, dataChartOntem],
                         options: {}
                     };
 
