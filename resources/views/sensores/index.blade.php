@@ -329,7 +329,7 @@
 
                     const config = {
                         type: 'line',
-                        data: {datasets:[data:[dataChartHoje, dataChartOntem]}]},
+                        data: dataChartHoje,
                         options: {}
                     };
 
