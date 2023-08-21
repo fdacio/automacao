@@ -323,8 +323,8 @@
                         labels: horas2,
                         datasets: [{
                             label: 'Temperatura em °C - Ontem',
-                            backgroundColor: 'rgb(255, 109, 142)',
-                            borderColor: 'rgb(255, 109, 142)',
+                            backgroundColor: 'rgb(255, 20, 30)',
+                            borderColor: 'rgb(255, 20, 30)',
                             data:temperaturas2
                         }]
                     };
