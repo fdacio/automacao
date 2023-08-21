@@ -293,7 +293,7 @@
                     var index = 0;
 
                     dados.hoje.forEach(dado => {
-                        console.lock(dado);
+                        console.log(dado);
                         horas[index] = dado.created_at.substring(11, 16);
                         temperaturas[index] = dado.temperatura;
                         index++;
