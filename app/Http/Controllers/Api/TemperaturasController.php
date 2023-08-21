@@ -121,4 +121,14 @@ class TemperaturasController extends Controller
         $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('id', 'asc')->get();
         return $temperaturas;
     }
+
+    public function chart2()
+    {
+        $hoje = Carbon::now();
+        $ontem = $hoje->addDays(-1);
+        $temperaturasHoje = Temperatura::whereBetween('created_at', [$hoje->format('Y-m-d'), $hoje->addDays(1)->format('Y-m-d')])->orderby('id', 'asc')->get();
+        $temperaturasOntem = Temperatura::whereBetween('created_at', [$ontem->format('Y-m-d'), $ontem->addDays(1)->format('Y-m-d')])->orderby('id', 'asc')->get();
+        return ['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem];
+    }
+
 }

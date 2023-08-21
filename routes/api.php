@@ -42,6 +42,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperatura.index');
     
     Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperatura.chart');
+    Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperatura.chart2');
     
     Route::get('/temperatura/get', 'TemperaturasController@temperatura')->name('api.temperatura');
     Route::get('/humidade/get', 'TemperaturasController@humidade')->name('api.humidade');
