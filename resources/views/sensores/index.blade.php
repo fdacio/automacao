@@ -288,30 +288,38 @@
 
                 $.get("{{ route('api.temperatura.chart2') }}").done(function(dados) {
                     console.log(dados);
-                    var horas = [];
-                    var temperaturas = [];
+                    var horas1 = [];
+                    var horas2 = [];
+                    var temperaturas1 = [];
+                    var temperaturas2 = [];
                     var index = 0;
 
                     dados.hoje.forEach(dado => {
-                        console.log(dado);
-                        horas[index] = dado.created_at.substring(11, 16);
-                        temperaturas[index] = dado.temperatura;
+                        horas1[index] = dado.created_at.substring(11, 16);
+                        temperaturas1[index] = dado.temperatura;
+                        index++;
+                    });
+                    
+                    index = 0;
+                    dados.ontem.forEach(dado => {
+                        horas2[index] = dado.created_at.substring(11, 16);
+                        temperaturas2[index] = dado.temperatura;
                         index++;
                     });
 
-                    const data = {
-                        labels: horas,
+                    const dataChart = {
+                        labels: [horas1, horas2],
                         datasets: [{
                             label: 'Temperatura em °C',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data: temperaturas,
+                            data: [temperaturas1, temperaturas2]
                         }]
                     };
 
                     const config = {
                         type: 'line',
-                        data: data,
+                        data: dataChart,
                         options: {}
                     };
 
