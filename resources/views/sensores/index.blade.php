@@ -293,6 +293,7 @@
                 $('#chartTemp').hide();
 
                 $.get("{{ route('api.temperatura.chart2') }}").done(function(dados) {
+                    console.log(dados);
                     var horas = [];
                     var temperaturas = [];
                     var index = 0;
