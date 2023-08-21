@@ -292,12 +292,13 @@
                 $('.chartTemp').html(spinner);
                 $('#chartTemp').hide();
 
-                $.get("{{ route('api.temperatura.chart') }}").done(function(dados) {
+                $.get("{{ route('api.temperatura.chart2') }}").done(function(dados) {
                     var horas = [];
                     var temperaturas = [];
                     var index = 0;
 
                     dados.forEach(dado => {
+                        console.lock(dado);
                         horas[index] = dado.created_at.substring(11, 16);
                         temperaturas[index] = dado.temperatura;
                         index++;
