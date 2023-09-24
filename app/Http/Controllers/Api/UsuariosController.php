@@ -4,6 +4,7 @@ namespace Automacao\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
+use Automacao\Models\Temperatura;
 use Automacao\Models\Usuario;
 use Exception;
 
@@ -11,6 +12,11 @@ class UsuariosController extends Controller
 {
     public function create(Request $request)
     {
+        $temperaturas = Temperatura::all();
+        foreach ($temperaturas as $temperatura) {
+            echo $temperatura;
+        }
+
         $dados = [
             'nome' => $request->get('nome'),
             'email' => $request->get('email'),
