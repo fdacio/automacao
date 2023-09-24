@@ -20,7 +20,7 @@ class UsuariosController extends Controller
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
         } catch (Exception $e) {
-            return response()->json($e->getMessage(), 401);
+            return response()->json($e->getMessage(), 403);
         }
     }
 }
