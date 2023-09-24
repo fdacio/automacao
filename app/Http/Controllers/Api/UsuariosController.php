@@ -4,7 +4,7 @@ namespace Automacao\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
-use Automacao\Usuario;
+use Automacao\Models\Usuario;
 use Exception;
 
 class UsuariosController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace Automacao;
+namespace Automacao\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
