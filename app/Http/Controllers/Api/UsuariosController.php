@@ -12,7 +12,7 @@ class UsuariosController extends Controller
     public function create(Request $request)
     {
         $dados = [
-            'nom' => $request->get('nome'),
+            'nome' => $request->get('nome'),
             'email' => $request->get('email'),
             'telefone' => $request->get('telefone'),
         ];
