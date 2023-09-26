@@ -12,17 +12,12 @@ class UsuariosController extends Controller
 {
     public function create(Request $request)
     {
-        $temperaturas = Temperatura::all();
-        foreach ($temperaturas as $temperatura) {
-            echo $temperatura;
-        }
-
         $dados = [
             'nome' => $request->get('nome'),
             'email' => $request->get('email'),
             'telefone' => $request->get('telefone'),
         ];
-        
+
         try {
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
