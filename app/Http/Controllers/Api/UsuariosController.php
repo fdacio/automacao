@@ -28,15 +28,7 @@ class UsuariosController extends Controller
         );
 
         if ($validator->fails()) {
-            return new HttpResponseException(response()->json([
-
-                'success'   => false,
-    
-                'message'   => 'Validation errors',
-    
-                'data'      => $validator->errors()
-    
-            ]));
+            return response()->json(['error' => $validator->errors()], 401);
         }
 
         $dados = [
