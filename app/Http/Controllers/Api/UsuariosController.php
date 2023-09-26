@@ -22,6 +22,7 @@ class UsuariosController extends Controller
             'email' => $request->get('email'),
             'telefone' => $request->get('telefone'),
         ];
+        
         try {
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
