@@ -7,11 +7,39 @@ use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Temperatura;
 use Automacao\Models\Usuario;
 use Exception;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller
 {
     public function create(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nome' => 'required|max:60',
+                'email' => 'required|max:255',
+                'telefone' => 'required',
+            ],
+            [
+                'nome.required' => 'Informe o Nome',
+                'email.required' => 'Informe o Email',
+                'telefone.required' => 'Informe o Telefone'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return new HttpResponseException(response()->json([
+
+                'success'   => false,
+    
+                'message'   => 'Validation errors',
+    
+                'data'      => $validator->errors()
+    
+            ]));
+        }
+
         $dados = [
             'nome' => $request->get('nome'),
             'email' => $request->get('email'),
@@ -21,8 +49,8 @@ class UsuariosController extends Controller
         try {
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
-        } catch (Exception $e) {
-            return response()->json($e->getMessage(), 403);
+        } catch (HttpResponseException $e) {
+            return response()->json($e->getMessage(), 404);
         }
     }
 }
