@@ -4,7 +4,6 @@ namespace Automacao\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
-use Automacao\Models\Temperatura;
 use Automacao\Models\Usuario;
 use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -49,7 +48,7 @@ class UsuariosController extends Controller
         try {
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
-        } catch (HttpResponseException $e) {
+        } catch (Exception $e) {
             return response()->json($e->getMessage(), 404);
         }
     }
