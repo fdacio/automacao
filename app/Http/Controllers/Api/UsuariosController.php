@@ -28,7 +28,7 @@ class UsuariosController extends Controller
         );
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['errors' => $validator->errors()], 401);
         }
 
         $dados = [
@@ -41,7 +41,7 @@ class UsuariosController extends Controller
             $usuario = Usuario::create($dados);
             return response()->json($usuario, 201);
         } catch (Exception $e) {
-            return response()->json($e->getMessage(), 404);
+            return response()->json($e->getMessage(), 401);
         }
     }
 }
