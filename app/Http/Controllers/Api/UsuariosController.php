@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Usuario;
 use Exception;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller
@@ -17,12 +16,13 @@ class UsuariosController extends Controller
             $request->all(),
             [
                 'nome' => 'required|max:60',
-                'email' => 'required|max:255',
+                'email' => 'required|max:255|email',
                 'telefone' => 'required',
             ],
             [
                 'nome.required' => 'Informe o Nome',
                 'email.required' => 'Informe o Email',
+                'email.email' => 'Email Inválido',
                 'telefone.required' => 'Informe o Telefone'
             ]
         );
