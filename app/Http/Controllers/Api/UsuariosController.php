@@ -16,13 +16,14 @@ class UsuariosController extends Controller
             $request->all(),
             [
                 'nome' => 'required|max:60',
-                'email' => 'required|max:255|email',
+                'email' => 'required|max:255|email|unique:usuarios,email',
                 'telefone' => 'required',
             ],
             [
                 'nome.required' => 'Informe o Nome',
                 'email.required' => 'Informe o Email',
                 'email.email' => 'Email Inválido',
+                'email.unique' => 'Email já cadastrado',
                 'telefone.required' => 'Informe o Telefone'
             ]
         );
