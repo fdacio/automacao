@@ -48,6 +48,6 @@ Route::namespace('Api')->group(function () {
     Route::get('/humidade/get', 'TemperaturasController@humidade')->name('api.humidade');
 
     Route::post('/usuarios/create', 'UsuariosController@create')->name('api.usuarios.create');
-    Route::post('/usuarios/index', 'UsuariosController@index')->name('api.usuarios.index');
+    Route::post('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
 
 });
