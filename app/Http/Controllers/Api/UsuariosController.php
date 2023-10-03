@@ -7,6 +7,7 @@ use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\UseUse;
 
 class UsuariosController extends Controller
 {
@@ -54,5 +55,11 @@ class UsuariosController extends Controller
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 401);
         }
+    }
+
+    public function destroy(Usuario $usuario)
+    {
+        $usuario->delete();
+        return response()->json(204);
     }
 }
