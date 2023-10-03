@@ -50,7 +50,7 @@ class UsuariosController extends Controller
     public function index(Request $request)
     {
         try {
-            $usuarios = Usuario::all();
+            $usuarios = Usuario::orderBy('nome')->get();
             return response()->json($usuarios, 200);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 401);
