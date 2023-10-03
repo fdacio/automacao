@@ -51,6 +51,11 @@ class UsuariosController extends Controller
     {
         try {
             $usuarios = Usuario::orderBy('nome', 'asc')->get();
+            $dados = [];
+            foreach($usuarios as $usuario) {
+                $dados[] = $usuario->nome;
+            }
+            dd($dados);
             return response()->json($usuarios, 200);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 401);
