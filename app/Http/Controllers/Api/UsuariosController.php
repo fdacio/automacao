@@ -45,4 +45,14 @@ class UsuariosController extends Controller
             return response()->json($e->getMessage(), 401);
         }
     }
+
+    public function index(Request $request)
+    {
+        try {
+            $usuarios = Usuario::all();
+            return response()->json($usuarios, 200);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 401);
+        }
+    }
 }
