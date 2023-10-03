@@ -49,6 +49,6 @@ Route::namespace('Api')->group(function () {
 
     Route::post('/usuarios/create', 'UsuariosController@create')->name('api.usuarios.create');
     Route::get('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
-    Route::delete('/usuarios/{usuario}/destroy', 'UsuariosController@index')->name('api.usuarios.destroy');
+    Route::delete('/usuarios/{usuario}/destroy', 'UsuariosController@destroy')->name('api.usuarios.destroy');
 
 });
