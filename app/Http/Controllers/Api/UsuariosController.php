@@ -7,7 +7,6 @@ use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\Validator;
-use PhpParser\Node\Stmt\UseUse;
 
 class UsuariosController extends Controller
 {
