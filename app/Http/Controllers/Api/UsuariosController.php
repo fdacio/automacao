@@ -52,6 +52,43 @@ class UsuariosController extends Controller
         }
     }
 
+    public function update(Request $request, Usuario $usuario)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nome' => 'required|max:60',
+                'email' => 'required|max:255|email|unique:usuarios,email',
+                'telefone' => 'required',
+            ],
+            [
+                'nome.required' => 'Informe o Nome',
+                'email.required' => 'Informe o Email',
+                'email.email' => 'Email Inválido',
+                'email.unique' => 'Email já cadastrado',
+                'telefone.required' => 'Informe o Telefone'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
+
+        $dados = [
+            'nome' => $request->get('nome'),
+            'email' => $request->get('email'),
+            'telefone' => $request->get('telefone'),
+        ];
+
+        try {
+            $usuario->update($dados);
+            return response()->json($usuario, 204);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 401);
+        }
+    }
+
+
     public function index(Request $request)
     {
         try {
