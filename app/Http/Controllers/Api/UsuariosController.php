@@ -58,7 +58,7 @@ class UsuariosController extends Controller
             $request->all(),
             [
                 'nome' => 'required|max:60',
-                'email' => 'required|max:255|email|unique:usuarios,email',
+                'email' => "required|max:255|email|unique:usuarios,email,{$usuario->id}",
                 'telefone' => 'required',
             ],
             [
