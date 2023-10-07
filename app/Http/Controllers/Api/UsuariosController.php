@@ -11,6 +11,11 @@ use PhpParser\Node\Stmt\UseUse;
 
 class UsuariosController extends Controller
 {
+    public function find(Usuario $usuario)
+    {
+        return response()->json($usuario, 200);
+    }
+    
     public function create(Request $request)
     {
         $validator = Validator::make(
