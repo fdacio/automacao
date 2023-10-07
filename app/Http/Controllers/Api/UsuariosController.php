@@ -14,7 +14,7 @@ class UsuariosController extends Controller
     {
         return response()->json($usuario, 200);
     }
-    
+
     public function create(Request $request)
     {
         $validator = Validator::make(
@@ -100,7 +100,11 @@ class UsuariosController extends Controller
 
     public function destroy(Usuario $usuario)
     {
-        $usuario->delete();
-        return response()->json($usuario, 204);
+        try {
+            $usuario->delete();
+            return response()->json($usuario, 204);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 401);    
+        }
     }
 }
