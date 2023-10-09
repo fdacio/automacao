@@ -92,11 +92,20 @@ class TemperaturasController extends Controller
         }
     }
 
-    public function index()
-    {
-        $data1 = Carbon::now();
-        $temperaturas = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->orderby('id', 'desc')->get();
-        return $temperaturas;
+    public function index(Request $request)
+    {   
+        $data1 = $request->get('data');
+        
+        $temperaturas = Temperatura::orderby('id', 'desc');
+
+        if (empty($data1)) {
+            $data1 = Carbon::now();
+            $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
+        }
+        
+        $temperaturas =  $temperaturas->paginate(10);
+
+        return response()->json($temperaturas, 200);
     }
 
     public function temperatura()
