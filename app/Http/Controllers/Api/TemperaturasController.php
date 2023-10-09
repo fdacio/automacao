@@ -98,7 +98,7 @@ class TemperaturasController extends Controller
         
         $temperaturas = Temperatura::orderby('id', 'desc');
 
-        if (empty($data1)) {
+        if (!empty($data1)) {
             $data1 = Carbon::now();
             $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
         }
