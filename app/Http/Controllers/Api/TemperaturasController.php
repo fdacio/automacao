@@ -36,7 +36,7 @@ class TemperaturasController extends Controller
     public function show()
     {
         try {
-            
+
             $maxId = DB::table('temperaturas')->max('id');
             $tempLast = Temperatura::find($maxId);
             $temp = floor($tempLast->temperatura);
@@ -93,16 +93,18 @@ class TemperaturasController extends Controller
     }
 
     public function index(Request $request)
-    {   
-          
+    {
+        $offset = $request->get('offset');
+        $take = $request->get('take') ? $request->get('take') : 20;
+
         $temperaturas = Temperatura::orderby('id', 'desc');
 
         if (!empty($data1)) {
             $data1 = Carbon::now();
             $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
-        }        
+        }
 
-        $temperaturas =  $temperaturas->paginate(20);
+        $temperaturas =  $temperaturas->offset(0)->take($take)->get();
 
         return response()->json($temperaturas, 200);
     }
@@ -138,5 +140,4 @@ class TemperaturasController extends Controller
         $temperaturasOntem = Temperatura::whereBetween('created_at', [$ontem->format('Y-m-d'), $ontem->addDays(1)->format('Y-m-d')])->orderby('id', 'asc')->get();
         return ['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem];
     }
-
 }
