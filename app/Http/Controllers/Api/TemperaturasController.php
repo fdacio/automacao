@@ -96,8 +96,7 @@ class TemperaturasController extends Controller
     {   
         $data1 = $request->get('data');
         $page = $request->get('page');
-        dd($page);
-        
+          
         $temperaturas = Temperatura::orderby('id', 'desc');
 
         if (!empty($data1)) {
