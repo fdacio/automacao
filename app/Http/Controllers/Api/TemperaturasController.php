@@ -94,17 +94,15 @@ class TemperaturasController extends Controller
 
     public function index(Request $request)
     {   
-        $data1 = $request->get('data');
-        $page = $request->get('page');
           
         $temperaturas = Temperatura::orderby('id', 'desc');
 
         if (!empty($data1)) {
             $data1 = Carbon::now();
             $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
-        }
-        
-        $temperaturas =  $temperaturas->offset($page+1)->take(5)->get();
+        }        
+
+        $temperaturas =  $temperaturas->paginate(20);
 
         return response()->json($temperaturas, 200);
     }
