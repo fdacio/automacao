@@ -95,6 +95,7 @@ class TemperaturasController extends Controller
     public function index(Request $request)
     {   
         $data1 = $request->get('data');
+        $page = $request->get('page');
         
         $temperaturas = Temperatura::orderby('id', 'desc');
 
@@ -103,7 +104,7 @@ class TemperaturasController extends Controller
             $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
         }
         
-        $temperaturas =  $temperaturas->paginate(30);
+        $temperaturas =  $temperaturas->$request->offset($page)->limit(20)->get();
 
         return response()->json($temperaturas, 200);
     }
