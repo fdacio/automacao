@@ -104,7 +104,7 @@ class TemperaturasController extends Controller
             $temperaturas = $temperaturas->whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')]);
         }
 
-        $temperaturas =  $temperaturas->offset(0)->take($take)->get();
+        $temperaturas =  $temperaturas->offset($offset)->take($take)->get();
 
         return response()->json($temperaturas, 200);
     }
