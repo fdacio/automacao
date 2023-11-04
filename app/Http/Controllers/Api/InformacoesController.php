@@ -13,16 +13,16 @@ class InformacoesController extends Controller
     public static $index = 1;
 
     private $timeZones = [
-        1 => ['city' => 'Fortaleza - CE', 'timezone' => 'America/Fortaleza'],
+        1 => ['city' => 'Fortaleza - CEARÁ', 'timezone' => 'America/Fortaleza'],
         2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
-        3 => ['city' => 'Paris - FRA', 'timezone' => 'Europe/Paris'],
+        3 => ['city' => 'Paris - FRAÇA', 'timezone' => 'Europe/Paris'],
         4 => ['city' => 'Londres - ENG', 'timezone' => 'Europe/London'],
-        5 => ['city' => 'Toquio - JAP', 'timezone' => 'Asia/Tokyo'],
-        6 => ['city' => 'Cairo - EGT', 'timezone' => 'Africa/Cairo'],
-        7 => ['city' => 'Adelaide - AUS', 'timezone' => 'Australia/Adelaide'],        
-        8 => ['city' => 'Toronto - CND', 'timezone' => 'America/Toronto'],
-        9 => ['city' => 'Shanghai - CHN', 'timezone' => 'Asia/Shanghai'],
-       10 => ['city' => 'Parnaiba - PI', 'timezone' => 'America/Fortaleza']
+        5 => ['city' => 'Toquio - JAPÃO', 'timezone' => 'Asia/Tokyo'],
+        6 => ['city' => 'Cairo - EGITO', 'timezone' => 'Africa/Cairo'],
+        7 => ['city' => 'Adelaide - AUSTRÁLIA', 'timezone' => 'Australia/Adelaide'],        
+        8 => ['city' => 'Toronto - CANADÁ', 'timezone' => 'America/Toronto'],
+        9 => ['city' => 'Shanghai - CHINA', 'timezone' => 'Asia/Shanghai'],
+       10 => ['city' => 'Parnaiba - PIUAÍ', 'timezone' => 'America/Fortaleza']
     ];
     /**
      * Display a listing of the resource.
