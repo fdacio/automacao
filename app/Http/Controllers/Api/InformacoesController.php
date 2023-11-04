@@ -13,16 +13,16 @@ class InformacoesController extends Controller
     public static $index = 1;
 
     private $timeZones = [
-        1 => ['city' => 'Fortaleza - CEARÁ', 'timezone' => 'America/Fortaleza'],
+        1 => ['city' => 'Fortaleza - CEARA', 'timezone' => 'America/Fortaleza'],
         2 => ['city' => 'New York - USA', 'timezone' => 'America/New_York'],
-        3 => ['city' => 'Paris - FRAÇA', 'timezone' => 'Europe/Paris'],
+        3 => ['city' => 'Paris - FRACA', 'timezone' => 'Europe/Paris'],
         4 => ['city' => 'Londres - ENG', 'timezone' => 'Europe/London'],
-        5 => ['city' => 'Toquio - JAPÃO', 'timezone' => 'Asia/Tokyo'],
+        5 => ['city' => 'Toquio - JAPAO', 'timezone' => 'Asia/Tokyo'],
         6 => ['city' => 'Cairo - EGITO', 'timezone' => 'Africa/Cairo'],
-        7 => ['city' => 'Adelaide - AUSTRÁLIA', 'timezone' => 'Australia/Adelaide'],        
-        8 => ['city' => 'Toronto - CANADÁ', 'timezone' => 'America/Toronto'],
+        7 => ['city' => 'Adelaide - AUSTRALIA', 'timezone' => 'Australia/Adelaide'],        
+        8 => ['city' => 'Toronto - CANADA', 'timezone' => 'America/Toronto'],
         9 => ['city' => 'Shanghai - CHINA', 'timezone' => 'Asia/Shanghai'],
-       10 => ['city' => 'Parnaiba - PIUAÍ', 'timezone' => 'America/Fortaleza']
+       10 => ['city' => 'Parnaiba - PIUAI', 'timezone' => 'America/Fortaleza']
     ];
     /**
      * Display a listing of the resource.
