@@ -17,12 +17,14 @@ class TemperaturaIOTController extends Controller
      */
     public function index()
     {
-        $data1 = Carbon::now();
+        $hoje = Carbon::now();
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
         $ultima = Temperatura::get()->last();
-        $maxTemperatura = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->max('temperatura');
-        $maxHumidade = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->max('humidade');
-        $minTemperatura = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->min('temperatura');
-        $minHumidade = Temperatura::whereBetween('created_at', [$data1->format('Y-m-d'), $data1->addDays(1)->format('Y-m-d')])->min('humidade');
+        $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
+        $maxHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->max('humidade');
+        $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
+        $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
         
         $temperatura = [
             'temperatura' => $ultima->temperatura,
