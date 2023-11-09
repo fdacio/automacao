@@ -76,6 +76,7 @@ class TemperaturasController extends Controller
             }
 
             return [
+                'data' => $data1,
                 'temperatura' => $temp,
                 'humidade' => $humi,
                 't_max' => $t_max,

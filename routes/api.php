@@ -47,6 +47,8 @@ Route::namespace('Api')->group(function () {
     Route::get('/temperatura/get', 'TemperaturasController@temperatura')->name('api.temperatura');
     Route::get('/humidade/get', 'TemperaturasController@humidade')->name('api.humidade');
 
+    Route::get('/temperatura/iot', 'TemperaturaIOTController@index')->name('api.temperatura.iot');
+
     Route::get('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
     Route::get('/usuarios/{usuario}/find', 'UsuariosController@find')->name('api.usuarios.find');
     Route::post('/usuarios/create', 'UsuariosController@create')->name('api.usuarios.create');
