@@ -37,18 +37,11 @@ Route::namespace('Api')->group(function () {
     Route::get('/presenca', 'PresencaController@show')->name('api.presenca.show');
     Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
     
-    Route::post('/temperatura/post', 'TemperaturasController@post')->name('api.temperatura.post');
-    Route::get('/temperatura', 'TemperaturasController@show')->name('api.temperatura.show');
-    Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperatura.index');
+    Route::get('/temperaturas/iot', 'TemperaturasIOTController@index')->name('api.temperaturas.index');
+    Route::post('/temperaturas/iot', 'TemperaturasIOTController@create')->name('api.temperaturas.create');
+    Route::get('/temperaturas/chart', 'TemperaturasIOTController@chart')->name('api.temperaturas.chart');
+    Route::get('/temperaturas/chart2', 'TemperaturasIOTController@chart2')->name('api.temperaturas.chart2');
     
-    Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperatura.chart');
-    Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperatura.chart2');
-    
-    Route::get('/temperatura/get', 'TemperaturasController@temperatura')->name('api.temperatura');
-    Route::get('/humidade/get', 'TemperaturasController@humidade')->name('api.humidade');
-
-    Route::get('/temperatura/iot', 'TemperaturaIOTController@index')->name('api.temperatura.iot');
-
     Route::get('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
     Route::get('/usuarios/{usuario}/find', 'UsuariosController@find')->name('api.usuarios.find');
     Route::post('/usuarios/create', 'UsuariosController@create')->name('api.usuarios.create');

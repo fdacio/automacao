@@ -38,4 +38,40 @@ class TemperaturaIOTController extends Controller
         return response()->json($temperatura, 200);
     }
 
+    public function create(Request $request)
+    {
+        $dados = [
+            'temperatura' => $request->input('t'),
+            'humidade' => $request->input('h')
+        ];
+
+        $temperatura = Temperatura::create($dados);
+        return response()->json($temperatura, 201);
+    }
+
+    public function chart()
+    {
+        $hoje = Carbon::now();
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
+        $temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->orderby('id', 'asc')->get();
+        return $temperaturas;
+    }
+
+    public function chart2()
+    {
+        $hoje = Carbon::now();
+        $ontem = $hoje->addDays(1);
+        
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
+        
+        $data3 = $ontem->format('Y-m-d');
+        $data4 = $ontem->addDays(1)->format('Y-m-d');
+
+        $temperaturasHoje = Temperatura::whereBetween('created_at', [$data1, $data2])->orderby('id', 'asc')->get();
+        $temperaturasOntem = Temperatura::whereBetween('created_at', [$data3, $data4])->orderby('id', 'asc')->get();
+        return ['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem];
+    }
+
 }

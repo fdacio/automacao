@@ -231,14 +231,14 @@
 
                 clearInterval(timeLoadPresenca);
 
-                $.get("{{ route('api.temperatura.show') }}", function(dados) {
+                $.get("{{ route('api.temperatura.index') }}", function(dados) {
 
                     if (dados.temperatura == undefined) return;
 
                     var temperatura = dados.temperatura;
                     var humidade = dados.humidade;
 
-                    var t_max = dados.t_max;
+                    var t_max = dados.temp;
                     var t_hr_max = dados.t_hr_max;
                     var t_min = dados.t_min;
                     var t_hr_min = dados.t_hr_min;
