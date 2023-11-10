@@ -23,18 +23,16 @@ class TemperaturasController extends Controller
         $ultima = Temperatura::get()->last();
         
         $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
-        $temperaturaMax = Temperatura::where('temperatura', $maxTemperatura)->get();
-
-        dd($maxTemperatura, $temperaturaMax);
+        $temperaturaMax = Temperatura::where('temperatura', $maxTemperatura)->get()->first();
 
         $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
-        $temperaturaMin = Temperatura::where('temperatura', $minTemperatura)->get();
+        $temperaturaMin = Temperatura::where('temperatura', $minTemperatura)->get()->first();
         
         $maxHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->max('humidade');
-        $humidadeMax = Temperatura::where('humidade', $maxHumidade)->get();
+        $humidadeMax = Temperatura::where('humidade', $maxHumidade)->get()->first();
 
         $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
-        $humidadeMin = Temperatura::where('humidade', $minHumidade)->get();
+        $humidadeMin = Temperatura::where('humidade', $minHumidade)->get()->first();
        
         $temperatura = [
             
