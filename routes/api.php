@@ -39,9 +39,11 @@ Route::namespace('Api')->group(function () {
     
     Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperaturas.index');
     Route::post('/temperaturas', 'TemperaturasController@create')->name('api.temperaturas.create');
+    Route::get('/temperaturas', 'TemperaturasController@max')->name('api.temperaturas.max');
     Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperaturas.chart');
     Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperaturas.chart2');
     
+
     Route::get('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
     Route::get('/usuarios/{usuario}/find', 'UsuariosController@find')->name('api.usuarios.find');
     Route::post('/usuarios/create', 'UsuariosController@create')->name('api.usuarios.create');
