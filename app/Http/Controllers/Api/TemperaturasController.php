@@ -118,7 +118,7 @@ class TemperaturasController extends Controller
     public function chart2()
     {
         $hoje = Carbon::now();
-        $ontem = $hoje->addDays(1);
+        $ontem = Carbon::now()->addDays(1);
         
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
