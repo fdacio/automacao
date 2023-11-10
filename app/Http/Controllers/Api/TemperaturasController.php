@@ -128,7 +128,7 @@ class TemperaturasController extends Controller
         $data4 = $ontem->addDays(1)->format('Y-m-d');
 
         $temperaturasHoje = Temperatura::where('created_at', '>=' , $data1)->where('created_at', '<' , $data2)->orderby('id', 'asc')->get();
-        $temperaturasOntem = Temperatura::where('created_at', '>=' , $data2)->where('created_at', '<' , $data3)->orderby('id', 'asc')->get();
+        $temperaturasOntem = Temperatura::where('created_at', '>=' , $data3)->where('created_at', '<' , $data4)->orderby('id', 'asc')->get();
 
         return response()->json(['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem], 200);
     }
