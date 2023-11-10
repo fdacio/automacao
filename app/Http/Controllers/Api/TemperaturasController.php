@@ -49,6 +49,8 @@ class TemperaturasController extends Controller
             'minHumidade' => $humidadeMin->humidade,
             'horaHumidadeMin' => $humidadeMin->creted_at
         ];
+
+        dd($temperatura);
         
         return response()->json($temperatura, 200);
     }
