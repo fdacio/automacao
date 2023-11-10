@@ -55,7 +55,7 @@ class TemperaturasController extends Controller
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
         //$temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->get();
-        $temperatura = DB::table('temperaturas')->whereBetween('created_at', [$data1, $data2])->groupBy('id')->get(['id', 'created_at', DB::raw('MAX(temperatura) AS temperatura')]);
+        $temperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->groupBy('id')->get(['id', 'created_at', DB::raw('MAX(temperatura) AS temperatura')]);
         return response()->json($temperatura, 200);
     }
 
