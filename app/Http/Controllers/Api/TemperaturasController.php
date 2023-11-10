@@ -47,7 +47,7 @@ class TemperaturasController extends Controller
             'maxHumidade' => $humidadeMax->humidade,
             'horaHumidadeMax' => $humidadeMax->created_at->format('H:i'), 
             'minHumidade' => $humidadeMin->humidade,
-            'horaHumidadeMin' => $humidadeMin->creted_at->format('H:i')
+            'horaHumidadeMin' => $humidadeMin->created_at->format('H:i')
         ];
 
         //dd($temperatura);
