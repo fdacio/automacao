@@ -8,7 +8,7 @@ use Automacao\Models\Temperatura;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class TemperaturaIOTController extends Controller
+class TemperaturasController extends Controller
 {
     /**
      * Display a listing of the resource.

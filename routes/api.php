@@ -37,10 +37,10 @@ Route::namespace('Api')->group(function () {
     Route::get('/presenca', 'PresencaController@show')->name('api.presenca.show');
     Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
     
-    Route::get('/temperaturas', 'TemperaturasIOTController@index')->name('api.temperaturas.index');
-    Route::post('/temperaturas', 'TemperaturasIOTController@create')->name('api.temperaturas.create');
-    Route::get('/temperaturas/chart', 'TemperaturasIOTController@chart')->name('api.temperaturas.chart');
-    Route::get('/temperaturas/chart2', 'TemperaturasIOTController@chart2')->name('api.temperaturas.chart2');
+    Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperaturas.index');
+    Route::post('/temperaturas', 'TemperaturasController@create')->name('api.temperaturas.create');
+    Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperaturas.chart');
+    Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperaturas.chart2');
     
     Route::get('/usuarios', 'UsuariosController@index')->name('api.usuarios.index');
     Route::get('/usuarios/{usuario}/find', 'UsuariosController@find')->name('api.usuarios.find');
