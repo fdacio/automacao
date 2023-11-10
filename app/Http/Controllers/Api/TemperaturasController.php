@@ -25,6 +25,8 @@ class TemperaturasController extends Controller
         $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
         $temperaturaMax = Temperatura::where('temperatura', $maxTemperatura)->get();
 
+        dd($maxTemperatura, $temperaturaMax);
+
         $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
         $temperaturaMin = Temperatura::where('temperatura', $minTemperatura)->get();
         
