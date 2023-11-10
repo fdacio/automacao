@@ -40,17 +40,17 @@ class TemperaturasController extends Controller
             'humidade' => $ultima->humidade,
             
             'maxTemperatura' => $temperaturaMax->temperatura,
-            'horaTemperaturaMax' => $temperaturaMax->created_at,
+            'horaTemperaturaMax' => $temperaturaMax->created_at->format('H:i'),
             'minTemperatura' => $temperaturaMin->temperatura,
-            'horaTemperaturaMin' => $temperaturaMin->created_at,
+            'horaTemperaturaMin' => $temperaturaMin->created_at->format('H:i'),
             
             'maxHumidade' => $humidadeMax->humidade,
-            'horaHumidadeMax' => $humidadeMax->created_at, 
+            'horaHumidadeMax' => $humidadeMax->created_at->format('H:i'), 
             'minHumidade' => $humidadeMin->humidade,
-            'horaHumidadeMin' => $humidadeMin->creted_at
+            'horaHumidadeMin' => $humidadeMin->creted_at->format('H:i')
         ];
 
-        dd($temperatura);
+        //dd($temperatura);
         
         return response()->json($temperatura, 200);
     }
