@@ -119,7 +119,7 @@ class TemperaturasController extends Controller
     {
         $hoje = Carbon::now();
         $ontem = Carbon::now();
-        $ontem = $ontem->addDays(1);
+        $ontem = $ontem->addDays(-1);
         
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
@@ -127,8 +127,8 @@ class TemperaturasController extends Controller
         $data3 = $ontem->format('Y-m-d');
         $data4 = $ontem->addDays(1)->format('Y-m-d');
 
-        $temperaturasHoje = Temperatura::whereBetween('created_at', [$data1, $data2])->orderby('id', 'asc')->get();
-        $temperaturasOntem = Temperatura::whereBetween('created_at', [$data3, $data4])->orderby('id', 'asc')->get();
+        $temperaturasHoje = Temperatura::where('created_at', '>=' , $data1)->where('created_at', '<' , $data2)->orderby('id', 'asc')->get();
+        $temperaturasOntem = Temperatura::where('created_at', '>=' , $data2)->where('created_at', '<' , $data3)->orderby('id', 'asc')->get();
 
         return response()->json(['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem], 200);
     }
