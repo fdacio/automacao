@@ -112,7 +112,7 @@ class TemperaturasController extends Controller
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
         $temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->orderby('id', 'asc')->get();
-        return $temperaturas;
+        return response()->json($temperaturas, 200);
     }
 
     public function chart2()
@@ -128,7 +128,8 @@ class TemperaturasController extends Controller
 
         $temperaturasHoje = Temperatura::whereBetween('created_at', [$data1, $data2])->orderby('id', 'asc')->get();
         $temperaturasOntem = Temperatura::whereBetween('created_at', [$data3, $data4])->orderby('id', 'asc')->get();
-        return ['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem];
+
+        return response()->json(['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem], 200);
     }
 
 }
