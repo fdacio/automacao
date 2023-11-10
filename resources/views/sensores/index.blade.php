@@ -356,6 +356,10 @@
                 if (chartStatus != undefined) {
                     chartStatus.destroy();
                 }
+                let chartStatus2 = Chart.getChart("chartTemp2");
+                if (chartStatus2 != undefined) {
+                    chartStatus2.destroy();
+                }
             });
 
             $("#humidadeModal").on("shown.bs.modal", function() {
