@@ -288,7 +288,7 @@
                 $('#chartTemp').hide();
                 $('#chartTemp2').hide();
 
-                $.get("{{ route('api.temperatura.chart2') }}").done(function(dados) {
+                $.get("{{ route('api.temperaturas.chart2') }}").done(function(dados) {
                     console.log(dados);
                     var horas1 = [];
                     var horas2 = [];
@@ -366,7 +366,7 @@
                 $('.chartHumid').html(spinner);
                 $('#chartHumid').hide();
 
-                $.get("{{ route('api.temperatura.chart') }}").done(function(dados) {
+                $.get("{{ route('api.temperaturas.chart') }}").done(function(dados) {
                     var horas = [];
                     var humidades = [];
                     var index = 0;
