@@ -54,9 +54,9 @@ class TemperaturasController extends Controller
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
-        $temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->get();
-        //$temperatura = DB::table('temperaturas')->select(['id', 'created_at', DB::raw('MAX(temperatura) AS temperatura')])->whereBetween('created_at', [$data1, $data2])->groupBy('id')->get();
-        return response()->json($temperaturas->maxArray('temperatura'), 200);
+        //$temperaturas = Temperatura::whereBetween('created_at', [$data1, $data2])->get();
+        $temperatura = DB::table('temperaturas')->whereBetween('created_at', [$data1, $data2])->groupBy('id')->get(['id', 'created_at', DB::raw('MAX(temperatura) AS temperatura')]);
+        return response()->json($temperatura, 200);
     }
 
     public function chart()
