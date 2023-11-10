@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Temperatura;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TemperaturasController extends Controller
 {
@@ -53,7 +54,7 @@ class TemperaturasController extends Controller
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
-        $temperatura = Temperatura::select('created_at')->whereBetween('created_at', [$data1, $data2])->max('temperatura');
+        $temperatura = DB::table('temperaturas')->select(['id, created_at', DB::raw('MAX(temperatura) as temperatura')])->whereBetween('created_at', [$data1, $data2])->first();
         return response()->json($temperatura, 200);
     }
 
