@@ -53,7 +53,7 @@ class TemperaturasController extends Controller
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
-        $temperatura = Temperatura::select('temperatura', 'created_at')->whereBetween('created_at', [$data1, $data2])->max('temperatura');
+        $temperatura = Temperatura::select('created_at')->whereBetween('created_at', [$data1, $data2])->max('temperatura');
         return response()->json($temperatura, 200);
     }
 
