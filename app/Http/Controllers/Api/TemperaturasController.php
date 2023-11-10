@@ -21,18 +21,37 @@ class TemperaturasController extends Controller
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
         $ultima = Temperatura::get()->last();
+        
         $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
+        $temperaturaMax = Temperatura::where('temperatura', $maxTemperatura)->get();
+
+        $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
+        $temperaturaMin = Temperatura::where('temperatura', $minTemperatura)->get();
+        
+        $maxHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->max('humidade');
+        $humidadeMax = Temperatura::where('humidade', $maxHumidade)->get();
+
+        $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
+        $humidadeMin = Temperatura::where('humidade', $minHumidade)->get();
+
         $maxHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->max('humidade');
         $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
         $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
         
         $temperatura = [
+            
             'temperatura' => $ultima->temperatura,
             'humidade' => $ultima->humidade,
-            'maxTemperatura' => $maxTemperatura,
-            'maxHumidade' => $maxHumidade,
-            'minTemperatura' => $minTemperatura,
-            'minHumidade' => $minHumidade 
+            
+            'maxTemperatura' => $temperaturaMax->temperatura,
+            'horaTemperaturaMax' => $temperaturaMax->created_at,
+            'minTemperatura' => $temperaturaMin->temperatura,
+            'horaTemperaturaMin' => $temperaturaMin->created_at,
+            
+            'maxHumidade' => $humidadeMax->humidade,
+            'horaHumidadeMax' => $humidadeMax->created_at, 
+            'minHumidade' => $humidadeMin->humidade,
+            'horaHumidadeMin' => $humidadeMin->creted_at
         ];
         
         return response()->json($temperatura, 200);
@@ -49,13 +68,43 @@ class TemperaturasController extends Controller
         return response()->json($temperatura, 201);
     }
 
-    public function max() 
+    public function maxTemperatura() 
     {
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
         $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
         $temperatura = Temperatura::where('temperatura', $maxTemperatura)->get();
+        return response()->json($temperatura, 200);
+    }
+
+    public function minTemperatura() 
+    {
+        $hoje = Carbon::now();
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
+        $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
+        $temperatura = Temperatura::where('temperatura', $minTemperatura)->get();
+        return response()->json($temperatura, 200);
+    }
+
+    public function maxHumidade() 
+    {
+        $hoje = Carbon::now();
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
+        $maxHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->max('humidade');
+        $temperatura = Temperatura::where('humidade', $maxHumidade)->get();
+        return response()->json($temperatura, 200);
+    }
+
+    public function minHumidade() 
+    {
+        $hoje = Carbon::now();
+        $data1 = $hoje->format('Y-m-d');
+        $data2 = $hoje->addDays(1)->format('Y-m-d');
+        $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
+        $temperatura = Temperatura::where('humidade', $minHumidade)->get();
         return response()->json($temperatura, 200);
     }
 

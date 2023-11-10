@@ -39,7 +39,10 @@ Route::namespace('Api')->group(function () {
     
     Route::get('/temperaturas', 'TemperaturasController@index')->name('api.temperaturas.index');
     Route::post('/temperaturas', 'TemperaturasController@create')->name('api.temperaturas.create');
-    Route::get('/temperaturas/max', 'TemperaturasController@max')->name('api.temperaturas.max');
+    Route::get('/temperaturas/max/temperatura', 'TemperaturasController@maxTemperatura')->name('api.temperaturas.max.temperatura');
+    Route::get('/temperaturas/min/temperatura', 'TemperaturasController@minTemperatura')->name('api.temperaturas.min.temperatura');
+    Route::get('/temperaturas/max/humidade', 'TemperaturasController@maxHumidade')->name('api.temperaturas.max.humidade');
+    Route::get('/temperaturas/min/humidade', 'TemperaturasController@minHumidade')->name('api.temperaturas.min.humidade');
     Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperaturas.chart');
     Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperaturas.chart2');
     

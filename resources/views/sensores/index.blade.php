@@ -231,7 +231,7 @@
 
                 clearInterval(timeLoadPresenca);
 
-                $.get("{{ route('api.temperatura.index') }}", function(dados) {
+                $.get("{{ route('api.temperaturas.index') }}", function(dados) {
 
                     if (dados.temperatura == undefined) return;
 
