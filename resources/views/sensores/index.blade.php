@@ -238,15 +238,15 @@
                     var temperatura = dados.temperatura;
                     var humidade = dados.humidade;
 
-                    var t_max = dados.temp;
-                    var t_hr_max = dados.t_hr_max;
-                    var t_min = dados.t_min;
-                    var t_hr_min = dados.t_hr_min;
+                    var t_max = dados.maxTemperatura;
+                    var t_hr_max = dados.horaTemperaturaMax;
+                    var t_min = dados.minTemperatura;
+                    var t_hr_min = dados.horaTemperaturaMin;
 
-                    var h_max = dados.h_max;
-                    var h_hr_max = dados.h_hr_max;
-                    var h_min = dados.h_min;
-                    var h_hr_min = dados.h_hr_min;
+                    var h_max = dados.maxHumidade;
+                    var h_hr_max = dados.horaHumidadeMax;
+                    var h_min = dados.minHumidade;
+                    var h_hr_min = dados.horaHumidadeMin;
 
                     $('.btn-temperatura .valor-temperatura').html(temperatura + "°C");
                     $('.btn-humidade .valor-humidade').html(humidade + "%");
