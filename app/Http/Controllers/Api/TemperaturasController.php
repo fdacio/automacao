@@ -36,17 +36,17 @@ class TemperaturasController extends Controller
        
         $temperatura = [
             
-            'temperatura' => $ultima->temperatura,
-            'humidade' => $ultima->humidade,
+            'temperatura' => number_format($ultima->temperatura, 0),
+            'humidade' => number_format($ultima->humidade, 0),
             
-            'maxTemperatura' => $temperaturaMax->temperatura,
+            'maxTemperatura' => number_format($temperaturaMax->temperatura, 0),
             'horaTemperaturaMax' => $temperaturaMax->created_at->format('H:i'),
-            'minTemperatura' => $temperaturaMin->temperatura,
+            'minTemperatura' => number_format($temperaturaMin->temperatura, 0),
             'horaTemperaturaMin' => $temperaturaMin->created_at->format('H:i'),
             
-            'maxHumidade' => $humidadeMax->humidade,
+            'maxHumidade' => number_format($humidadeMax->humidade, 0),
             'horaHumidadeMax' => $humidadeMax->created_at->format('H:i'), 
-            'minHumidade' => $humidadeMin->humidade,
+            'minHumidade' => number_format($humidadeMin->humidade, 0),
             'horaHumidadeMin' => $humidadeMin->created_at->format('H:i')
         ];
 
