@@ -17,6 +17,8 @@ class TemperaturasController extends Controller
      */
     public function index()
     {
+        return response()->json([], 200);
+
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
@@ -24,7 +26,7 @@ class TemperaturasController extends Controller
         
         $maxTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->max('temperatura');
         $temperaturaMax = Temperatura::where('temperatura', $maxTemperatura)->get()->first();
-
+        
         $minTemperatura = Temperatura::whereBetween('created_at', [$data1, $data2])->min('temperatura');
         $temperaturaMin = Temperatura::where('temperatura', $minTemperatura)->get()->first();
         
@@ -33,11 +35,7 @@ class TemperaturasController extends Controller
 
         $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
         $humidadeMin = Temperatura::where('humidade', $minHumidade)->get()->first();
-       
-        dd("nothing");
         
-        return response()->json([], 200);
-
         $temperatura = [
             
             'temperatura' => number_format($ultima->temperatura, 0),
@@ -54,8 +52,6 @@ class TemperaturasController extends Controller
             'horaHumidadeMin' => $humidadeMin->created_at->format('H:i')
         ];
 
-        //dd($temperatura);
-        
         return response()->json($temperatura, 200);
     }
 
