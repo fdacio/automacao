@@ -34,6 +34,8 @@ class TemperaturasController extends Controller
         $minHumidade = Temperatura::whereBetween('created_at', [$data1, $data2])->min('humidade');
         $humidadeMin = Temperatura::where('humidade', $minHumidade)->get()->first();
        
+        dd("nothing");
+        
         return response()->json([], 200);
 
         $temperatura = [
