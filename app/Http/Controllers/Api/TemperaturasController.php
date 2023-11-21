@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Automacao\Http\Controllers\Controller;
 use Automacao\Models\Temperatura;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class TemperaturasController extends Controller
 {
