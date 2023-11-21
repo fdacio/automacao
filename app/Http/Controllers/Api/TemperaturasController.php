@@ -17,8 +17,6 @@ class TemperaturasController extends Controller
      */
     public function index()
     {
-        return response()->json([], 200);
-
         $hoje = Carbon::now();
         $data1 = $hoje->format('Y-m-d');
         $data2 = $hoje->addDays(1)->format('Y-m-d');
