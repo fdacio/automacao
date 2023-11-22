@@ -35,17 +35,17 @@ class TemperaturasController extends Controller
         
         $temperatura = [
             
-            'temperatura' => roundValue($ultima->temperatura),
-            'humidade' => roundValue($ultima->humidade),
+            'temperatura' => $this->roundValue($ultima->temperatura),
+            'humidade' => $this->roundValue($ultima->humidade),
             
-            'maxTemperatura' => roundValue($temperaturaMax->temperatura),
+            'maxTemperatura' => $this->roundValue($temperaturaMax->temperatura),
             'horaTemperaturaMax' => $temperaturaMax->created_at->format('H:i'),
-            'minTemperatura' => roundValue($temperaturaMin->temperatura, 0),
+            'minTemperatura' => $this->roundValue($temperaturaMin->temperatura, 0),
             'horaTemperaturaMin' => $temperaturaMin->created_at->format('H:i'),
             
-            'maxHumidade' => roundValue($humidadeMax->humidade),
+            'maxHumidade' => $this->roundValue($humidadeMax->humidade),
             'horaHumidadeMax' => $humidadeMax->created_at->format('H:i'), 
-            'minHumidade' => roundValue($humidadeMin->humidade),
+            'minHumidade' => $this->roundValue($humidadeMin->humidade),
             'horaHumidadeMin' => $humidadeMin->created_at->format('H:i')
         ];
 
