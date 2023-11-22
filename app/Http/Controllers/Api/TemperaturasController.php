@@ -35,17 +35,17 @@ class TemperaturasController extends Controller
         
         $temperatura = [
             
-            'temperatura' => number_format($ultima->temperatura, 0),
-            'humidade' => number_format($ultima->humidade, 0),
+            'temperatura' => roundValue($ultima->temperatura),
+            'humidade' => roundValue($ultima->humidade),
             
-            'maxTemperatura' => number_format($temperaturaMax->temperatura, 0),
+            'maxTemperatura' => roundValue($temperaturaMax->temperatura),
             'horaTemperaturaMax' => $temperaturaMax->created_at->format('H:i'),
-            'minTemperatura' => number_format($temperaturaMin->temperatura, 0),
+            'minTemperatura' => roundValue($temperaturaMin->temperatura, 0),
             'horaTemperaturaMin' => $temperaturaMin->created_at->format('H:i'),
             
-            'maxHumidade' => number_format($humidadeMax->humidade, 0),
+            'maxHumidade' => roundValue($humidadeMax->humidade),
             'horaHumidadeMax' => $humidadeMax->created_at->format('H:i'), 
-            'minHumidade' => number_format($humidadeMin->humidade, 0),
+            'minHumidade' => roundValue($humidadeMin->humidade),
             'horaHumidadeMin' => $humidadeMin->created_at->format('H:i')
         ];
 
@@ -128,6 +128,12 @@ class TemperaturasController extends Controller
         $temperaturasOntem = Temperatura::where('created_at', '>=' , $data3)->where('created_at', '<' , $data4)->orderby('id', 'asc')->get();
 
         return response()->json(['hoje' => $temperaturasHoje, 'ontem' => $temperaturasOntem], 200);
+    }
+
+
+    private function roundValue($value)
+    {
+        return round($value);
     }
 
 }
