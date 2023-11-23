@@ -34,8 +34,11 @@ class TemperaturasController extends Controller
         $humidadeMin = Temperatura::whereBetween('created_at', [$data1, $data2])->where('humidade', $minHumidade)->get()->first();
         
         $temperatura = [
-            
+
             'data' => $hoje->format('d/m/Y'),
+            'cidade' => 'Fortaleza-CE',
+            'pais' => 'Brasil',
+            'bairro' => 'Messejana',
             'temperatura' => $this->roundValue($ultima->temperatura),
             'humidade' => $this->roundValue($ultima->humidade),
             
