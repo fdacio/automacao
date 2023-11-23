@@ -35,6 +35,7 @@ class TemperaturasController extends Controller
         
         $temperatura = [
             
+            'data' => $hoje->format('d/m/Y'),
             'temperatura' => $this->roundValue($ultima->temperatura),
             'humidade' => $this->roundValue($ultima->humidade),
             
