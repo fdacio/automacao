@@ -35,7 +35,8 @@ class TemperaturasController extends Controller
         
         $temperatura = [
 
-            'data' => $hoje->format('d/m/Y'),
+            'data' => $ultima->created_at->format('d/m/Y'),
+            'hora' => $ultima->created_at->format('H:i'), 
             'cidade' => 'Fortaleza-CE',
             'pais' => 'Brasil',
             'bairro' => 'Messejana',
