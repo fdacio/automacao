@@ -36,12 +36,14 @@ class TemperaturasController extends Controller
         $temperatura = [
 
             'data' => $ultima->created_at->format('d/m/Y'),
-            'hora' => $ultima->created_at->format('H:i'), 
+            
             'cidade' => 'Fortaleza-CE',
             'pais' => 'Brasil',
             'bairro' => 'Messejana',
+            
             'temperatura' => $this->roundValue($ultima->temperatura),
             'humidade' => $this->roundValue($ultima->humidade),
+            'hora' => $ultima->created_at->format('H:i'), 
             
             'maxTemperatura' => $this->roundValue($temperaturaMax->temperatura),
             'horaTemperaturaMax' => $temperaturaMax->created_at->format('H:i'),
