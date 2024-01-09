@@ -47,7 +47,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="nome">Assunto</label>
+                <label for="nome">Texto</label>
                 {!! Form::textarea('nome', isset($componente) ? $componente->nome : null, ['placeholder' => 'Assunto', 'class' => 'form-control', 'id' => 'nome', row='10']) !!}
             </div>
         </div>
