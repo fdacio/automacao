@@ -104,5 +104,6 @@ class ComponentesController extends Controller
     public function modelos() 
     {
         return view('componentes.modelo-email');
+        
     }
 }
