@@ -99,4 +99,10 @@ class ComponentesController extends Controller
         return redirect()->route('componentes.index')->with('success', 'Cadastrado excluído com sucesso!');
 
     }
+
+
+    public function modelos() 
+    {
+        return view('componentes.modelo-email');
+    }
 }
