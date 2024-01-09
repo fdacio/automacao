@@ -23,3 +23,4 @@ Route::get('painel-controle', 'PainelControleController@index')->name('painel-co
 Route::get('infomacoes/destroy/{informacao}', 'InformacoesController@destroy')->name('informacoes.destroy');
 Route::get('iot', 'IotController@index')->name('iot.index');
 Route::get('sensores', 'SensoresController@index')->name('sensores.index');
+
