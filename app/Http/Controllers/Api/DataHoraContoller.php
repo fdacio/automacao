@@ -25,29 +25,41 @@ class DataHoraContoller extends Controller
     public function data(Request $request)
     {
         $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
-
+        $cidade = $this->getCityByTimeZone($timeZone);
         $date = \Carbon\Carbon::now($timeZone)->format('d/m/Y');
-        return ['data' => $date];
+        return ['data' => $date, 'cidade' => $cidade ];
     }
 
     public function hora(Request $request)
     {
         $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
-
+        $cidade = $this->getCityByTimeZone($timeZone);
         $time = \Carbon\Carbon::now($timeZone)->format('H:i:s'); 
-        return ['hora' => $time];
+        return ['hora' => $time, 'cidade' => $cidade ];
     }
 
     public function dataHora(Request $request)
     {
         $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
+        $cidade = $this->getCityByTimeZone($timeZone);
         $dateTime = \Carbon\Carbon::now($timeZone)->format('d/m/Y H:i:s');
-        return  ['data_hora' => $dateTime];
+        return  ['data_hora' => $dateTime, 'cidade' => $cidade ];
     }
 
     public function timeZones()
     {
         return $this->timeZones;
+    }
+
+    private function getCityByTimeZone($timeZone)
+    {
+        foreach($this->timeZones as $item) 
+        {
+            if ($item['timezone'] === $timeZone ) {
+                return $item['city'];
+            }
+        }
+        return 'Brasilia-DF';
     }
 
 }
