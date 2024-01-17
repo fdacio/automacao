@@ -24,7 +24,7 @@ class DataHoraContoller extends Controller
 
     public function data(Request $request)
     {
-        $timeZone = (empty($request->get('time-zone'))) ? $this->timeZoneDefault : $request->get('time-zone');
+        $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
 
         $date = \Carbon\Carbon::now($timeZone)->format('d/m/Y');
         return ['data' => $date];
@@ -32,7 +32,7 @@ class DataHoraContoller extends Controller
 
     public function hora(Request $request)
     {
-        $timeZone = (empty($request->get('time-zone'))) ? $this->timeZoneDefault : $request->get('time-zone');
+        $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
 
         $time = \Carbon\Carbon::now($timeZone)->format('H:i:s'); 
         return ['hora' => $time];
@@ -40,7 +40,7 @@ class DataHoraContoller extends Controller
 
     public function dataHora(Request $request)
     {
-        $timeZone = (empty($request->get('time-zone'))) ? $this->timeZoneDefault : $request->get('time-zone');
+        $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
         $dateTime = \Carbon\Carbon::now($timeZone)->format('d/m/Y H:i:s');
         return  ['data_hora' => $dateTime];
     }
