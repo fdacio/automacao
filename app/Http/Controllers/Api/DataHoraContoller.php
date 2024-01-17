@@ -43,7 +43,10 @@ class DataHoraContoller extends Controller
         $timeZone = (empty($request->get('timezone'))) ? $this->timeZoneDefault : $request->get('timezone');
         $cidade = $this->getCityByTimeZone($timeZone);
         $dateTime = \Carbon\Carbon::now($timeZone)->format('d/m/Y H:i:s');
-        return  ['data_hora' => $dateTime, 'cidade' => $cidade ];
+        $a = explode(" ", $dateTime);
+        $data = $a[0];
+        $hora = $a[1];
+        return  ['data' => $data, 'hora' => $hora, 'cidade' => $cidade ];
     }
 
     public function timeZones()
