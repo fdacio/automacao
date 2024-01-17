@@ -51,6 +51,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/data', 'DataHoraContoller@data')->name('api.data-hora.data');
     Route::get('/hora', 'DataHoraContoller@hora')->name('api.data-hora.hora');
     Route::get('/data-hora', 'DataHoraContoller@dataHora')->name('api.data-hora.data-hora');
+    Route::get('/times-zone', 'DataHoraContoller@timeZones')->name('api.data-hora.time-zones');
     
 
     /**
