@@ -11,6 +11,8 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+use Automacao\Http\Controllers\Api\DataHoraContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +48,11 @@ Route::namespace('Api')->group(function () {
     Route::get('/temperaturas/chart', 'TemperaturasController@chart')->name('api.temperaturas.chart');
     Route::get('/temperaturas/chart2', 'TemperaturasController@chart2')->name('api.temperaturas.chart2');
     
+    Route::get('/data', 'DataHoraContoller@data')->name('api.data-hora.data');
+    Route::get('/hora', 'DataHoraContoller@hora')->name('api.data-hora.hora');
+    Route::get('/data-hora', 'DataHoraContoller@dataHora')->name('api.data-hora.data-hora');
+    
+
     /**
      * Deprected
      */
