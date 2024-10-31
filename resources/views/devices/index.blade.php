@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Informações')
+@section('title', 'Devices')
 
 @section('content')
     <div class="card mb-2">
         <div class="card-header">
-            <h4>Informações</h4>
+            <h4>Devices</h4>
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
@@ -76,11 +76,6 @@
         <h6><b>{{ $devices->total() }}</b> {{ $devices->total() == 1 ? 'registro' : 'registros' }} no total
         </h6>
     </section>
-
-    <div class="mb-5" style="background-color: red; height: 200px;"></div>
-    <div class="mb-5" style="background-color: green; height: 200px;"></div>
-    <div class="mb-5" style="background-color: blue; height: 200px;"></div>
-
 @endsection
 
 @section('scripts')
