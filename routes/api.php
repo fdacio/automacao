@@ -34,7 +34,6 @@ Route::namespace('Api')->group(function () {
     Route::get('/informacao/data-hora/{id}', 'InformacoesController@city')->name('api.informacao.cidade');
     Route::post('/distancia/post', 'DistanciaController@post')->name('api.distancia.post');
     Route::get('/distancia/show', 'DistanciaController@show')->name('api.distancia.show');
-
     Route::post('/presenca/post', 'PresencaController@post')->name('api.presenca.post');
     Route::get('/presenca', 'PresencaController@show')->name('api.presenca.show');
     Route::get('/presencas', 'PresencaController@index')->name('api.presenca.index');
@@ -53,6 +52,9 @@ Route::namespace('Api')->group(function () {
     Route::get('/data-hora', 'DataHoraContoller@dataHora')->name('api.data-hora.data-hora');
     Route::get('/time-zones', 'DataHoraContoller@timeZones')->name('api.data-hora.time-zones');
     
+    Route::get('/iot/ota/versao/{device}', 'OtaVersaoController@otaVersion')->name('api.iot.ota.version');
+    Route::resource('/iot/ota/devices', 'DevicesController');
+    Route::resource('/iot/ota/versoes', 'VersoesController');
 
     /**
      * Deprected
