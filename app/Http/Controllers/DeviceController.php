@@ -22,7 +22,7 @@ class DeviceController extends Controller
             $devices =  $devices->where('nome', 'LIKE', '%' . $nome . '%');
         }
         $devices = $devices->paginate(10);
-        return view('devives.index', compact('devices'));
+        return view('devices.index', compact('devices'));
     }
 
     /**
