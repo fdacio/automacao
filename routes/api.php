@@ -53,8 +53,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/time-zones', 'DataHoraContoller@timeZones')->name('api.data-hora.time-zones');
     
     Route::get('/iot/ota/versao/{device}', 'OtaVersaoController@otaVersion')->name('api.iot.ota.version');
-    Route::resource('/iot/ota/devices', 'DevicesController');
-    Route::resource('/iot/ota/versoes', 'VersoesController');
+
 
     /**
      * Deprected
