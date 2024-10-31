@@ -3,11 +3,11 @@
 namespace Automacao\Http\Controllers;
 
 use Automacao\Http\Controllers\Controller;
-use Automacao\Models\Devices;
+use Automacao\Models\Device;
 use Exception;
 use Gestor\Http\Requests\DevicesRequest;
 
-class DevicesController extends Controller
+class DeviceController extends Controller
 {
  /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        $devices = Devices::orderBy('nome', 'asc');
+        $devices = Device::orderBy('nome', 'asc');
         $nome = request()->get('nome');
         if (!empty($nome)) {
             $devices =  $devices->where('nome', 'LIKE', '%' . $nome . '%');
@@ -43,7 +43,7 @@ class DevicesController extends Controller
      */
     public function store(DevicesRequest $request)
     {
-        Devices::create($request->all());
+        Device::create($request->all());
 
         return redirect()->route('devices.index')->with('success', 'Device cadastrado com sucesso.');
     }
@@ -54,7 +54,7 @@ class DevicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Devices $device)
+    public function show(Device $device)
     {
         return view('devices.show', compact('banco'));
     }
@@ -65,7 +65,7 @@ class DevicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Devices $device)
+    public function edit(Device $device)
     {
         return view('devices.edit', compact('banco'));
     }
@@ -77,7 +77,7 @@ class DevicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DevicesRequest $request, Devices $device)
+    public function update(DevicesRequest $request, Device $device)
     {
         $dados = [];
         if (!empty($request->file('file-logo'))) {
@@ -96,7 +96,7 @@ class DevicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Devices $device)
+    public function destroy(Device $device)
     {
         try {
             $device->delete();
@@ -107,7 +107,7 @@ class DevicesController extends Controller
     }
 
 
-    // public function logoView(Devices $device)
+    // public function logoView(Device $device)
     // {
     //     $path = storage_path('app').'/'.$device->logo;
     //     if (File::exists($path)) {
